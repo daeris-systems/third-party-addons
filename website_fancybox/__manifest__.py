@@ -26,6 +26,11 @@
     'website': 'https://www.trey.es',
     'license': 'AGPL-3',
     'depends': ['website'],
-    'data': ['views/website.xml'],
+    'assets': {
+        'web.assets_frontend': [
+            'website_fancybox/static/src/js/lib/jquery-fancybox/css/jquery.fancybox.min.css',
+            'website_fancybox/static/src/js/lib/jquery-fancybox/js/jquery.fancybox.min.js',
+        ],
+    },
     'installable': True,
 }
