@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="product_quantity_minimum" inherit_id="website_sale.product_quantity" name="Select Quantity">
+      <xpath expr="//div[@contenteditable='false']" position="before">
+        <t t-if="product.minimum_order_quantity &gt; 0">
+            <input type="hidden" t-att-value="product.minimum_order_quantity" id="qtyMin"/>
+        </t>
+      </xpath>
+      <xpath expr="//input[@name='add_qty']" position="replace">
+        <t t-if="product.minimum_order_quantity &gt; 0">
+            <input type="text" class="form-control quantity" t-att-data-min="product.minimum_order_quantity" name="add_qty" t-att-value="product.minimum_order_quantity" onchange="validateMin()" id="qtyVal"/>
+            <script>
+            function validateMin() {
+                var x = parseFloat(document.getElementById("qtyVal").value);
+                var y = parseFloat(document.getElementById("qtyMin").value);
+                if (isNaN(x)) {
+                    document.getElementById("qtyVal").value = document.getElementById("qtyVal").defaultValue;
+                }
+                else {
+                    if (y &gt; x) {
+                        document.getElementById("qtyVal").value = document.getElementById("qtyVal").defaultValue;
+                    }
+                }
+            }
+            </script>
+        </t>
+		<t t-else="">
+            <input type="text" class="form-control quantity" data-min="1" name="add_qty" t-att-value="add_qty or 1"/>
+        </t>
+      </xpath>
+    </template>
+    <template id="cart_lines_minimum" inherit_id="website_sale.cart_lines" name="Shopping Cart Lines">
+      <xpath expr="//td[@class='text-center td-qty']" position="after">
+        <t t-if="line.product_id.minimum_order_quantity &gt; 0">
+            <input type="hidden" t-att-value="line.product_id.minimum_order_quantity" id="qtyMin"/>
+        </t>
+      </xpath>
+      <xpath expr="//input[@class='js_quantity form-control quantity']" position="replace">
+        <t t-if="line.product_id.minimum_order_quantity &gt; 0">
+            <input type="text" class="js_quantity form-control quantity" t-att-data-min="line.product_id.minimum_order_quantity" t-att-data-line-id="line.id" t-att-data-product-id="line.product_id.id" t-att-value="int(line.product_uom_qty) == line.product_uom_qty and int(line.product_uom_qty) or line.product_uom_qty" onchange="validateMin()" id="qtyVal"/>
+            <script>
+            function validateMin() {
+                var x = parseFloat(document.getElementById("qtyVal").value);
+                var y = parseFloat(document.getElementById("qtyMin").value);
+                if (isNaN(x)) {
+                    document.getElementById("qtyVal").value = document.getElementById("qtyVal").defaultValue;
+                }
+                else {
+                    if (x &gt; 0 &amp;&amp; y &gt; x) {
+                        document.getElementById("qtyVal").value = document.getElementById("qtyVal").defaultValue;
+                    }
+                }
+            }
+            </script>
+        </t>
+		<t t-else="">
+            <input type="text" class="js_quantity form-control quantity" t-att-data-line-id="line.id" t-att-data-product-id="line.product_id.id" t-att-value="int(line.product_uom_qty) == line.product_uom_qty and int(line.product_uom_qty) or line.product_uom_qty" />
+        </t>
+      </xpath>
+    </template>
+    <!--template id="product_configurator_configure_optional_products_minimum" inherit_id="sale.product_configurator_configure_optional_products">
+      <xpath expr="//input[@name='add_qty']" position="replace">
+        <t t-if="product.minimum_order_quantity &gt; 0">
+            <input type="text" class="js_quantity form-control quantity" t-att-data-min="product.minimum_order_quantity" name="add_qty" t-att-value="add_qty or product.minimum_order_quantity" readonly="true"/>
+        </t>
+		<t t-else="">
+            <input type="text" class="js_quantity form-control quantity" data-min="1" name="add_qty" t-att-value="add_qty or 1"/>
+        </t>
+      </xpath>
+    </template-->
+    <template id="products_add_to_cart_minimum" inherit_id="website_sale.products_add_to_cart" name="Add to Cart">
+      <xpath expr="//input[@name='product_id']" position="after">
+        <t t-if="product.minimum_order_quantity &gt; 0">
+            <input name="add_qty" t-att-value="product.minimum_order_quantity" type="hidden"/>
+        </t>
+      </xpath>
+    </template>
+    <template id="product_wishlist_minimum" inherit_id="website_sale_wishlist.product_wishlist" name="Wishlist Page">
+        <xpath expr="//input[@name='product_id']" position="after">
+        <t t-if="wish.product_id.minimum_order_quantity &gt; 0">
+            <input name="add_qty" t-att-value="wish.product_id.minimum_order_quantity" type="hidden"/>
+        </t>
+      </xpath>
+    </template>
+    <template id="product_compare_minimum" inherit_id="website_sale_comparison.product_compare" name="Comparator Page">
+      <xpath expr="//input[@name='product_id']" position="after">
+        <t t-if="product.minimum_order_quantity &gt; 0">
+            <input name="add_qty" t-att-value="product.minimum_order_quantity" type="hidden"/>
+        </t>
+      </xpath>
+    </template>
+</odoo>
