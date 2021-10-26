@@ -35,4 +35,4 @@ class SaleOrder(models.Model):
                     product = product_ids.product_id.id 
                     minimum_order_qty = self.env['product.product'].browse(product).minimum_order_quantity 
                     if product_ids.product_uom_qty < minimum_order_qty: 
-                        raise ValidationError(_('La cantidad mínima del producto ' +product_ids.name+' es ' +str(minimum_order_qty)))  
+                        raise ValidationError(_('The minimum quantity of the product %s is %s', product_ids.name, str(minimum_order_qty)))

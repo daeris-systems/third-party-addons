@@ -2,40 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="72db3533-f97c-4392-b571-0e449c7caed9" name="Changes" comment="Initialize 15.0 branch">
-      <change afterPath="$PROJECT_DIR$/pos_bag_charges/LICENSE" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pos_bag_charges/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pos_bag_charges/__manifest__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pos_bag_charges/data/data.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pos_bag_charges/models/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pos_bag_charges/models/pos.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pos_bag_charges/static/description/Banner.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pos_bag_charges/static/description/bi_logo.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pos_bag_charges/static/description/demanded/all_in_one_pos.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pos_bag_charges/static/description/demanded/bi_generic_import.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pos_bag_charges/static/description/demanded/branch.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pos_bag_charges/static/description/demanded/customer_overdue.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pos_bag_charges/static/description/demanded/generic_excel_report.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pos_bag_charges/static/description/demanded/sale_commision.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pos_bag_charges/static/description/features/bag1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pos_bag_charges/static/description/features/bag2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pos_bag_charges/static/description/icon.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pos_bag_charges/static/description/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pos_bag_charges/static/description/pos_bag2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pos_bag_charges/static/description/pos_bag3.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pos_bag_charges/static/description/pos_bag4.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pos_bag_charges/static/description/pos_bag5.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pos_bag_charges/static/description/pos_bag6.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pos_bag_charges/static/description/related/1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pos_bag_charges/static/description/related/2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pos_bag_charges/static/description/related/3.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pos_bag_charges/static/description/related/4.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pos_bag_charges/static/description/related/5.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pos_bag_charges/static/description/related/pos_home.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pos_bag_charges/static/src/js/PosBagPopupWidget.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pos_bag_charges/static/src/js/pos_bag_charges.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pos_bag_charges/static/src/xml/pos_bag_charges.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pos_bag_charges/views/custom_pos_view.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pos_bag_charges/i18n/es.po" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/abs_so_minimum_quantity/i18n/es.po" beforeDir="false" afterPath="$PROJECT_DIR$/abs_so_minimum_quantity/i18n/es.po" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/abs_so_minimum_quantity/model/product_template.py" beforeDir="false" afterPath="$PROJECT_DIR$/abs_so_minimum_quantity/model/product_template.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/abs_so_minimum_quantity/model/sale_order.py" beforeDir="false" afterPath="$PROJECT_DIR$/abs_so_minimum_quantity/model/sale_order.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -127,7 +98,21 @@
       <option name="project" value="LOCAL" />
       <updated>1634645239020</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Initialize 15.0 branch">
+      <created>1635175732979</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1635175732979</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Initialize 15.0 branch">
+      <created>1635175772560</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1635175772560</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
