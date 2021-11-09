@@ -1,12 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="72db3533-f97c-4392-b571-0e449c7caed9" name="Changes" comment="Initialize 15.0 branch">
-      <change afterPath="$PROJECT_DIR$/pos_bag_charges/i18n/es.po" afterDir="false" />
+    <list default="true" id="72db3533-f97c-4392-b571-0e449c7caed9" name="Changes" comment="[FIX] Translations">
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_25_10_2021_17_35_[Changes]/shelved.patch" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/abs_so_minimum_quantity/i18n/es.po" beforeDir="false" afterPath="$PROJECT_DIR$/abs_so_minimum_quantity/i18n/es.po" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/abs_so_minimum_quantity/model/product_template.py" beforeDir="false" afterPath="$PROJECT_DIR$/abs_so_minimum_quantity/model/product_template.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/abs_so_minimum_quantity/model/sale_order.py" beforeDir="false" afterPath="$PROJECT_DIR$/abs_so_minimum_quantity/model/sale_order.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -112,7 +109,35 @@
       <option name="project" value="LOCAL" />
       <updated>1635175772560</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="[FIX] Translations">
+      <created>1635249979728</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1635249979728</updated>
+    </task>
+    <task id="LOCAL-00009" summary="[FIX] Remove .pot from .gitignore">
+      <created>1635250043412</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1635250043412</updated>
+    </task>
+    <task id="LOCAL-00010" summary="[FIX] Translations">
+      <created>1635250077287</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1635250077287</updated>
+    </task>
+    <task id="LOCAL-00011" summary="[FIX] Translations">
+      <created>1635867011186</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1635867011186</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -130,6 +155,8 @@
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="Initialize 15.0 branch" />
-    <option name="LAST_COMMIT_MESSAGE" value="Initialize 15.0 branch" />
+    <MESSAGE value="[FIX] Remove .pot from .gitignore" />
+    <MESSAGE value="[FIX] Translations" />
+    <option name="LAST_COMMIT_MESSAGE" value="[FIX] Translations" />
   </component>
 </project>
