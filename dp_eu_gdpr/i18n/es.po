@@ -1,0 +1,322 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* dp_eu_gdpr
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 15.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-11-09 14:41+0000\n"
+"PO-Revision-Date: 2021-11-09 15:58+0100\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: \n"
+"Language: es\n"
+"X-Generator: Poedit 3.0\n"
+
+#. module: dp_eu_gdpr
+#: code:addons/dp_eu_gdpr/wizards/eu_gdpr.py:0
+#, python-format
+msgid ""
+"A compressed ZIP file will be created, which provides the data in an CSV "
+"file."
+msgstr ""
+"Se creará un archivo ZIP comprimido, que proporciona los datos en un "
+"archivo CSV."
+
+#. module: dp_eu_gdpr
+#: model_terms:ir.ui.view,arch_db:dp_eu_gdpr.dp_eu_gdpr_form_view
+msgid "Cancel"
+msgstr "Cancelar"
+
+#. module: dp_eu_gdpr
+#: model:ir.model.fields,field_description:dp_eu_gdpr.field_eu_gdpr__create_uid
+#: model:ir.model.fields,field_description:dp_eu_gdpr.field_eu_gdpr_log__create_uid
+msgid "Created by"
+msgstr "Creado por"
+
+#. module: dp_eu_gdpr
+#: model:ir.model.fields,field_description:dp_eu_gdpr.field_eu_gdpr__create_date
+#: model:ir.model.fields,field_description:dp_eu_gdpr.field_eu_gdpr_log__create_date
+msgid "Created on"
+msgstr "Creado el"
+
+#. module: dp_eu_gdpr
+#: model:ir.model.fields,field_description:dp_eu_gdpr.field_eu_gdpr_log__date
+msgid "Creation date"
+msgstr "Fecha de creación"
+
+#. module: dp_eu_gdpr
+#: code:addons/dp_eu_gdpr/wizards/eu_gdpr.py:0
+#, python-format
+msgid "DELETED %s"
+msgstr "%s ELIMINADO"
+
+#. module: dp_eu_gdpr
+#: model:ir.model.fields,field_description:dp_eu_gdpr.field_eu_gdpr__object
+#: model:ir.model.fields,field_description:dp_eu_gdpr.field_eu_gdpr_log__dataset
+msgid "Data Set"
+msgstr "Conjunto de datos"
+
+#. module: dp_eu_gdpr
+#: code:addons/dp_eu_gdpr/wizards/eu_gdpr.py:0
+#, python-format
+msgid "Data Set was set to inactive."
+msgstr "El conjunto de datos se estableció en inactivo."
+
+#. module: dp_eu_gdpr
+#: model:ir.model.fields,field_description:dp_eu_gdpr.field_eu_gdpr__display_name
+#: model:ir.model.fields,field_description:dp_eu_gdpr.field_eu_gdpr_log__display_name
+msgid "Display Name"
+msgstr "Nombre mostrado"
+
+#. module: dp_eu_gdpr
+#: model:ir.model.fields,help:dp_eu_gdpr.field_eu_gdpr__info
+msgid "Display the result of operation."
+msgstr "Mostrar el resultado de la operación."
+
+#. module: dp_eu_gdpr
+#: code:addons/dp_eu_gdpr/models/eu_gdpr_log.py:0
+#, python-format
+msgid "EU-GDPR Log Entry #%s"
+msgstr "Entrada de registro UE-GDPR #%s"
+
+#. module: dp_eu_gdpr
+#: model:res.groups,name:dp_eu_gdpr.dp_eu_gdpr_user
+msgid "EU-GDPR User"
+msgstr "Usuario EU-GDPR"
+
+#. module: dp_eu_gdpr
+#: model:ir.actions.act_window,name:dp_eu_gdpr.action_dp_eu_gdpr_execute_operation
+#: model:ir.ui.menu,name:dp_eu_gdpr.menu_dp_eu_gdpr_execute
+#: model_terms:ir.ui.view,arch_db:dp_eu_gdpr.dp_eu_gdpr_form_view
+msgid "Execute Operation"
+msgstr "Ejecutar operación"
+
+#. module: dp_eu_gdpr
+#: model:ir.ui.menu,name:dp_eu_gdpr.dp_menu_eu_gdpr
+#: model:ir.ui.menu,name:dp_eu_gdpr.menu_dp_gdpr
+msgid "GDPR"
+msgstr "GDPR"
+
+#. module: dp_eu_gdpr
+#: model:ir.actions.act_window,name:dp_eu_gdpr.action_dp_eu_gdpr_log
+#: model:ir.model,name:dp_eu_gdpr.model_eu_gdpr_log
+#: model:ir.ui.menu,name:dp_eu_gdpr.menu_dp_eu_gdpr_log
+msgid "GDPR Log"
+msgstr "Registro del GDPR"
+
+#. module: dp_eu_gdpr
+#: code:addons/dp_eu_gdpr/wizards/eu_gdpr.py:0
+#, python-format
+msgid "GDPR Log entry created."
+msgstr "Entrada de registro GDPR creada."
+
+#. module: dp_eu_gdpr
+#: model:ir.model,name:dp_eu_gdpr.model_eu_gdpr
+msgid "GDPR Wizard"
+msgstr "Asistente GDPR"
+
+#. module: dp_eu_gdpr
+#: model:ir.model.fields,field_description:dp_eu_gdpr.field_eu_gdpr__help
+msgid "Helptext"
+msgstr "Texto de ayuda"
+
+#. module: dp_eu_gdpr
+#: model:ir.model.fields,field_description:dp_eu_gdpr.field_eu_gdpr__id
+#: model:ir.model.fields,field_description:dp_eu_gdpr.field_eu_gdpr_log__id
+msgid "ID"
+msgstr "ID"
+
+#. module: dp_eu_gdpr
+#: model:ir.model.fields,field_description:dp_eu_gdpr.field_eu_gdpr__info
+msgid "Info"
+msgstr "Información"
+
+#. module: dp_eu_gdpr
+#: model:ir.model.fields,field_description:dp_eu_gdpr.field_eu_gdpr__partner
+msgid "Inquiring Partner"
+msgstr "Solicitante"
+
+#. module: dp_eu_gdpr
+#: model:ir.model.fields,field_description:dp_eu_gdpr.field_eu_gdpr____last_update
+#: model:ir.model.fields,field_description:dp_eu_gdpr.field_eu_gdpr_log____last_update
+msgid "Last Modified on"
+msgstr "Última modificación el"
+
+#. module: dp_eu_gdpr
+#: model:ir.model.fields,field_description:dp_eu_gdpr.field_eu_gdpr__write_uid
+#: model:ir.model.fields,field_description:dp_eu_gdpr.field_eu_gdpr_log__write_uid
+msgid "Last Updated by"
+msgstr "Última actualización por"
+
+#. module: dp_eu_gdpr
+#: model:ir.model.fields,field_description:dp_eu_gdpr.field_eu_gdpr__write_date
+#: model:ir.model.fields,field_description:dp_eu_gdpr.field_eu_gdpr_log__write_date
+msgid "Last Updated on"
+msgstr "Última actualización el"
+
+#. module: dp_eu_gdpr
+#: model:ir.model,name:dp_eu_gdpr.model_ir_module_module
+msgid "Module"
+msgstr "Módulo"
+
+#. module: dp_eu_gdpr
+#: model:ir.model.fields,field_description:dp_eu_gdpr.field_eu_gdpr_log__name
+msgid "Name"
+msgstr "Nombre"
+
+#. module: dp_eu_gdpr
+#: code:addons/dp_eu_gdpr/wizards/eu_gdpr.py:0
+#, python-format
+msgid ""
+"No operation will be executed from here - it has to be done manually. "
+"Regardless a GDPR log entry will be created."
+msgstr ""
+"No se ejecutará ninguna operación desde aquí, debe hacerse manualmente. "
+"Independientemente de que se creará una entrada de registro GDPR."
+
+#. module: dp_eu_gdpr
+#: model:ir.model.fields,field_description:dp_eu_gdpr.field_eu_gdpr__note
+#: model:ir.model.fields,field_description:dp_eu_gdpr.field_eu_gdpr_log__note
+msgid "Notes"
+msgstr "Notas"
+
+#. module: dp_eu_gdpr
+#: model:ir.model.fields,field_description:dp_eu_gdpr.field_eu_gdpr_log__object
+msgid "Object"
+msgstr "Objeto"
+
+#. module: dp_eu_gdpr
+#: model:ir.model.fields,field_description:dp_eu_gdpr.field_eu_gdpr__operation
+#: model:ir.model.fields,field_description:dp_eu_gdpr.field_eu_gdpr_log__operation
+msgid "Operation"
+msgstr "Operación"
+
+#. module: dp_eu_gdpr
+#: model:ir.model.fields,field_description:dp_eu_gdpr.field_eu_gdpr_log__partner
+msgid "Partner"
+msgstr "Empresa"
+
+#. module: dp_eu_gdpr
+#: code:addons/dp_eu_gdpr/wizards/eu_gdpr.py:0
+#, python-format
+msgid "Partner cannot be deleted due to corresponding invoices."
+msgstr "El socio no se puede eliminar debido a las facturas correspondientes."
+
+#. module: dp_eu_gdpr
+#: code:addons/dp_eu_gdpr/wizards/eu_gdpr.py:0
+#, python-format
+msgid "Partner is a company and cannot be deleted. Please select a contact."
+msgstr ""
+"Partner es una empresa y no se puede eliminar. Seleccione un contacto."
+
+#. module: dp_eu_gdpr
+#: model:ir.model.fields,help:dp_eu_gdpr.field_eu_gdpr__partner
+#: model:ir.model.fields,help:dp_eu_gdpr.field_eu_gdpr_log__partner
+msgid "Person who executed the operation (e. g. Customer)"
+msgstr "Persona que ejecutó la operación (por ejemplo, Cliente)"
+
+#. module: dp_eu_gdpr
+#: code:addons/dp_eu_gdpr/wizards/eu_gdpr.py:0
+#: model:ir.model.fields.selection,name:dp_eu_gdpr.selection__eu_gdpr__operation__access
+#, python-format
+msgid "Right to data portability"
+msgstr "Derecho a la portabilidad de los datos"
+
+#. module: dp_eu_gdpr
+#: code:addons/dp_eu_gdpr/wizards/eu_gdpr.py:0
+#: model:ir.model.fields.selection,name:dp_eu_gdpr.selection__eu_gdpr__operation__erasure
+#, python-format
+msgid "Right to erasure"
+msgstr "Derecho de supresión"
+
+#. module: dp_eu_gdpr
+#: code:addons/dp_eu_gdpr/wizards/eu_gdpr.py:0
+#: model:ir.model.fields.selection,name:dp_eu_gdpr.selection__eu_gdpr__operation__rectification
+#, python-format
+msgid "Right to rectification"
+msgstr "Derecho de rectificación"
+
+#. module: dp_eu_gdpr
+#: code:addons/dp_eu_gdpr/wizards/eu_gdpr.py:0
+#: model:ir.model.fields.selection,name:dp_eu_gdpr.selection__eu_gdpr__operation__restrict
+#, python-format
+msgid "Right to restriction of processing"
+msgstr "Derecho a la limitación del tratamiento"
+
+#. module: dp_eu_gdpr
+#: code:addons/dp_eu_gdpr/wizards/eu_gdpr.py:0
+#, python-format
+msgid "Set individual-related data to inactive."
+msgstr "Establezca los datos relacionados con el individuo en inactivos."
+
+#. module: dp_eu_gdpr
+#: code:addons/dp_eu_gdpr/wizards/eu_gdpr.py:0
+#, python-format
+msgid "The Administrator cannot be deleted!"
+msgstr "¡El administrador no se puede eliminar!"
+
+#. module: dp_eu_gdpr
+#: code:addons/dp_eu_gdpr/wizards/eu_gdpr.py:0
+#, python-format
+msgid ""
+"The object or sub-objects could not be deleted. Objects were pseudonymized "
+"with the number %s."
+msgstr ""
+"No se pudo eliminar el objeto o los sub-objetos. Los objetos fueron "
+"seudonimizados con el número %s."
+
+#. module: dp_eu_gdpr
+#: code:addons/dp_eu_gdpr/wizards/eu_gdpr.py:0
+#, python-format
+msgid "The object was successfully deleted."
+msgstr "El objeto se ha eliminado correctamente."
+
+#. module: dp_eu_gdpr
+#: model:ir.model.fields,field_description:dp_eu_gdpr.field_eu_gdpr_log__user_id
+msgid "User"
+msgstr "Usuario"
+
+#. module: dp_eu_gdpr
+#: code:addons/dp_eu_gdpr/wizards/eu_gdpr.py:0
+#, python-format
+msgid ""
+"WARNING: Please note the legal record retention and the attainment of an "
+"aim. If one of the two cases occurs, the operation must not be performed. "
+"Individual-related data will be deleted. If that is not possible, due to "
+"technical difficulties, the data will be set to inactive instead and will "
+"be replaced by pseudonyms. Also related data sets, that reference this "
+"data, will be deleted - e.g. partner of user or user of employee. Examples "
+"for the legal record retention: Accounting, tax and customs law: 7 - 22 "
+"years, HR: 2 - 30 years"
+msgstr ""
+"ADVERTENCIA: Tenga en cuenta la retención de registros legales y el logro "
+"de un objetivo. Si se produce uno de los dos casos, no se debe realizar la "
+"operación. Los datos relacionados con el individuo serán eliminados. Si eso "
+"no es posible, debido a dificultades técnicas, los datos se establecerán en "
+"inactivos en su lugar y se reemplazarán por seudónimos. También se "
+"eliminarán los conjuntos de datos relacionados, que hacen referencia a "
+"estos datos, por ejemplo, socio de usuario o usuario de empleado. Ejemplos "
+"para la retención de registros legales: Contabilidad, impuestos y derecho "
+"aduanero: 7 - 22 años, RRHH: 2 - 30 años"
+
+#. module: dp_eu_gdpr
+#: code:addons/dp_eu_gdpr/wizards/eu_gdpr.py:0
+#, python-format
+msgid "You need to specify a data set."
+msgstr "Debe especificar un conjunto de datos."
+
+#. module: dp_eu_gdpr
+#: code:addons/dp_eu_gdpr/wizards/eu_gdpr.py:0
+#, python-format
+msgid "You need to specify which type of operation you wish to execute."
+msgstr "Debe especificar qué tipo de operación desea ejecutar."
+
+#. module: dp_eu_gdpr
+#: model_terms:ir.ui.view,arch_db:dp_eu_gdpr.dp_eu_gdpr_form_view
+msgid "or"
+msgstr "o"
