@@ -2,11 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="72db3533-f97c-4392-b571-0e449c7caed9" name="Changes" comment="Initialize 15.0 branch">
-      <change afterPath="$PROJECT_DIR$/pos_bag_charges/i18n/es.po" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_25_10_2021_17_35_[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_25_10_2021_17_35__Changes_.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/abs_so_minimum_quantity/i18n/es.po" beforeDir="false" afterPath="$PROJECT_DIR$/abs_so_minimum_quantity/i18n/es.po" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/abs_so_minimum_quantity/model/product_template.py" beforeDir="false" afterPath="$PROJECT_DIR$/abs_so_minimum_quantity/model/product_template.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/abs_so_minimum_quantity/model/sale_order.py" beforeDir="false" afterPath="$PROJECT_DIR$/abs_so_minimum_quantity/model/sale_order.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
