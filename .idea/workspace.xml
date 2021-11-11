@@ -2,7 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="72db3533-f97c-4392-b571-0e449c7caed9" name="Changes" comment="Initialize 15.0 branch">
+      <change afterPath="$PROJECT_DIR$/dp_eu_gdpr/i18n/dp_eu_gdpr.pot" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dp_eu_gdpr/i18n/es.po" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dp_eu_gdpr/security/security.xml" beforeDir="false" afterPath="$PROJECT_DIR$/dp_eu_gdpr/security/security.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,8 +27,7 @@
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="TODO_SCOPE" value="All Places" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../odoo15/odoo/addons/base" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RunManager">
@@ -109,14 +111,42 @@
       <option name="project" value="LOCAL" />
       <updated>1635175772560</updated>
     </task>
-    <task id="LOCAL-00008" summary="Initialize 15.0 branch">
-      <created>1636460279810</created>
+    <task id="LOCAL-00008" summary="[FIX] Translations">
+      <created>1635249979728</created>
       <option name="number" value="00008" />
       <option name="presentableId" value="LOCAL-00008" />
       <option name="project" value="LOCAL" />
-      <updated>1636460279810</updated>
+      <updated>1635249979728</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="[FIX] Remove .pot from .gitignore">
+      <created>1635250043412</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1635250043412</updated>
+    </task>
+    <task id="LOCAL-00010" summary="[FIX] Translations">
+      <created>1635250077287</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1635250077287</updated>
+    </task>
+    <task id="LOCAL-00011" summary="[FIX] Translations">
+      <created>1635867011186</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1635867011186</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Initialize 15.0 branch">
+      <created>1636468008017</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1636468008017</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -133,6 +163,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="[FIX] Remove .pot from .gitignore" />
+    <MESSAGE value="[FIX] Translations" />
     <MESSAGE value="Initialize 15.0 branch" />
     <option name="LAST_COMMIT_MESSAGE" value="Initialize 15.0 branch" />
   </component>
