@@ -1,12 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="72db3533-f97c-4392-b571-0e449c7caed9" name="Changes" comment="Initialize 15.0 branch">
-      <change afterPath="$PROJECT_DIR$/dp_eu_gdpr/i18n/dp_eu_gdpr.pot" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dp_eu_gdpr/i18n/es.po" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dp_eu_gdpr/security/security.xml" beforeDir="false" afterPath="$PROJECT_DIR$/dp_eu_gdpr/security/security.xml" afterDir="false" />
-    </list>
+    <list default="true" id="72db3533-f97c-4392-b571-0e449c7caed9" name="Changes" comment="Workspace" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -27,7 +22,7 @@
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../odoo15/odoo/addons/base" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../CybroAddons" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RunManager">
