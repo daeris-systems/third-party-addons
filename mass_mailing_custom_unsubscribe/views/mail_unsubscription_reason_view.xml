@@ -43,11 +43,10 @@
     </field>
 </record>
 
-<act_window
-        id="mail_unsubscription_reason_action"
-        name="Unsubscription Reasons"
-        res_model="mail.unsubscription.reason"
-    />
+<record model="ir.actions.act_window" id="mail_unsubscription_reason_action">
+    <field name="name">Unsubscription Reason</field>
+    <field name="res_model">mail.unsubscription.reason</field>
+</record>
 
 <menuitem
         id="mail_unsubscription_reason_menu"

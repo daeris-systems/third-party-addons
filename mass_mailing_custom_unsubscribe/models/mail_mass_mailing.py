@@ -3,10 +3,8 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
 from itertools import groupby
-
 from odoo import models, tools
 from odoo.tools.safe_eval import safe_eval
-
 
 class MailMassMailing(models.Model):
     _inherit = "mailing.mailing"
