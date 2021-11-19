@@ -1,0 +1,152 @@
+Index: app_odoo_customize/static/src/js/customize_user_menu.js
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>odoo.define('app_odoo_customize.UserMenu', function (require) {\r\n    \"use strict\";\r\n\r\n    /**\r\n     * This widget is appended by the webclient to the right of the navbar.\r\n     * It displays the avatar and the name of the logged user (and optionally the\r\n     * db name, in debug mode).\r\n     * If clicked, it opens a dropdown allowing the user to perform actions like\r\n     * editing its preferences, accessing the documentation, logging out...\r\n     */\r\n\r\n    const session = require('web.session');\r\n    var UserMenu = require('web.UserMenu');\r\n    //避免错误，要再定义\r\n    var documentation_url = 'https://www.sunpop.cn';\r\n    var documentation_dev_url = 'https://www.sunpop.cn';\r\n    var support_url = 'https://www.sunpop.cn';\r\n    var account_title = 'My Account';\r\n    var account_url = 'https://www.sunpop.cn';\r\n\r\n    UserMenu.include({\r\n        init: function () {\r\n            this._super.apply(this, arguments);\r\n            var self = this;\r\n            var session = this.getSession();\r\n            var lang_list = '';\r\n            self.is_manager = false;\r\n            self.show_debug = false;\r\n\r\n            self._rpc({\r\n                model: 'res.lang',\r\n                method: 'search_read',\r\n                domain: [],\r\n                fields: ['name', 'code'],\r\n                lazy: false,\r\n            }).then(function (res) {\r\n                _.each(res, function (lang) {\r\n                    var a = '';\r\n                    if (lang['code'] === session.user_context.lang) {\r\n                        a = '<i class=\"fa fa-check\"></i>';\r\n                    } else {\r\n                        a = '';\r\n                    }\r\n                    lang_list += '<a role=\"menuitem\" href=\"#\" class=\"dropdown-item\" data-lang-menu=\"lang\" data-lang-id=\"' + lang['code']\r\n                        + '\"><img class=\"flag\" src=\"app_odoo_customize/static/src/img/flags/' + lang['code'] + '.png\"/>' + lang['name'] + a + '</a>';\r\n                });\r\n                lang_list += '<div role=\"separator\" class=\"dropdown-divider\"/>';\r\n                setTimeout( function() {\r\n                    $('switch-lang').replaceWith(lang_list);\r\n                }, 1000);\r\n            })\r\n\r\n            //取参数\r\n            self._rpc({\r\n                model: 'ir.config_parameter',\r\n                method: 'search_read',\r\n                domain: [['key', '=like', 'app_%']],\r\n                fields: ['key', 'value'],\r\n                lazy: false,\r\n            }).then(function (res) {\r\n                $.each(res, function (key, val) {\r\n                    if (val.key == 'app_documentation_url')\r\n                        documentation_url = val.value;\r\n                    if (val.key == 'app_documentation_dev_url')\r\n                        documentation_dev_url = val.value;\r\n                    if (val.key == 'app_support_url')\r\n                        support_url = val.value;\r\n                    if (val.key == 'app_account_title')\r\n                        account_title = val.value;\r\n                    if (val.key == 'app_account_url')\r\n                        account_url = val.value;\r\n                    //  控制显示\r\n                    if (val.key == 'app_show_lang' && val.value == \"False\") {\r\n                        $('switch-lang').hide();\r\n                    }\r\n                    //注意， odoo12，主用户id=2, 加了个 __system__\r\n                    if (val.key == 'app_show_debug' && val.value == \"True\") {\r\n                        self.show_debug = true;\r\n                    }\r\n                    if (val.key == 'app_show_documentation' && val.value == \"False\") {\r\n                        $('[data-menu=\"documentation\"]').hide();\r\n                    }\r\n                    if (val.key == 'app_show_documentation_dev' && val.value == \"False\") {\r\n                        $('[data-menu=\"documentation_dev\"]').hide();\r\n                    }\r\n                    if (val.key == 'app_show_support' && val.value == \"False\") {\r\n                        $('[data-menu=\"support\"]').hide();\r\n                    }\r\n                    if (val.key == 'app_show_account' && val.value == \"False\") {\r\n                        $('[data-menu=\"account\"]').hide();\r\n                    }\r\n                    if (val.key == 'app_account_title' && val.value) {\r\n                        $('[data-menu=\"account\"]').html(account_title);\r\n                    }\r\n                    if (val.key == 'app_show_poweredby' && val.value == \"False\") {\r\n                        $('.o_sub_menu_footer').hide();\r\n                    }\r\n                });\r\n                if (!self.show_debug || !session.is_admin) {\r\n                    $('[data-menu=\"debug\"]').hide();\r\n                    $('[data-menu=\"debugassets\"]').hide();\r\n                    $('[data-menu=\"quitdebug\"]').hide();\r\n                }\r\n            })\r\n        },\r\n        /**\r\n         * @override\r\n         * 由于odoo11 没传ev到事件，所以要重载\r\n         */\r\n        async willStart() {\r\n            await this._super(...arguments);\r\n            var self = this;\r\n            try {\r\n                self.is_manager = await session.user_has_group('base.group_erp_manager');\r\n            } catch {\r\n                self.is_manager = false;\r\n            }\r\n        },\r\n        start: function () {\r\n            var self = this;\r\n            return this._super.apply(this, arguments).then(function () {\r\n                //语言切换特殊处理\r\n                self.$el.on('click', 'a[data-lang-menu]', function (ev) {\r\n                    ev.preventDefault();\r\n                    var f = self['_onMenuLang']\r\n                    f.call(self, $(this));\r\n                });\r\n                if (!self.show_debug || !self.is_manager) {\r\n                    setTimeout(function () {\r\n                        $('[data-menu=\"debug\"]').hide();\r\n                        $('[data-menu=\"debugassets\"]').hide();\r\n                        $('[data-menu=\"quitdebug\"]').hide();\r\n                    }, 500)\r\n                }\r\n                // if (self.is_manager) {\r\n                //     //控制debug显示\r\n                //     var mMode = 'normal';\r\n                //     if (window.location.href.indexOf('debug=1') != -1)\r\n                //         mMode = 'debug';\r\n                //     if (window.location.href.indexOf('debug=assets') != -1)\r\n                //         mMode = 'assets';\r\n                //\r\n                //     if (mMode == 'normal')  {\r\n                //         $('[data-menu=\"debug\"]').show();\r\n                //         $('[data-menu=\"debugassets\"]').show();\r\n                //         $('[data-menu=\"quitdebug\"]').hide();\r\n                //     }\r\n                //     if (mMode == 'debug'){\r\n                //         $('[data-menu=\"debug\"]').hide();\r\n                //         $('[data-menu=\"debugassets\"]').show();\r\n                //         $('[data-menu=\"quitdebug\"]').show();\r\n                //     }\r\n                //     if (mMode == 'assets')  {\r\n                //         $('[data-menu=\"debug\"]').show();\r\n                //         $('[data-menu=\"debugassets\"]').hide();\r\n                //         $('[data-menu=\"quitdebug\"]').show();\r\n                //     }\r\n                // }\r\n            });\r\n        },\r\n        _onMenuAccount: function () {\r\n            window.open(account_url, '_blank');\r\n        },\r\n        _onMenuDocumentation: function () {\r\n            window.open(documentation_url, '_blank');\r\n        },\r\n        _onMenuSupport: function () {\r\n            window.open(support_url, '_blank');\r\n        },\r\n        //增加的方法\r\n        _onMenuDebug: function () {\r\n            window.location = $.param.querystring(window.location.href, 'debug=1');\r\n        },\r\n        _onMenuDebugassets: function () {\r\n            window.location = $.param.querystring(window.location.href, 'debug=assets');\r\n        },\r\n        _onMenuQuitdebug: function () {\r\n            window.location = $.param.querystring(window.location.href, 'debug=0');\r\n        },\r\n        _onMenuDocumentation_dev: function () {\r\n            window.open(documentation_dev_url, '_blank');\r\n        },\r\n        _onMenuLang: function (ev) {\r\n            var self = this;\r\n            var lang = ($(ev).data(\"lang-id\"));\r\n            var session = this.getSession();\r\n            return this._rpc({\r\n                model: 'res.users',\r\n                method: 'write',\r\n                args: [session.uid, {'lang': lang}],\r\n            }).then(function (result) {\r\n                self.do_action({\r\n                    type: 'ir.actions.client',\r\n                    res_model: 'res.users',\r\n                    tag: 'reload_context',\r\n                    target: 'current',\r\n                });\r\n            });\r\n        },\r\n    })\r\n\r\n});\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app_odoo_customize/static/src/js/customize_user_menu.js b/app_odoo_customize/static/src/js/customize_user_menu.js
+--- a/app_odoo_customize/static/src/js/customize_user_menu.js	(revision d0d0c259b3e19ff5dee7b20650ad49302b3db96d)
++++ b/app_odoo_customize/static/src/js/customize_user_menu.js	(date 1637325287695)
+@@ -96,11 +96,11 @@
+                         $('.o_sub_menu_footer').hide();
+                     }
+                 });
+-                if (!self.show_debug || !session.is_admin) {
+-                    $('[data-menu="debug"]').hide();
+-                    $('[data-menu="debugassets"]').hide();
+-                    $('[data-menu="quitdebug"]').hide();
+-                }
++                //if (!self.show_debug) {
++                //    $('[data-menu="debug"]').hide();
++                //    $('[data-menu="debugassets"]').hide();
++                //    $('[data-menu="quitdebug"]').hide();
++                //}
+             })
+         },
+         /**
+@@ -125,13 +125,13 @@
+                     var f = self['_onMenuLang']
+                     f.call(self, $(this));
+                 });
+-                if (!self.show_debug || !self.is_manager) {
+-                    setTimeout(function () {
+-                        $('[data-menu="debug"]').hide();
+-                        $('[data-menu="debugassets"]').hide();
+-                        $('[data-menu="quitdebug"]').hide();
+-                    }, 500)
+-                }
++                //if (!self.show_debug || !self.is_manager) {
++                //    setTimeout(function () {
++                //        $('[data-menu="debug"]').hide();
++                //        $('[data-menu="debugassets"]').hide();
++                //        $('[data-menu="quitdebug"]').hide();
++                //    }, 500)
++                //}
+                 // if (self.is_manager) {
+                 //     //控制debug显示
+                 //     var mMode = 'normal';
+Index: app_odoo_customize/static/src/xml/customize_user_menu.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<templates xml:space=\"preserve\">\r\n    <!--owl 处理继承继承-->\r\n    <t t-name=\"UserMenu\" t-inherit=\"web.UserMenu\" t-inherit-mode=\"extension\" owl=\"1\">\r\n        <xpath expr=\"//td[hasclass('client-line-email')]\" position=\"after\">\r\n        <t t-jquery=\"a[data-menu='documentation']\" t-operation=\"before\">\r\n            <switch-lang/>\r\n            <a role=\"menuitem\" href=\"#\" data-menu=\"debug\" class=\"dropdown-item\">Activate the developer mode</a>\r\n            <a role=\"menuitem\" href=\"#\" data-menu=\"debugassets\" class=\"dropdown-item\">Activate the developer mode (with assets)</a>\r\n            <a role=\"menuitem\" href=\"#\" data-menu=\"quitdebug\" class=\"dropdown-item\">Deactivate the developer mode</a>\r\n            <div role=\"separator\" class=\"dropdown-divider\"/>\r\n            <a role=\"menuitem\" href=\"#\" data-menu=\"documentation_dev\" class=\"dropdown-item\">Developer Manual</a>\r\n        </t>\r\n    </t>\r\n</templates>\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app_odoo_customize/static/src/xml/customize_user_menu.xml b/app_odoo_customize/static/src/xml/customize_user_menu.xml
+--- a/app_odoo_customize/static/src/xml/customize_user_menu.xml	(revision d0d0c259b3e19ff5dee7b20650ad49302b3db96d)
++++ b/app_odoo_customize/static/src/xml/customize_user_menu.xml	(date 1637325287712)
+@@ -5,10 +5,10 @@
+         <xpath expr="//td[hasclass('client-line-email')]" position="after">
+         <t t-jquery="a[data-menu='documentation']" t-operation="before">
+             <switch-lang/>
+-            <a role="menuitem" href="#" data-menu="debug" class="dropdown-item">Activate the developer mode</a>
++            <!--a role="menuitem" href="#" data-menu="debug" class="dropdown-item">Activate the developer mode</a>
+             <a role="menuitem" href="#" data-menu="debugassets" class="dropdown-item">Activate the developer mode (with assets)</a>
+             <a role="menuitem" href="#" data-menu="quitdebug" class="dropdown-item">Deactivate the developer mode</a>
+-            <div role="separator" class="dropdown-divider"/>
++            <div role="separator" class="dropdown-divider"/-->
+             <a role="menuitem" href="#" data-menu="documentation_dev" class="dropdown-item">Developer Manual</a>
+         </t>
+     </t>
+Index: app_odoo_customize/static/src/js/user_menu.js
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>/** @odoo-module **/\r\n\r\nimport { UserMenu } from \"@web/webclient/user_menu/user_menu\";\r\nimport { routeToUrl } from \"@web/core/browser/router_service\";\r\nimport { patch } from \"@web/core/utils/patch\";\r\nimport { browser } from \"@web/core/browser/browser\";\r\nimport { registry } from \"@web/core/registry\";\r\nimport { session } from \"@web/session\";\r\nconst userMenuRegistry = registry.category(\"user_menuitems\");\r\n\r\npatch(UserMenu.prototype, \"app_odoo_customize.UserMenu\", {\r\n    setup() {\r\n        this._super.apply(this, arguments);\r\n        userMenuRegistry.remove(\"documentation\");\r\n        userMenuRegistry.remove(\"support\");\r\n        userMenuRegistry.remove(\"odoo_account\");\r\n        userMenuRegistry.add(\"debug\", debugItem)\r\n            .add(\"asset_asset\", activateAssetsDebugging)\r\n            .add(\"leave_debug\", leaveDebugMode)\r\n            .add(\"separator0\", separator8)\r\n            .add(\"documentation\", documentationItem)\r\n            .add(\"support\", supportItem)\r\n            .add(\"odoo_account\", odooAccountItem);\r\n    },\r\n    // getElements() {\r\n    //     var ret = this._super.apply(this, arguments);\r\n    //     return ret;\r\n    // },\r\n});\r\n\r\nfunction debugItem(env) {\r\n    const url_debug = $.param.querystring(window.location.href, 'debug=1');\r\n    return {\r\n        type: \"item\",\r\n        id: \"debug\",\r\n        description: env._t(\"Activate the developer mode\"),\r\n        href: url_debug,\r\n        callback: () => {\r\n            browser.open(url_debug, \"_self\");\r\n        },\r\n        sequence: 5,\r\n    };\r\n}\r\n\r\nfunction activateAssetsDebugging(env) {\r\n    return {\r\n        type: \"item\",\r\n        description: env._t(\"Activate Assets Debugging\"),\r\n        callback: () => {\r\n            browser.location.search = \"?debug=assets\";\r\n        },\r\n        sequence: 6,\r\n    };\r\n}\r\n\r\nfunction leaveDebugMode(env) {\r\n    return {\r\n        type: \"item\",\r\n        description: env._t(\"Leave the Developer Tools\"),\r\n        callback: () => {\r\n            const route = env.services.router.current;\r\n            route.search.debug = \"\";\r\n            browser.location.href = browser.location.origin + routeToUrl(route);\r\n        },\r\n        sequence: 7,\r\n    };\r\n}\r\n\r\nfunction separator8() {\r\n    return {\r\n        type: \"separator\",\r\n        sequence: 8,\r\n    };\r\n}\r\nfunction documentationItem(env) {\r\n    const documentationURL = session.app_documentation_url;\r\n    return {\r\n        type: \"item\",\r\n        id: \"documentation\",\r\n        description: env._t(\"Documentation\"),\r\n        href: documentationURL,\r\n        callback: () => {\r\n            browser.open(documentationURL, \"_blank\");\r\n        },\r\n        sequence: 10,\r\n    };\r\n}\r\n\r\nfunction supportItem(env) {\r\n    const url = session.app_support_url;\r\n    return {\r\n        type: \"item\",\r\n        id: \"support\",\r\n        description: env._t(\"Support\"),\r\n        href: url,\r\n        callback: () => {\r\n            browser.open(url, \"_blank\");\r\n        },\r\n        sequence: 20,\r\n    };\r\n}\r\n\r\nfunction odooAccountItem(env) {\r\n    const app_account_title = session.app_account_title;\r\n    const app_account_url = session.app_account_url;\r\n    return {\r\n        type: \"item\",\r\n        id: \"account\",\r\n        description: env._t(app_account_title),\r\n        href: app_account_url,\r\n        callback: () => {\r\n            browser.open(app_account_url, \"_blank\");\r\n        },\r\n        sequence: 60,\r\n    };\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app_odoo_customize/static/src/js/user_menu.js b/app_odoo_customize/static/src/js/user_menu.js
+--- a/app_odoo_customize/static/src/js/user_menu.js	(revision d0d0c259b3e19ff5dee7b20650ad49302b3db96d)
++++ b/app_odoo_customize/static/src/js/user_menu.js	(date 1637325706616)
+@@ -14,11 +14,7 @@
+         userMenuRegistry.remove("documentation");
+         userMenuRegistry.remove("support");
+         userMenuRegistry.remove("odoo_account");
+-        userMenuRegistry.add("debug", debugItem)
+-            .add("asset_asset", activateAssetsDebugging)
+-            .add("leave_debug", leaveDebugMode)
+-            .add("separator0", separator8)
+-            .add("documentation", documentationItem)
++        userMenuRegistry.add("documentation", documentationItem)
+             .add("support", supportItem)
+             .add("odoo_account", odooAccountItem);
+     },
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"72db3533-f97c-4392-b571-0e449c7caed9\" name=\"Changes\" comment=\"Workspace\" />\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"ProjectId\" id=\"1zfjYoaDb6IHSvg8DvQEnEdQMGB\" />\r\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\">\r\n    <ConfirmationsSetting value=\"2\" id=\"Add\" />\r\n  </component>\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\">\r\n    <property name=\"ASKED_ADD_EXTERNAL_FILES\" value=\"true\" />\r\n    <property name=\"RunOnceActivity.OpenProjectViewOnStart\" value=\"true\" />\r\n    <property name=\"RunOnceActivity.ShowReadmeOnStart\" value=\"true\" />\r\n    <property name=\"last_opened_file_path\" value=\"$PROJECT_DIR$/../CybroAddons\" />\r\n    <property name=\"settings.editor.selected.configurable\" value=\"com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable\" />\r\n  </component>\r\n  <component name=\"RunManager\">\r\n    <configuration name=\"Odoo15\" type=\"PythonConfigurationType\" factoryName=\"Python\">\r\n      <module name=\"third-party-addons\" />\r\n      <option name=\"INTERPRETER_OPTIONS\" value=\"\" />\r\n      <option name=\"PARENT_ENVS\" value=\"true\" />\r\n      <envs>\r\n        <env name=\"PYTHONUNBUFFERED\" value=\"1\" />\r\n      </envs>\r\n      <option name=\"SDK_HOME\" value=\"C:\\odoo\\odoo15\\odoo-venv\\Scripts\\python.exe\" />\r\n      <option name=\"WORKING_DIRECTORY\" value=\"$PROJECT_DIR$/../../odoo15\" />\r\n      <option name=\"IS_MODULE_SDK\" value=\"false\" />\r\n      <option name=\"ADD_CONTENT_ROOTS\" value=\"true\" />\r\n      <option name=\"ADD_SOURCE_ROOTS\" value=\"true\" />\r\n      <option name=\"SCRIPT_NAME\" value=\"$PROJECT_DIR$/../../odoo15/odoo-bin\" />\r\n      <option name=\"PARAMETERS\" value=\"-c odoo.conf\" />\r\n      <option name=\"SHOW_COMMAND_LINE\" value=\"false\" />\r\n      <option name=\"EMULATE_TERMINAL\" value=\"false\" />\r\n      <option name=\"MODULE_MODE\" value=\"false\" />\r\n      <option name=\"REDIRECT_INPUT\" value=\"false\" />\r\n      <option name=\"INPUT_FILE\" value=\"\" />\r\n      <method v=\"2\" />\r\n    </configuration>\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"72db3533-f97c-4392-b571-0e449c7caed9\" name=\"Changes\" comment=\"\" />\r\n      <created>1634546086538</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1634546086538</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00001\" summary=\"Initialize 15.0 branch\">\r\n      <created>1634546813787</created>\r\n      <option name=\"number\" value=\"00001\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1634546813787</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00002\" summary=\"Initialize 15.0 branch\">\r\n      <created>1634556265597</created>\r\n      <option name=\"number\" value=\"00002\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00002\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1634556265597</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00003\" summary=\"Initialize 15.0 branch\">\r\n      <created>1634556579036</created>\r\n      <option name=\"number\" value=\"00003\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00003\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1634556579036</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00004\" summary=\"Initialize 15.0 branch\">\r\n      <created>1634557731925</created>\r\n      <option name=\"number\" value=\"00004\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00004\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1634557731925</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00005\" summary=\"Initialize 15.0 branch\">\r\n      <created>1634645239020</created>\r\n      <option name=\"number\" value=\"00005\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00005\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1634645239020</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00006\" summary=\"Initialize 15.0 branch\">\r\n      <created>1635175732979</created>\r\n      <option name=\"number\" value=\"00006\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00006\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1635175732979</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00007\" summary=\"Initialize 15.0 branch\">\r\n      <created>1635175772560</created>\r\n      <option name=\"number\" value=\"00007\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00007\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1635175772560</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00008\" summary=\"[FIX] Translations\">\r\n      <created>1635249979728</created>\r\n      <option name=\"number\" value=\"00008\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00008\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1635249979728</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00009\" summary=\"[FIX] Remove .pot from .gitignore\">\r\n      <created>1635250043412</created>\r\n      <option name=\"number\" value=\"00009\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00009\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1635250043412</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00010\" summary=\"[FIX] Translations\">\r\n      <created>1635250077287</created>\r\n      <option name=\"number\" value=\"00010\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00010\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1635250077287</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00011\" summary=\"[FIX] Translations\">\r\n      <created>1635867011186</created>\r\n      <option name=\"number\" value=\"00011\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00011\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1635867011186</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00012\" summary=\"Initialize 15.0 branch\">\r\n      <created>1636468008017</created>\r\n      <option name=\"number\" value=\"00012\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00012\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1636468008017</updated>\r\n    </task>\r\n    <option name=\"localTasksCounter\" value=\"13\" />\r\n    <servers />\r\n  </component>\r\n  <component name=\"Vcs.Log.Tabs.Properties\">\r\n    <option name=\"TAB_STATES\">\r\n      <map>\r\n        <entry key=\"MAIN\">\r\n          <value>\r\n            <State />\r\n          </value>\r\n        </entry>\r\n      </map>\r\n    </option>\r\n    <option name=\"oldMeFiltersMigrated\" value=\"true\" />\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <option name=\"ADD_EXTERNAL_FILES_SILENTLY\" value=\"true\" />\r\n    <MESSAGE value=\"[FIX] Remove .pot from .gitignore\" />\r\n    <MESSAGE value=\"[FIX] Translations\" />\r\n    <MESSAGE value=\"Initialize 15.0 branch\" />\r\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"Initialize 15.0 branch\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision d0d0c259b3e19ff5dee7b20650ad49302b3db96d)
++++ b/.idea/workspace.xml	(date 1637325538153)
+@@ -1,7 +1,11 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+ <project version="4">
+   <component name="ChangeListManager">
+-    <list default="true" id="72db3533-f97c-4392-b571-0e449c7caed9" name="Changes" comment="Workspace" />
++    <list default="true" id="72db3533-f97c-4392-b571-0e449c7caed9" name="Changes" comment="[FIX] Auto install">
++      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/app_odoo_customize/static/src/js/customize_user_menu.js" beforeDir="false" afterPath="$PROJECT_DIR$/app_odoo_customize/static/src/js/customize_user_menu.js" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/app_odoo_customize/static/src/xml/customize_user_menu.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app_odoo_customize/static/src/xml/customize_user_menu.xml" afterDir="false" />
++    </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+@@ -22,7 +26,7 @@
+     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../CybroAddons" />
++    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+   </component>
+   <component name="RunManager">
+@@ -141,7 +145,14 @@
+       <option name="project" value="LOCAL" />
+       <updated>1636468008017</updated>
+     </task>
+-    <option name="localTasksCounter" value="13" />
++    <task id="LOCAL-00013" summary="[FIX] Auto install">
++      <created>1637078023904</created>
++      <option name="number" value="00013" />
++      <option name="presentableId" value="LOCAL-00013" />
++      <option name="project" value="LOCAL" />
++      <updated>1637078023904</updated>
++    </task>
++    <option name="localTasksCounter" value="14" />
+     <servers />
+   </component>
+   <component name="Vcs.Log.Tabs.Properties">
+@@ -161,6 +172,7 @@
+     <MESSAGE value="[FIX] Remove .pot from .gitignore" />
+     <MESSAGE value="[FIX] Translations" />
+     <MESSAGE value="Initialize 15.0 branch" />
+-    <option name="LAST_COMMIT_MESSAGE" value="Initialize 15.0 branch" />
++    <MESSAGE value="[FIX] Auto install" />
++    <option name="LAST_COMMIT_MESSAGE" value="[FIX] Auto install" />
+   </component>
+ </project>
+\ No newline at end of file
