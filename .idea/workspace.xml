@@ -1,11 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="72db3533-f97c-4392-b571-0e449c7caed9" name="Changes" comment="[FIX] Remove debug menu">
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_17_11_2021_14_55__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_17_11_2021_14_55__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app_odoo_customize/views/app_theme_config_settings_views.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app_odoo_customize/views/app_theme_config_settings_views.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app_odoo_customize/views/ir_ui_menu_views.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app_odoo_customize/views/ir_ui_menu_views.xml" afterDir="false" />
+    <list default="true" id="72db3533-f97c-4392-b571-0e449c7caed9" name="Changes" comment="[FIX] Menus">
+      <change beforePath="$PROJECT_DIR$/app_odoo_customize/data/ir_config_parameter_data.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app_odoo_customize/data/ir_config_parameter_data.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -174,7 +171,14 @@
       <option name="project" value="LOCAL" />
       <updated>1637326713450</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="[FIX] Menus">
+      <created>1637327674185</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1637327674185</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -196,6 +200,7 @@
     <MESSAGE value="[FIX] Auto install" />
     <MESSAGE value="[FIX] Translations" />
     <MESSAGE value="[FIX] Remove debug menu" />
-    <option name="LAST_COMMIT_MESSAGE" value="[FIX] Remove debug menu" />
+    <MESSAGE value="[FIX] Menus" />
+    <option name="LAST_COMMIT_MESSAGE" value="[FIX] Menus" />
   </component>
 </project>
