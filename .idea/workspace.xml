@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="72db3533-f97c-4392-b571-0e449c7caed9" name="Changes" comment="Initialize 15.0 branch">
+    <list default="true" id="72db3533-f97c-4392-b571-0e449c7caed9" name="Changes" comment="[FIX] Auto install">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_odoo_customize/static/src/js/customize_user_menu.js" beforeDir="false" afterPath="$PROJECT_DIR$/app_odoo_customize/static/src/js/customize_user_menu.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_odoo_customize/static/src/xml/customize_user_menu.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app_odoo_customize/static/src/xml/customize_user_menu.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,7 +26,7 @@
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../CybroAddons" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RunManager">
@@ -143,21 +145,14 @@
       <option name="project" value="LOCAL" />
       <updated>1636468008017</updated>
     </task>
-    <task id="LOCAL-00013" summary="Initialize 15.0 branch">
-      <created>1637157304635</created>
+    <task id="LOCAL-00013" summary="[FIX] Auto install">
+      <created>1637078023904</created>
       <option name="number" value="00013" />
       <option name="presentableId" value="LOCAL-00013" />
       <option name="project" value="LOCAL" />
-      <updated>1637157304635</updated>
+      <updated>1637078023904</updated>
     </task>
-    <task id="LOCAL-00014" summary="Initialize 15.0 branch">
-      <created>1637157451799</created>
-      <option name="number" value="00014" />
-      <option name="presentableId" value="LOCAL-00014" />
-      <option name="project" value="LOCAL" />
-      <updated>1637157451799</updated>
-    </task>
-    <option name="localTasksCounter" value="15" />
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -177,6 +172,7 @@
     <MESSAGE value="[FIX] Remove .pot from .gitignore" />
     <MESSAGE value="[FIX] Translations" />
     <MESSAGE value="Initialize 15.0 branch" />
-    <option name="LAST_COMMIT_MESSAGE" value="Initialize 15.0 branch" />
+    <MESSAGE value="[FIX] Auto install" />
+    <option name="LAST_COMMIT_MESSAGE" value="[FIX] Auto install" />
   </component>
 </project>
