@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="72db3533-f97c-4392-b571-0e449c7caed9" name="Changes" comment="[FIX] Auto install">
+    <list default="true" id="72db3533-f97c-4392-b571-0e449c7caed9" name="Changes" comment="[FIX] Remove debug menu">
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_17_11_2021_14_55__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_17_11_2021_14_55__Changes_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app_odoo_customize/static/src/js/customize_user_menu.js" beforeDir="false" afterPath="$PROJECT_DIR$/app_odoo_customize/static/src/js/customize_user_menu.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app_odoo_customize/static/src/xml/customize_user_menu.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app_odoo_customize/static/src/xml/customize_user_menu.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_odoo_customize/views/app_theme_config_settings_views.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app_odoo_customize/views/app_theme_config_settings_views.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_odoo_customize/views/ir_ui_menu_views.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app_odoo_customize/views/ir_ui_menu_views.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -152,7 +153,28 @@
       <option name="project" value="LOCAL" />
       <updated>1637078023904</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="[FIX] Translations">
+      <created>1637326581353</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1637326581353</updated>
+    </task>
+    <task id="LOCAL-00015" summary="[FIX] Remove debug menu">
+      <created>1637326702246</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1637326702246</updated>
+    </task>
+    <task id="LOCAL-00016" summary="[FIX] Remove debug menu">
+      <created>1637326713450</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1637326713450</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -170,9 +192,10 @@
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="[FIX] Remove .pot from .gitignore" />
-    <MESSAGE value="[FIX] Translations" />
     <MESSAGE value="Initialize 15.0 branch" />
     <MESSAGE value="[FIX] Auto install" />
-    <option name="LAST_COMMIT_MESSAGE" value="[FIX] Auto install" />
+    <MESSAGE value="[FIX] Translations" />
+    <MESSAGE value="[FIX] Remove debug menu" />
+    <option name="LAST_COMMIT_MESSAGE" value="[FIX] Remove debug menu" />
   </component>
 </project>
