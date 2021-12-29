@@ -210,7 +210,7 @@
                 name="odooApp"
                 parent="base.menu_administration"
                 sequence="1"
-                groups="base.group_system"/>
+                groups="base.group_no_one"/>
         <menuitem
                 id="menu_app_theme_config"
                 parent="menu_app_group"

@@ -1,0 +1,1 @@
+from .hooks import _populate_res_bank

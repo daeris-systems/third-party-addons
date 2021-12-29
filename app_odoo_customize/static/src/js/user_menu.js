@@ -14,11 +14,7 @@ patch(UserMenu.prototype, "app_odoo_customize.UserMenu", {
         userMenuRegistry.remove("documentation");
         userMenuRegistry.remove("support");
         userMenuRegistry.remove("odoo_account");
-        userMenuRegistry.add("debug", debugItem)
-            .add("asset_asset", activateAssetsDebugging)
-            .add("leave_debug", leaveDebugMode)
-            .add("separator0", separator8)
-            .add("documentation", documentationItem)
+        userMenuRegistry.add("documentation", documentationItem)
             .add("support", supportItem)
             .add("odoo_account", odooAccountItem);
     },

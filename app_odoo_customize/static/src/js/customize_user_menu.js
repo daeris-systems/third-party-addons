@@ -96,11 +96,11 @@ odoo.define('app_odoo_customize.UserMenu', function (require) {
                         $('.o_sub_menu_footer').hide();
                     }
                 });
-                if (!self.show_debug || !session.is_admin) {
-                    $('[data-menu="debug"]').hide();
-                    $('[data-menu="debugassets"]').hide();
-                    $('[data-menu="quitdebug"]').hide();
-                }
+                //if (!self.show_debug) {
+                //    $('[data-menu="debug"]').hide();
+                //    $('[data-menu="debugassets"]').hide();
+                //    $('[data-menu="quitdebug"]').hide();
+                //}
             })
         },
         /**
@@ -125,13 +125,13 @@ odoo.define('app_odoo_customize.UserMenu', function (require) {
                     var f = self['_onMenuLang']
                     f.call(self, $(this));
                 });
-                if (!self.show_debug || !self.is_manager) {
-                    setTimeout(function () {
-                        $('[data-menu="debug"]').hide();
-                        $('[data-menu="debugassets"]').hide();
-                        $('[data-menu="quitdebug"]').hide();
-                    }, 500)
-                }
+                //if (!self.show_debug || !self.is_manager) {
+                //    setTimeout(function () {
+                //        $('[data-menu="debug"]').hide();
+                //        $('[data-menu="debugassets"]').hide();
+                //        $('[data-menu="quitdebug"]').hide();
+                //    }, 500)
+                //}
                 // if (self.is_manager) {
                 //     //控制debug显示
                 //     var mMode = 'normal';

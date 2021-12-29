@@ -57,6 +57,7 @@
         'views/ir_ui_view_views.xml',
         'views/ir_model_fields_views.xml',
         'views/ir_model_data_views.xml',
+        'views/webclient_templates.xml',
         # data
         'data/ir_config_parameter_data.xml',
         'data/ir_module_module_data.xml',
