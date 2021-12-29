@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Root Menus -->
+    <menuitem id="menu_hr_payroll_root" name="Payroll" sequence="45" web_icon="hr_payroll,static/description/icon.png"/>
+    <menuitem id="menu_hr_payroll_configuration" name="Configuration" parent="menu_hr_payroll_root" sequence="100" groups="hr_payroll.group_hr_payroll_manager"/>
+    <!-- Contract View -->
+    <record id="hr_contract_form_inherit" model="ir.ui.view">
+        <field name="name">hr.contract.view.form.inherit</field>
+        <field name="model">hr.contract</field>
+        <field name="inherit_id" ref="hr_contract.hr_contract_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='job_id']" position="after">
+                <field name="company_id" groups="base.group_multi_company"/>
+                <field name="currency_id" invisible="1"/>
+                <field name="type_id"/>
+                <field name="struct_id" required="1"/>
+                <field name='professional_group'/>
+            </xpath>
+             <xpath expr="//field[@name='resource_calendar_id']" position="after">
+                <field name="schedule_pay"/>
+            </xpath>
+        </field>
+    </record>
+    <record id="hr_contract_advantage_template_view_form" model="ir.ui.view">
+        <field name="name">hr.contract.advantage.template.form</field>
+        <field name="model">hr.contract.advantage.template</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name" placeholder="Advantage Name"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="code"/>
+                        </group>
+                    </group>
+                    <group>
+                        <group>
+                            <field name="default_value"/>
+                            <field name="lower_bound"/>
+                            <field name="upper_bound"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="hr_contract_advantage_template_view_tree" model="ir.ui.view">
+        <field name="name">hr.contract.advantage.template.tree</field>
+        <field name="model">hr.contract.advantage.template</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="code"/>
+                <field name="lower_bound"/>
+                <field name="upper_bound"/>
+                <field name="default_value"/>
+            </tree>
+        </field>
+    </record>
+    <record id="hr_contract_advantage_template_action" model="ir.actions.act_window">
+        <field name="name">Contract Advantage Templates</field>
+        <field name="res_model">hr.contract.advantage.template</field>
+        <field name="view_mode">form</field>
+    </record>
+    <record id="view_employee_form_inherit_ssnid_daeris" model="ir.ui.view">
+        <field name="name">view.employee.form.inherit.ssnid.daeris</field>
+        <field name="model">hr.employee</field>
+        <field name="inherit_id" ref="hr.view_employee_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='identification_id']" position="after">
+                  <field name='ssnid'/>
+            </xpath>
+        </field>
+    </record>
+    <record id="hr_contract_view_form_inherit_daeris" model="ir.ui.view">
+        <field name="name">hr.contract.view.form.inherit.daeris</field>
+        <field name="model">hr.contract</field>
+        <field name="inherit_id" ref="hr_contract.hr_contract_view_form"/>
+        <field name="arch" type="xml">
+            <!--
+            <xpath expr="//field[@name='type_id']" position="after">
+                  <field name='professional_group'/>
+            </xpath>-->
+            <xpath expr="//group[@name='salary']" position="replace">
+                <group name="salary" string="Monthly cash supplements">
+                    <label for="wage"/>
+                    <div class="o_row" name="wage">
+                        <field name="wage" nolabel="1"/>
+                        <span>/ month</span>
+                    </div>
+                    <label for="plus_conv"/>
+                    <div class="o_row" name="plus_conv">
+                        <field name="plus_conv" nolabel="1"/>
+                        <span>/ month</span>
+                    </div>
+                    <label for="complemento_salarial"/>
+                    <div class="o_row" name="complemento_salarial">
+                        <field name="complemento_salarial" nolabel="1"/>
+                        <span>/ month</span>
+                    </div>
+                    <label for="antiguedad"/>
+                    <div class="o_row" name="antiguedad">
+                        <field name="antiguedad" nolabel="1"/>
+                        <span>/ month</span>
+                    </div>
+                    <label for="num_pagas_extras"/>
+                    <div class="o_row" name="num_pagas_extras">
+                        <field name="num_pagas_extras" nolabel="1"/>
+                        <span> / extra payment</span>
+                    </div>
+                    <label for="proratear_pagas"/>
+                    <div class="o_row" name="proratear_pagas">
+                        <field name="proratear_pagas" nolabel="1"/>
+                    </div>
+                </group>
+            </xpath>
+            <xpath expr="//group[@name='yearly_advantages']" position="replace">
+                <group name="salary_deductions_costs" string="Supplementary data">
+                    <!--
+                    <label for="contingencias_com"/>
+                    <div class="o_row" name="contingencias_com">
+                        <field name="contingencias_com" nolabel="1"/>
+                        <span>%</span>
+                    </div>
+                    <label for="desempleo"/>
+                    <div class="o_row" name="desempleo">
+                        <field name="desempleo" nolabel="1"/>
+                        <span>%</span>
+                    </div>
+                    <label for="formacion_prof"/>
+                    <div class="o_row" name="formacion_prof">
+                        <field name="formacion_prof" nolabel="1"/>
+                        <span>%</span>
+                    </div>
+                    -->
+                    <label for="irpf"/>
+                    <div class="o_row" name="irpf">
+                        <field name="irpf" nolabel="1"/>
+                        <span>%</span>
+                    </div>
+                    <label for="dias_contrato"/>
+                    <div class="o_row" name="dias_contrato">
+                        <field name="dias_contrato" nolabel="1"/>
+                        <span> / days</span>
+                    </div>
+                    <label for="jornada_laboral"/>
+                    <div class="o_row" name="jornada_laboral">
+                        <field name="jornada_laboral" nolabel="1"/>
+                        <span>%</span>
+                    </div>
+                    <label for="base_max_cotizacion"/>
+                    <div class="o_row" name="base_max_cotizacion">
+                        <field name="base_max_cotizacion" nolabel="1"/>
+                        <span></span>
+                    </div>
+                    <label for="base_min_cotizacion"/>
+                    <div class="o_row" name="base_min_cotizacion">
+                        <field name="base_min_cotizacion" nolabel="1"/>
+                        <span></span>
+                    </div>
+                </group>
+            </xpath>
+            <xpath expr="//group[@name='salary_info']" position="after">
+                <group>
+                    <group name="salary_complements_add" string="Monthly supplements in kind">
+                        <label for="tickets_comida"/>
+                        <div class="o_row" name="tickets_comida">
+                            <field name="tickets_comida" nolabel="1"/>
+                            <span> / working day</span>
+                        </div>
+                        <label for="seguro_vida"/>
+                        <div class="o_row" name="seguro_vida">
+                            <field name="seguro_vida" nolabel="1"/>
+                            <span> / month</span>
+                        </div>
+                        <label for="seguro_medico"/>
+                        <div class="o_row" name="seguro_medico">
+                            <field name="seguro_medico" nolabel="1"/>
+                            <span> / month</span>
+                        </div>
+                    </group>
+                    <group name="cost_extra_items" string="Price of extra elements">
+                        <label for="precio_km"/>
+                        <div class="o_row" name="precio_km">
+                            <field name="precio_km" nolabel="1"/>
+                            <span> / Km</span>
+                        </div>
+                        <label for="h_extra_dia_laboral"/>
+                        <div class="o_row" name="h_extra_dia_laboral">
+                            <field name="h_extra_dia_laboral" nolabel="1"/>
+                            <span> / Hour</span>
+                        </div>
+                        <label for="h_extra_noche_laboral"/>
+                        <div class="o_row" name="h_extra_noche_laboral">
+                            <field name="h_extra_noche_laboral" nolabel="1"/>
+                            <span> / Hour</span>
+                        </div>
+                        <label for="h_extra_dia_festivo"/>
+                        <div class="o_row" name="h_extra_dia_festivo">
+                            <field name="h_extra_dia_festivo" nolabel="1"/>
+                            <span> / Hour</span>
+                        </div>
+                        <label for="h_extra_noche_festivo"/>
+                        <div class="o_row" name="h_extra_noche_festivo">
+                            <field name="h_extra_noche_festivo" nolabel="1"/>
+                            <span> / Hour</span>
+                        </div>
+                        <label for="guardia_dia_laboral"/>
+                        <div class="o_row" name="guardia_dia_laboral">
+                            <field name="guardia_dia_laboral" nolabel="1"/>
+                            <span> / day</span>
+                        </div>
+                        <label for="guardia_dia_festivo"/>
+                        <div class="o_row" name="guardia_dia_festivo">
+                            <field name="guardia_dia_festivo" nolabel="1"/>
+                            <span> / day</span>
+                        </div> 
+                    </group>
+                </group>
+            </xpath>
+        </field>
+    </record>
+    <menuitem id="hr_contract_advantage_template_menu_action" action="hr_contract_advantage_template_action" parent="menu_hr_payroll_configuration" sequence="50"/>
+<!--    CONTRACT TYPE     -->
+    <record id="hr_contract_type_view_form" model="ir.ui.view">
+            <field name="name">hr.contract.type.form</field>
+            <field name="model">hr.contract.type</field>
+            <field name="arch" type="xml">
+                <form string="Contract Type">
+                    <group col="4">
+                        <field colspan="4" name="name"/>
+                    </group>
+                </form>
+            </field>
+        </record>
+
+        <record id="hr_contract_type_view_tree" model="ir.ui.view">
+            <field name="name">hr.contract.type.tree</field>
+            <field name="model">hr.contract.type</field>
+            <field name="arch" type="xml">
+                <tree string="Contract Type">
+                    <field name="sequence" widget="handle"/>
+                    <field colspan="4" name="name"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="hr_contract_type_view_search" model="ir.ui.view">
+            <field name="name">hr.contract.type.search</field>
+            <field name="model">hr.contract.type</field>
+            <field name="arch" type="xml">
+                <search string="Search Contract Type">
+                    <field name="name" string="Contract Type"/>
+                    <field name="sequence" string="Sequence"/>
+               </search>
+            </field>
+        </record>
+
+        <record id="action_hr_contract_type" model="ir.actions.act_window">
+            <field name="name">Contract Types</field>
+            <field name="res_model">hr.contract.type</field>
+            <field name="view_mode">tree,form</field>
+            <field name="search_view_id" ref="hr_contract_type_view_search"/>
+        </record>
+
+        <menuitem
+            id="hr_menu_contract_type"
+            action="action_hr_contract_type"
+            parent="hr.menu_human_resources_configuration"
+            sequence="3"
+            groups="hr.group_hr_manager"/>
+</odoo>

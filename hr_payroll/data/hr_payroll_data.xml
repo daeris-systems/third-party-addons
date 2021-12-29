@@ -1,0 +1,982 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="0">
+        <!-- Registros de contribución-->
+        <record id="contrib_register_employees" model="hr.contribution.register">
+            <field name="name">Empleados</field>
+            <field name="partner_id" eval="False"/>
+        </record>
+        <record id="contrib_register_company" model="hr.contribution.register">
+            <field name="name">Empresa</field>
+            <field name="partner_id" eval="False"/>
+        </record>
+        <record id="contrib_register_ss_employees" model="hr.contribution.register">
+            <field name="name">Seguridad Social - Empleados</field>
+            <field name="partner_id" eval="False"/>
+        </record>
+        <record id="contrib_register_ta_employees" model="hr.contribution.register">
+            <field name="name">Agencia Tributaria - Empleados</field>
+            <field name="partner_id" eval="False"/>
+        </record>
+        <record id="contrib_register_ss_company" model="hr.contribution.register">
+            <field name="name">Seguridad Social - Empresa</field>
+            <field name="partner_id" eval="False"/>
+        </record>
+        <record id="contrib_register_ta_company" model="hr.contribution.register">
+            <field name="name">Agencia Tributaria - Empresa</field>
+            <field name="partner_id" eval="False"/>
+        </record>
+        <record id="contrib_register_hi" model="hr.contribution.register">
+            <field name="name">Mutua</field>
+            <field name="partner_id" eval="False"/>
+        </record>
+
+        <!-- Categorias de reglas salariales-->
+        <record id="PARAM" model="hr.salary.rule.category">
+            <field name="name">Parámetros y cálculos</field>
+            <field name="code">PARAM</field>
+        </record>
+        <record id="DEV" model="hr.salary.rule.category">
+            <field name="name">Devengos nominales</field>
+            <field name="code">DEV</field>
+            <field name="note">Todos los devengos que forman las pagas extraordinarias</field>
+        </record>
+        <record id="DEVHEXTRA" model="hr.salary.rule.category">
+            <field name="name">Devengos - Horas extraordinarias</field>
+            <field name="code">DEVHEXTRA</field>
+        </record>
+        <record id="DEVHEXTRAFM" model="hr.salary.rule.category">
+            <field name="name">Devengos - Horas extraordinarias Fuerza Mayor</field>
+            <field name="code">DEVHEXTRAFM</field>
+        </record>
+        <record id="DEVESP" model="hr.salary.rule.category">
+            <field name="name">Devengos especiales</field>
+            <field name="code">DEVESP</field>
+            <field name="note">Aquellos devengos que se incluyen en nómina pero no se contemplan en la paga extraordinaria</field>
+        </record>
+        <record id="BAJACC" model="hr.salary.rule.category">
+            <field name="name">Baja - contingencias comunes</field>
+            <field name="code">BAJACC</field>
+        </record>
+        <record id="BAJACP" model="hr.salary.rule.category">
+            <field name="name">Baja - contingencias profesionales</field>
+            <field name="code">BAJACP</field>
+            <field name="note"></field>
+        </record>
+        <record id="RETESP" model="hr.salary.rule.category">
+            <field name="name">Retribución en especie</field>
+            <field name="code">RETESP</field>
+            <field name="note"></field>
+        </record>
+        <record id="TOTALES" model="hr.salary.rule.category">
+            <field name="name">Totales</field>
+            <field name="code">TOTALES</field>
+            <field name="note"></field>
+        </record>
+        <record id="BASES" model="hr.salary.rule.category">
+            <field name="name">Bases</field>
+            <field name="code">BASES</field>
+            <field name="note"></field>
+        </record>
+        <record id="INFEMPR" model="hr.salary.rule.category">
+            <field name="name">Informativas - Empresa</field>
+            <field name="code">INFEMPR</field>
+            <field name="note"></field>
+        </record>
+        <record id="DED" model="hr.salary.rule.category">
+            <field name="name">Deducciones</field>
+            <field name="code">DED</field>
+            <field name="note"></field>
+        </record>
+        <!--Reglas Salariales-->
+        <record id="hr_rule_DIASNOWORK" model="hr.salary.rule">
+            <field name="name">Dias no trabajados</field>
+            <field name="active">True</field>
+            <field name="appears_on_payslip">True</field>
+            <field name="sequence" eval="100"/>
+            <field name="code">DIASNOWORK</field>
+            <field name="category_id" ref="hr_payroll.PARAM"/>
+            <field name="condition_select">none</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">if worked_days.Enfermedad and worked_days.Impagada:
+    result =(worked_days.Enfermedad.number_of_days + worked_days.Impagada.number_of_days)
+elif worked_days.Enfermedad:
+    result = worked_days.Enfermedad.number_of_days
+elif worked_days.Impagada:
+    result = worked_days.Impagada.number_of_days
+else :
+    result = 0</field>
+        </record>
+
+        <record id="hr_rule_input_BCCCBAJA" model="hr.rule.input">
+            <field name="code">importebaja</field>
+            <field name="name">Importe de la base BCCC del mes anterior</field>
+        </record>
+        <record id="hr_rule_BCCCBAJA" model="hr.salary.rule">
+            <field name="name">Importe Baja Contingencias - BCCC(Mes anterior)</field>
+            <field name="active">True</field>
+            <field name="appears_on_payslip">True</field>
+            <field name="sequence" eval="101"/>
+            <field name="code">BCCCBAJA</field>
+            <field name="category_id" ref="hr_payroll.PARAM"/>
+            <field name="condition_select">none</field>
+            <field name="amount_select">percentage</field>
+            <field name="amount_percentage_base">inputs.importebaja.amount</field>
+            <field name="quantity">1.0</field>
+            <field name="amount_percentage">100.00</field>
+            <field name="input_ids" eval="[ref('hr_rule_input_BCCCBAJA')]" />
+        </record>
+
+        <record id="hr_rule_input_HEXTLABDAY" model="hr.rule.input">
+            <field name="code">horalabdia</field>
+            <field name="name">Numero de horas extras diurnas realizadas en día laboral</field>
+        </record>
+        <record id="hr_rule_HEXTLABDAY" model="hr.salary.rule">
+            <field name="name">Horas extras diurnas - dias laborables</field>
+            <field name="active">True</field>
+            <field name="appears_on_payslip">True</field>
+            <field name="sequence" eval="200"/>
+            <field name="code">HEXTLABDAY</field>
+            <field name="category_id" ref="hr_payroll.DEVHEXTRA"/>
+            <field name="condition_select">none</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">result = contract.h_extra_dia_laboral * inputs.horalabdia.amount</field>
+            <field name="input_ids" eval="[ref('hr_rule_input_HEXTLABDAY')]" />
+        </record>
+
+        <record id="hr_rule_input_HEXTLABNIGHT" model="hr.rule.input">
+            <field name="code">horalabnoche</field>
+            <field name="name">Numero de horas extras nocturnas realizadas en día laboral</field>
+        </record>
+        <record id="hr_rule_HEXTLABNIGHT" model="hr.salary.rule">
+            <field name="name">Horas extras nocturnas - noches laborables</field>
+            <field name="active">True</field>
+            <field name="appears_on_payslip">True</field>
+            <field name="sequence" eval="201"/>
+            <field name="code">HEXTLABNIGHT</field>
+            <field name="category_id" ref="hr_payroll.DEVHEXTRA"/>
+            <field name="condition_select">none</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">result = contract.h_extra_noche_laboral * inputs.horalabnoche.amount</field>
+            <field name="input_ids" eval="[ref('hr_rule_input_HEXTLABNIGHT')]" />
+        </record>
+
+        <record id="hr_rule_input_HEXTFESTDAY" model="hr.rule.input">
+            <field name="code">horafestdia</field>
+            <field name="name">Numero de horas extras diurnas realizadas en día festivo</field>
+        </record>
+        <record id="hr_rule_HEXTFESTDAY" model="hr.salary.rule">
+            <field name="name">Horas extras diurnas - dias festivos</field>
+            <field name="active">True</field>
+            <field name="appears_on_payslip">True</field>
+            <field name="sequence" eval="202"/>
+            <field name="code">HEXTFESTDAY</field>
+            <field name="category_id" ref="hr_payroll.DEVHEXTRA"/>
+            <field name="condition_select">none</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">result = contract.h_extra_dia_festivo * inputs.horafestdia.amount</field>
+            <field name="input_ids" eval="[ref('hr_rule_input_HEXTFESTDAY')]" />
+        </record>
+
+        <record id="hr_rule_input_HEXTFESTNIGHT" model="hr.rule.input">
+            <field name="code">horafestnoche</field>
+            <field name="name">Numero de horas extras nocturnas realizadas en día festivo</field>
+        </record>
+        <record id="hr_rule_HEXTFESTNIGHT" model="hr.salary.rule">
+            <field name="name">Horas extras nocturnas - noches festivos</field>
+            <field name="active">True</field>
+            <field name="appears_on_payslip">True</field>
+            <field name="sequence" eval="203"/>
+            <field name="code">HEXTFESTNIGHT</field>
+            <field name="category_id" ref="hr_payroll.DEVHEXTRA"/>
+            <field name="condition_select">none</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">result = contract.h_extra_noche_festivo * inputs.horafestnoche.amount</field>
+            <field name="input_ids" eval="[ref('hr_rule_input_HEXTFESTNIGHT')]" />
+        </record>
+
+
+        <record id="hr_rule_input_HEXTLABDAYFM" model="hr.rule.input">
+            <field name="code">horalabdiafm</field>
+            <field name="name">Numero de horas extras diurnas de fuerza mayor realizadas en día laboral</field>
+        </record>
+        <record id="hr_rule_HEXTLABDAYFM" model="hr.salary.rule">
+            <field name="name">Horas extras fuerza mayor diurnas - dias laborables</field>
+            <field name="active">True</field>
+            <field name="appears_on_payslip">True</field>
+            <field name="sequence" eval="204"/>
+            <field name="code">HEXTLABDAYFM</field>
+            <field name="category_id" ref="hr_payroll.DEVHEXTRAFM"/>
+            <field name="condition_select">none</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">result = contract.h_extra_dia_laboral * inputs.horalabdiafm.amount</field>
+            <field name="input_ids" eval="[ref('hr_rule_input_HEXTLABDAYFM')]" />
+        </record>
+
+        <record id="hr_rule_input_HEXTLABNIGHTFM" model="hr.rule.input">
+            <field name="code">horalabnochefm</field>
+            <field name="name">Numero de horas extras nocturnas de fuerza mayor realizadas en día laboral</field>
+        </record>
+        <record id="hr_rule_HEXTLABNIGHTFM" model="hr.salary.rule">
+            <field name="name">Horas extras fuerza mayor nocturnas - noches laborables</field>
+            <field name="active">True</field>
+            <field name="appears_on_payslip">True</field>
+            <field name="sequence" eval="205"/>
+            <field name="code">HEXTLABNIGHTFM</field>
+            <field name="category_id" ref="hr_payroll.DEVHEXTRAFM"/>
+            <field name="condition_select">none</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">result = contract.h_extra_noche_laboral * inputs.horalabnochefm.amount</field>
+            <field name="input_ids" eval="[ref('hr_rule_input_HEXTLABNIGHTFM')]" />
+        </record>
+
+        <record id="hr_rule_input_HEXTFESTDAYFM" model="hr.rule.input">
+            <field name="code">horafestdiafm</field>
+            <field name="name">Numero de horas extras diurnas de fuerza mayor realizadas en día festivo</field>
+        </record>
+        <record id="hr_rule_HEXTFESTDAYFM" model="hr.salary.rule">
+            <field name="name">Horas extras fuerza mayor diurnas - dias festivos</field>
+            <field name="active">True</field>
+            <field name="appears_on_payslip">True</field>
+            <field name="sequence" eval="206"/>
+            <field name="code">HEXTFESTDAYFM</field>
+            <field name="category_id" ref="hr_payroll.DEVHEXTRAFM"/>
+            <field name="condition_select">none</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">result = contract.h_extra_dia_festivo * inputs.horafestdiafm.amount</field>
+            <field name="input_ids" eval="[ref('hr_rule_input_HEXTFESTDAYFM')]" />
+        </record>
+
+        <record id="hr_rule_input_HEXTFESTNIGHTFM" model="hr.rule.input">
+            <field name="code">horafestnochefm</field>
+            <field name="name">Numero de horas extras nocturnas de fuerza mayor realizadas en día festivo</field>
+        </record>
+        <record id="hr_rule_HEXTFESTNIGHTFM" model="hr.salary.rule">
+            <field name="name">Horas extras fuerza mayor nocturnas - dias festivos</field>
+            <field name="active">True</field>
+            <field name="appears_on_payslip">True</field>
+            <field name="sequence" eval="207"/>
+            <field name="code">HEXTFESTNIGHTFM</field>
+            <field name="category_id" ref="hr_payroll.DEVHEXTRAFM"/>
+            <field name="condition_select">none</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">result = contract.h_extra_noche_festivo * inputs.horafestnochefm.amount</field>
+            <field name="input_ids" eval="[ref('hr_rule_input_HEXTFESTNIGHTFM')]" />
+        </record>
+
+        <record id="hr_rule_input_DDISPLABDAY" model="hr.rule.input">
+            <field name="code">guardialaboral</field>
+            <field name="name">Disponibilidad dias laborales</field>
+        </record>
+        <record id="hr_rule_DDISPLABDAY" model="hr.salary.rule">
+            <field name="name">Numero de días laborales de disponibilidad</field>
+            <field name="active">True</field>
+            <field name="appears_on_payslip">True</field>
+            <field name="sequence" eval="301"/>
+            <field name="code">DDISPLABDAY</field>
+            <field name="category_id" ref="hr_payroll.DEVESP"/>
+            <field name="condition_select">none</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">result = contract.guardia_dia_laboral * inputs.guardialaboral.amount</field>
+            <field name="input_ids" eval="[ref('hr_rule_input_DDISPLABDAY')]" />
+        </record>
+
+        <record id="hr_rule_input_DDISPFESTDAY" model="hr.rule.input">
+            <field name="code">guardiadiafestivo</field>
+            <field name="name">Numero de días festivos de disponibilidad</field>
+        </record>
+        <record id="hr_rule_DDISPFESTDAY" model="hr.salary.rule">
+            <field name="name">Disponibilidad dias festivos</field>
+            <field name="active">True</field>
+            <field name="appears_on_payslip">True</field>
+            <field name="sequence" eval="302"/>
+            <field name="code">DDISPFESTDAY</field>
+            <field name="category_id" ref="hr_payroll.DEVESP"/>
+            <field name="condition_select">none</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">result = contract.guardia_dia_festivo * inputs.guardiadiafestivo.amount</field>
+            <field name="input_ids" eval="[ref('hr_rule_input_DDISPFESTDAY')]" />
+        </record>
+
+        <record id="hr_rule_input_BAJACCT1" model="hr.rule.input">
+            <field name="code">bajacomunt1</field>
+            <field name="name">Numero de días de baja en 1er tramo (del día 1 al día 3)</field>
+        </record>
+        <record id="hr_rule_BAJACCT1" model="hr.salary.rule">
+            <field name="name">Baja contingencias comunes - Tramo1 (1-3)</field>
+            <field name="active">True</field>
+            <field name="appears_on_payslip">True</field>
+            <field name="sequence" eval="400"/>
+            <field name="code">BAJACCT1</field>
+            <field name="category_id" ref="hr_payroll.BAJACC"/>
+            <field name="condition_select">none</field>
+            <field name="amount_select">percentage</field>
+            <field name="amount_percentage_base">(inputs.importebaja.amount/contract.dias_contrato)*inputs.bajacomunt1.amount</field>
+            <field name="quantity">1.0</field>
+            <field name="amount_percentage">0.00</field>
+            <field name="input_ids" eval="[ref('hr_rule_input_BAJACCT1')]" />
+        </record>
+
+        <record id="hr_rule_input_BAJACCT2" model="hr.rule.input">
+            <field name="code">bajacomunt2</field>
+            <field name="name">Numero de días de baja en 2do tramo (del día 4 al día 15)</field>
+        </record>
+        <record id="hr_rule_BAJACCT2" model="hr.salary.rule">
+            <field name="name">Baja contingencias comunes - Tramo2 (4-15)</field>
+            <field name="active">True</field>
+            <field name="appears_on_payslip">True</field>
+            <field name="sequence" eval="401"/>
+            <field name="code">BAJACCT2</field>
+            <field name="category_id" ref="hr_payroll.BAJACC"/>
+            <field name="condition_select">none</field>
+            <field name="amount_select">percentage</field>
+            <field name="amount_percentage_base">(inputs.importebaja.amount/contract.dias_contrato)*inputs.bajacomunt2.amount</field>
+            <field name="quantity">1.0</field>
+            <field name="amount_percentage">60.00</field>
+            <field name="register_id" ref="contrib_register_company"/>
+            <field name="input_ids" eval="[ref('hr_rule_input_BAJACCT2')]" />
+        </record>
+
+        <record id="hr_rule_input_BAJACCT3" model="hr.rule.input">
+            <field name="code">bajacomunt3</field>
+            <field name="name">Numero de días de baja en 3er tramo (del día 16 al día 20)</field>
+        </record>
+        <record id="hr_rule_BAJACCT3" model="hr.salary.rule">
+            <field name="name">Baja contingencias comunes - Tramo3 (16-20)</field>
+            <field name="active">True</field>
+            <field name="appears_on_payslip">True</field>
+            <field name="sequence" eval="402"/>
+            <field name="code">BAJACCT3</field>
+            <field name="category_id" ref="hr_payroll.BAJACC"/>
+            <field name="condition_select">none</field>
+            <field name="amount_select">percentage</field>
+            <field name="amount_percentage_base">(inputs.importebaja.amount/contract.dias_contrato)*inputs.bajacomunt3.amount</field>
+            <field name="quantity">1.0</field>
+            <field name="amount_percentage">60.00</field>
+            <field name="register_id" ref="contrib_register_hi"/>
+            <field name="input_ids" eval="[ref('hr_rule_input_BAJACCT3')]" />
+        </record>
+
+        <record id="hr_rule_input_BAJACCT4" model="hr.rule.input">
+            <field name="code">bajacomunt4</field>
+            <field name="name">Numero de días de baja en 4to tramo (del día 21 hasta el fin de la baja)</field>
+        </record>
+        <record id="hr_rule_BAJACCT4" model="hr.salary.rule">
+            <field name="name">Baja contingencias comunes - Tramo4 (21-...)</field>
+            <field name="active">True</field>
+            <field name="appears_on_payslip">True</field>
+            <field name="sequence" eval="403"/>
+            <field name="code">BAJACCT4</field>
+            <field name="category_id" ref="hr_payroll.BAJACC"/>
+            <field name="condition_select">none</field>
+            <field name="amount_select">percentage</field>
+            <field name="amount_percentage_base">(inputs.importebaja.amount/contract.dias_contrato)*inputs.bajacomunt4.amount</field>
+            <field name="quantity">1.0</field>
+            <field name="amount_percentage">75.00</field>
+            <field name="register_id" ref="contrib_register_hi"/>
+            <field name="input_ids" eval="[ref('hr_rule_input_BAJACCT4')]" />
+        </record>
+
+        <record id="hr_rule_input_BAJACPT1" model="hr.rule.input">
+            <field name="code">bajaprofesionalt1</field>
+            <field name="name">Numero de días de baja profesional en 1er tramo (día en el que se emite la baja)</field>
+        </record>
+        <record id="hr_rule_BAJACPT1" model="hr.salary.rule">
+            <field name="name">Baja contingencias profesionales - Tramo1 (1-1)</field>
+            <field name="active">True</field>
+            <field name="appears_on_payslip">True</field>
+            <field name="sequence" eval="405"/>
+            <field name="code">BAJACPT1</field>
+            <field name="category_id" ref="hr_payroll.BAJACP"/>
+            <field name="condition_select">none</field>
+            <field name="amount_select">percentage</field>
+            <field name="amount_percentage_base">(inputs.importebaja.amount/contract.dias_contrato)*inputs.bajaprofesionalt1.amount</field>
+            <field name="quantity">1.0</field>
+            <field name="amount_percentage">100.00</field>
+            <field name="register_id" ref="contrib_register_company"/>
+            <field name="input_ids" eval="[ref('hr_rule_input_BAJACPT1')]" />
+        </record>
+
+        <record id="hr_rule_input_BAJACPT2" model="hr.rule.input">
+            <field name="code">bajaprofesionalt2</field>
+            <field name="name">Numero de días de baja profesional en 2do tramo (Desde el siguiente día de emisión hasta el fin de la baja)</field>
+        </record>
+        <record id="hr_rule_BAJACPT2" model="hr.salary.rule">
+            <field name="name">Baja contingencias profesionales - Tramo2 (2-...)</field>
+            <field name="active">True</field>
+            <field name="appears_on_payslip">True</field>
+            <field name="sequence" eval="406"/>
+            <field name="code">BAJACPT2</field>
+            <field name="category_id" ref="hr_payroll.BAJACP"/>
+            <field name="condition_select">none</field>
+            <field name="amount_select">percentage</field>
+            <field name="amount_percentage_base">(inputs.importebaja.amount/contract.dias_contrato)*inputs.bajaprofesionalt2.amount</field>
+            <field name="quantity">1.0</field>
+            <field name="amount_percentage">100.00</field>
+            <field name="register_id" ref="contrib_register_hi"/>
+            <field name="input_ids" eval="[ref('hr_rule_input_BAJACPT2')]" />
+        </record>
+        <record id="hr_rule_BAJACCIMP" model="hr.salary.rule">
+            <field name="name">Baja Contingencias Comunes</field>
+            <field name="active">True</field>
+            <field name="appears_on_payslip">True</field>
+            <field name="sequence" eval="498"/>
+            <field name="code">BAJACCIMP</field>
+            <field name="category_id" ref="hr_payroll.DEVESP"/>
+            <field name="condition_select">none</field>
+            <field name="amount_select">percentage</field>
+            <field name="amount_percentage_base">categories.BAJACC</field>
+            <field name="quantity">1.0</field>
+            <field name="amount_percentage">100.00</field>
+        </record>
+        <record id="hr_rule_BAJACPIMP" model="hr.salary.rule">
+            <field name="name">Baja Contingencias Profesionales</field>
+            <field name="active">True</field>
+            <field name="appears_on_payslip">True</field>
+            <field name="sequence" eval="499"/>
+            <field name="code">BAJACPIMP</field>
+            <field name="category_id" ref="hr_payroll.DEVESP"/>
+            <field name="condition_select">none</field>
+            <field name="amount_select">percentage</field>
+            <field name="amount_percentage_base">categories.BAJACP</field>
+            <field name="quantity">1.0</field>
+            <field name="amount_percentage">100.00</field>
+        </record>
+        <record id="hr_rule_TCOMIDA" model="hr.salary.rule">
+            <field name="name">Tiquets comida</field>
+            <field name="active">True</field>
+            <field name="appears_on_payslip">True</field>
+            <field name="sequence" eval="500"/>
+            <field name="code">TCOMIDA</field>
+            <field name="category_id" ref="hr_payroll.RETESP"/>
+            <field name="condition_select">none</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">result=contract.tickets_comida * worked_days.WORK100.number_of_days</field>
+        </record>
+        <record id="hr_rule_SVIDA" model="hr.salary.rule">
+            <field name="name">Seguro de Vida</field>
+            <field name="active">True</field>
+            <field name="appears_on_payslip">True</field>
+            <field name="sequence" eval="501"/>
+            <field name="code">SVIDA</field>
+            <field name="category_id" ref="hr_payroll.RETESP"/>
+            <field name="condition_select">none</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">result=contract.seguro_vida</field>
+        </record>
+        <record id="hr_rule_SMEDICO" model="hr.salary.rule">
+            <field name="name">Seguro Médico</field>
+            <field name="active">True</field>
+            <field name="appears_on_payslip">True</field>
+            <field name="sequence" eval="502"/>
+            <field name="code">SMEDICO</field>
+            <field name="category_id" ref="hr_payroll.RETESP"/>
+            <field name="condition_select">none</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">result=contract.seguro_medico</field>
+        </record>
+
+        <record id="hr_rule_BASIC" model="hr.salary.rule">
+            <field name="name">Salario base</field>
+            <field name="active">True</field>
+            <field name="appears_on_payslip">True</field>
+            <field name="sequence" eval="600"/>
+            <field name="code">BASIC</field>
+            <field name="category_id" ref="hr_payroll.DEV"/>
+            <field name="condition_select">none</field>
+            <field name="amount_select">code</field>
+            <field name="note">El salario base es el salario pactado entre trabajador y empresa sin contar los complementos salariales y debe aparecer en el contrato de trabajo.</field>
+            <field name="amount_python_compute">result = (contract.wage/contract.dias_contrato) * (contract.dias_contrato - DIASNOWORK)</field>
+        </record>
+        <record id="hr_rule_PCONV" model="hr.salary.rule">
+            <field name="name">Plus convenio</field>
+            <field name="active">True</field>
+            <field name="appears_on_payslip">True</field>
+            <field name="sequence" eval="601"/>
+            <field name="code">PCONV</field>
+            <field name="category_id" ref="hr_payroll.DEV"/>
+            <field name="condition_select">none</field>
+            <field name="amount_select">code</field>
+            <field name="note">El "plus convenio" es un complemento del salario que consiste en una cantidad fija por hora o día realmente trabajado. Por tanto, no se abona por domingos o festivos, ni por los días que se falte al trabajo, a excepción hecha de las vacaciones.</field>
+            <field name="amount_python_compute">result = (contract.plus_conv/contract.dias_contrato) * (contract.dias_contrato - DIASNOWORK)</field>
+        </record>
+        <record id="hr_rule_ANT" model="hr.salary.rule">
+            <field name="name">Antigüedad</field>
+            <field name="active">True</field>
+            <field name="appears_on_payslip">True</field>
+            <field name="sequence" eval="602"/>
+            <field name="code">ANT</field>
+            <field name="category_id" ref="hr_payroll.DEV"/>
+            <field name="condition_select">none</field>
+            <field name="amount_select">code</field>
+            <field name="note">La antigüedad es un plus que sólo se cobra en caso de que el convenio colectivo lo indique, ya que el Estatuto de los Trabajadores no lo recoge como un derecho</field>
+            <field name="amount_python_compute">result = (contract.antiguedad/contract.dias_contrato) * (contract.dias_contrato - DIASNOWORK)</field>
+        </record>
+
+        <record id="hr_rule_COMPSAL" model="hr.salary.rule">
+            <field name="name">Complemento salarial</field>
+            <field name="active">True</field>
+            <field name="appears_on_payslip">True</field>
+            <field name="sequence" eval="603"/>
+            <field name="code">COMPSAL</field>
+            <field name="category_id" ref="hr_payroll.DEV"/>
+            <field name="condition_select">none</field>
+            <field name="amount_select">code</field>
+            <field name="note">El complemento salarial es un tipo de complemento que se aplica en la nómina atendiendo a condiciones subjetivas del mismo. Este complemento se suele establecer en el convenio colectivo o, en el contrato individual y se aplican cuando las circunstancias, condiciones del trabajador o cualidades del mismo no han sido tenidas en cuenta a la hora de fijar el salario base dando lugar a complementos diferentes entre empleados de la misma categoría profesional.</field>
+            <field name="amount_python_compute">result = (contract.complemento_salarial/contract.dias_contrato) * (contract.dias_contrato - DIASNOWORK)</field>
+        </record>
+        <record id="hr_rule_CPLUSEMP" model="hr.salary.rule">
+            <field name="name">Complemento Plus Empresa</field>
+            <field name="active">True</field>
+            <field name="appears_on_payslip">True</field>
+            <field name="sequence" eval="604"/>
+            <field name="code">CPLUSEMP</field>
+            <field name="category_id" ref="hr_payroll.DEV"/>
+            <field name="condition_select">none</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">result = (79.60/contract.dias_contrato) * (contract.dias_contrato - DIASNOWORK)</field>
+        </record>
+
+        <record id="hr_rule_PPEXT" model="hr.salary.rule">
+            <field name="name">Prorrata Paga Extra</field>
+            <field name="active">True</field>
+            <field name="appears_on_payslip">True</field>
+            <field name="sequence" eval="750"/>
+            <field name="code">PPEXT</field>
+            <field name="category_id" ref="hr_payroll.TOTALES"/>
+            <field name="condition_select">none</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">if contract.num_pagas_extras > 0 and not contract.proratear_pagas:
+    result = categories.DEV / (12/contract.num_pagas_extras)
+else:
+    result = 0</field>
+        </record>
+        <record id="hr_rule_DPEPRO" model="hr.salary.rule">
+            <field name="name">Paga extra prorrateada</field>
+            <field name="active">True</field>
+            <field name="appears_on_payslip">True</field>
+            <field name="sequence" eval="751"/>
+            <field name="code">DPEPRO</field>
+            <field name="category_id" ref="hr_payroll.DEVESP"/>
+            <field name="condition_select">none</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">if contract.num_pagas_extras > 0 and contract.proratear_pagas:
+    result = categories.DEV / (12/contract.num_pagas_extras)
+else:
+    result = 0</field>
+        </record>
+
+        <record id="hr_rule_TOTDEVENG" model="hr.salary.rule">
+            <field name="name">Total devengado</field>
+            <field name="active">True</field>
+            <field name="appears_on_payslip">True</field>
+            <field name="sequence" eval="799"/>
+            <field name="code">TOTDEVENG</field>
+            <field name="category_id" ref="hr_payroll.TOTALES"/>
+            <field name="condition_select">none</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">result = categories.DEV + categories.DEVESP + categories.DEVHEXTRAFM + categories.DEVHEXTRA + categories.BAJACC + categories.BAJACP</field>
+        </record>
+        <record id="hr_rule_BCCC" model="hr.salary.rule">
+            <field name="name">Base C.C.C.</field>
+            <field name="active">True</field>
+            <field name="appears_on_payslip">True</field>
+            <field name="sequence" eval="800"/>
+            <field name="code">BCCC</field>
+            <field name="category_id" ref="hr_payroll.BASES"/>
+            <field name="condition_select">none</field>
+            <field name="amount_select">code</field>
+            <field name="note">Se calcula sumando el salario base más complementos salariales sujetos a cotización más el prorrateo de las pagas extras (independientemente de que el trabajador cobre las pagas extras mes a mes o en meses determinados). A este cálculo hay que aplicarle la regla de que existe un mínimo y un máximo legal en función del grupo de cotización al que nos estemos refiriendo. </field>
+            <field name="amount_python_compute">if PPEXT +  categories.DEV + categories.DEVESP + categories.BAJACC + categories.BAJACP + categories.RETESP &lt; contract.base_min_cotizacion:
+    result = contract.base_min_cotizacion
+elif PPEXT +  categories.DEV + categories.DEVESP + categories.BAJACC + categories.BAJACP + categories.RETESP > contract.base_max_cotizacion :
+    result = contract.base_max_cotizacion
+else:
+    result = PPEXT +  categories.DEV + categories.DEVESP + categories.BAJACC + categories.BAJACP + categories.RETESP</field>
+        </record>
+
+        <record id="hr_rule_BCCP" model="hr.salary.rule">
+            <field name="name">Base C.C.P.</field>
+            <field name="active">True</field>
+            <field name="appears_on_payslip">True</field>
+            <field name="sequence" eval="801"/>
+            <field name="code">BCCP</field>
+            <field name="category_id" ref="hr_payroll.BASES"/>
+            <field name="condition_select">none</field>
+            <field name="amount_select">code</field>
+            <field name="note">Base de Cotización por Contingencias Profesionales: Accidentes de Trabajo y Enfermedades Profesionales, y Conceptos de Recaudación Conjunta (Desempleo, FP, FOGASA) BCCP:Se calcula de la misma forma que la BCCC, pero sumando el importe correspondiente a las Horas Extraordinarias, si las hubiere. Si el trabajador no ha realizado horas extraordinarias, ambas bases coincidirán.</field>
+            <field name="amount_python_compute">if PPEXT +  categories.DEV + categories.DEVESP + categories.DEVHEXTRA + categories.DEVHEXTRAFM + categories.BAJACC + categories.BAJACP + categories.RETESP &lt; contract.base_min_cotizacion:
+    result = contract.base_min_cotizacion
+elif PPEXT +  categories.DEV + categories.DEVESP + categories.DEVHEXTRA + categories.DEVHEXTRAFM + categories.BAJACC + categories.BAJACP + categories.RETESP > contract.base_max_cotizacion :
+    result = contract.base_max_cotizacion
+else:
+    result = PPEXT +  categories.DEV + categories.DEVESP + categories.DEVHEXTRA + categories.DEVHEXTRAFM + categories.BAJACC + categories.BAJACP + categories.RETESP</field>
+        </record>
+        <record id="hr_rule_BIRPF" model="hr.salary.rule">
+            <field name="name">Base IRPF</field>
+            <field name="active">True</field>
+            <field name="appears_on_payslip">True</field>
+            <field name="sequence" eval="802"/>
+            <field name="code">BIRPF</field>
+            <field name="category_id" ref="hr_payroll.BASES"/>
+            <field name="condition_select">none</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">result = categories.DEV + categories.DEVESP + categories.DEVHEXTRAFM + categories.DEVHEXTRA + categories.BAJACC + categories.BAJACP</field>
+        </record>
+        <record id="hr_rule_BTEOR" model="hr.salary.rule">
+            <field name="name">Base Teórica</field>
+            <field name="active">True</field>
+            <field name="appears_on_payslip">True</field>
+            <field name="sequence" eval="803"/>
+            <field name="code">BTEOR</field>
+            <field name="category_id" ref="hr_payroll.BASES"/>
+            <field name="condition_select">none</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">result = TOTDEVENG + categories.RETESP</field>
+        </record>
+        <record id="hr_rule_CCT" model="hr.salary.rule">
+            <field name="name">Contingencias Comunes</field>
+            <field name="active">True</field>
+            <field name="appears_on_payslip">True</field>
+            <field name="sequence" eval="851"/>
+            <field name="code">CCT</field>
+            <field name="category_id" ref="hr_payroll.DED"/>
+            <field name="condition_select">none</field>
+            <field name="amount_select">percentage</field>
+            <field name="amount_percentage_base">BCCC</field>
+            <field name="quantity">1.0</field>
+            <field name="amount_percentage">4.70</field>
+            <field name="register_id" ref="contrib_register_ss_employees"/>
+        </record>
+        <record id="hr_rule_DESEMTINDEF" model="hr.salary.rule">
+            <field name="name">Desempleo</field>
+            <field name="active">True</field>
+            <field name="appears_on_payslip">True</field>
+            <field name="sequence" eval="852"/>
+            <field name="code">DESEMTINDEF</field>
+            <field name="category_id" ref="hr_payroll.DED"/>
+            <field name="condition_select">none</field>
+            <field name="amount_select">percentage</field>
+            <field name="amount_percentage_base">BCCP</field>
+            <field name="quantity">1.0</field>
+            <field name="amount_percentage">1.55</field>
+            <field name="register_id" ref="contrib_register_ss_employees"/>
+        </record>
+        <record id="hr_rule_DESEMTTEMP" model="hr.salary.rule">
+            <field name="name">Desempleo - contrato temporal</field>
+            <field name="active">True</field>
+            <field name="appears_on_payslip">True</field>
+            <field name="sequence" eval="853"/>
+            <field name="code">DESEMTTEMP</field>
+            <field name="category_id" ref="hr_payroll.DED"/>
+            <field name="condition_select">none</field>
+            <field name="amount_select">percentage</field>
+            <field name="amount_percentage_base">BCCP</field>
+            <field name="quantity">1.0</field>
+            <field name="amount_percentage">1.60</field>
+            <field name="register_id" ref="contrib_register_ss_employees"/>
+        </record>
+        <record id="hr_rule_FPTRAB" model="hr.salary.rule">
+            <field name="name">Trainning professional</field>
+            <field name="active">True</field>
+            <field name="appears_on_payslip">True</field>
+            <field name="sequence" eval="854"/>
+            <field name="code">FPTRAB</field>
+            <field name="category_id" ref="hr_payroll.DED"/>
+            <field name="condition_select">none</field>
+            <field name="amount_select">percentage</field>
+            <field name="amount_percentage_base">BCCP</field>
+            <field name="quantity">1.0</field>
+            <field name="amount_percentage">0.10</field>
+            <field name="register_id" ref="contrib_register_ss_employees"/>
+        </record>
+        <record id="hr_rule_CCTHEXT" model="hr.salary.rule">
+            <field name="name">Horas extraordinarias</field>
+            <field name="active">True</field>
+            <field name="appears_on_payslip">True</field>
+            <field name="sequence" eval="855"/>
+            <field name="code">CCTHEXT</field>
+            <field name="category_id" ref="hr_payroll.DED"/>
+            <field name="condition_select">none</field>
+            <field name="amount_select">percentage</field>
+            <field name="amount_percentage_base">categories.DEVHEXTRA</field>
+            <field name="quantity">1.0</field>
+            <field name="amount_percentage">4.70</field>
+            <field name="register_id" ref="contrib_register_ss_employees"/>
+        </record>
+        <record id="hr_rule_CCTHEXTFM" model="hr.salary.rule">
+            <field name="name">Horas extraordinarias de fuerza mayor</field>
+            <field name="active">True</field>
+            <field name="appears_on_payslip">True</field>
+            <field name="sequence" eval="856"/>
+            <field name="code">CCTHEXTFM</field>
+            <field name="category_id" ref="hr_payroll.DED"/>
+            <field name="condition_select">none</field>
+            <field name="amount_select">percentage</field>
+            <field name="amount_percentage_base">categories.DEVHEXTRAFM</field>
+            <field name="quantity">1.0</field>
+            <field name="amount_percentage">2.00</field>
+            <field name="register_id" ref="contrib_register_ss_employees"/>
+        </record>
+        <record id="hr_rule_IRPF" model="hr.salary.rule">
+            <field name="name">Retención a cta. IRPF</field>
+            <field name="active">True</field>
+            <field name="appears_on_payslip">True</field>
+            <field name="sequence" eval="899"/>
+            <field name="code">IRPF</field>
+            <field name="category_id" ref="hr_payroll.DED"/>
+            <field name="condition_select">none</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">result = (contract.irpf/100) * BIRPF</field>
+            <field name="register_id" ref="contrib_register_ta_employees"/>
+        </record>
+        <record id="hr_rule_TOTDEDUC" model="hr.salary.rule">
+            <field name="name">Total deducido</field>
+            <field name="active">True</field>
+            <field name="appears_on_payslip">True</field>
+            <field name="sequence" eval="900"/>
+            <field name="code">TOTDEDUC</field>
+            <field name="category_id" ref="hr_payroll.TOTALES"/>
+            <field name="condition_select">none</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">result = categories.DED</field>
+        </record>
+        <record id="hr_rule_TOTPERC" model="hr.salary.rule">
+            <field name="name">Liquido a percibir</field>
+            <field name="active">True</field>
+            <field name="appears_on_payslip">True</field>
+            <field name="sequence" eval="901"/>
+            <field name="code">TOTPERC</field>
+            <field name="category_id" ref="hr_payroll.TOTALES"/>
+            <field name="condition_select">none</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">result = TOTDEVENG - TOTDEDUC</field>
+            <field name="register_id" ref="contrib_register_employees"/>
+        </record>
+        <record id="hr_rule_CCE" model="hr.salary.rule">
+            <field name="name">Contingencias comunes</field>
+            <field name="active">True</field>
+            <field name="appears_on_payslip">True</field>
+            <field name="sequence" eval="950"/>
+            <field name="code">CCE</field>
+            <field name="category_id" ref="hr_payroll.INFEMPR"/>
+            <field name="condition_select">none</field>
+            <field name="amount_select">percentage</field>
+            <field name="amount_percentage_base">BCCC</field>
+            <field name="quantity">1.0</field>
+            <field name="amount_percentage">23.60</field>
+            <field name="register_id" ref="contrib_register_ta_company"/>
+        </record>
+        <record id="hr_rule_ITIMSE" model="hr.salary.rule">
+            <field name="name">IT/IMS</field>
+            <field name="active">True</field>
+            <field name="appears_on_payslip">True</field>
+            <field name="sequence" eval="951"/>
+            <field name="code">ITIMSE</field>
+            <field name="category_id" ref="hr_payroll.INFEMPR"/>
+            <field name="condition_select">none</field>
+            <field name="amount_select">percentage</field>
+            <field name="amount_percentage_base">BCCP</field>
+            <field name="quantity">1.0</field>
+            <field name="amount_percentage">1.50</field>
+            <field name="register_id" ref="contrib_register_ss_company"/>
+        </record>
+        <record id="hr_rule_DESEMP" model="hr.salary.rule">
+            <field name="name">Desempleo</field>
+            <field name="active">True</field>
+            <field name="appears_on_payslip">True</field>
+            <field name="sequence" eval="952"/>
+            <field name="code">DESEMP</field>
+            <field name="category_id" ref="hr_payroll.INFEMPR"/>
+            <field name="condition_select">none</field>
+            <field name="amount_select">percentage</field>
+            <field name="amount_percentage_base">BCCP</field>
+            <field name="quantity">1.0</field>
+            <field name="amount_percentage">5.50</field>
+            <field name="register_id" ref="contrib_register_ss_company"/>
+        </record>
+        <record id="hr_rule_DESEMPTEMP" model="hr.salary.rule">
+            <field name="name">Desempleo - Temporal</field>
+            <field name="active">True</field>
+            <field name="appears_on_payslip">True</field>
+            <field name="sequence" eval="953"/>
+            <field name="code">DESEMPTEMP</field>
+            <field name="category_id" ref="hr_payroll.INFEMPR"/>
+            <field name="condition_select">none</field>
+            <field name="amount_select">percentage</field>
+            <field name="amount_percentage_base">BCCP</field>
+            <field name="quantity">1.0</field>
+            <field name="amount_percentage">6.70</field>
+            <field name="register_id" ref="contrib_register_ss_company"/>
+        </record>
+        <record id="hr_rule_FPEMP" model="hr.salary.rule">
+            <field name="name">Formación profesional</field>
+            <field name="active">True</field>
+            <field name="appears_on_payslip">True</field>
+            <field name="sequence" eval="954"/>
+            <field name="code">FPEMP</field>
+            <field name="category_id" ref="hr_payroll.INFEMPR"/>
+            <field name="condition_select">none</field>
+            <field name="amount_select">percentage</field>
+            <field name="amount_percentage_base">BCCP</field>
+            <field name="quantity">1.0</field>
+            <field name="amount_percentage">0.60</field>
+            <field name="register_id" ref="contrib_register_ss_company"/>
+        </record>
+        <record id="hr_rule_FOGASA" model="hr.salary.rule">
+            <field name="name">Fondo garantía salarial</field>
+            <field name="active">True</field>
+            <field name="appears_on_payslip">True</field>
+            <field name="sequence" eval="955"/>
+            <field name="code">FOGASA</field>
+            <field name="category_id" ref="hr_payroll.INFEMPR"/>
+            <field name="condition_select">none</field>
+            <field name="amount_select">percentage</field>
+            <field name="amount_percentage_base">BCCP</field>
+            <field name="quantity">1.0</field>
+            <field name="amount_percentage">0.20</field>
+            <field name="register_id" ref="contrib_register_ss_company"/>
+        </record>
+        <record id="hr_rule_CAHEX" model="hr.salary.rule">
+            <field name="name">Cotización adicional horas extras</field>
+            <field name="active">True</field>
+            <field name="appears_on_payslip">True</field>
+            <field name="sequence" eval="956"/>
+            <field name="code">CAHEX</field>
+            <field name="category_id" ref="hr_payroll.INFEMPR"/>
+            <field name="condition_select">none</field>
+            <field name="amount_select">percentage</field>
+            <field name="amount_percentage_base">categories.DEVHEXTRA</field>
+            <field name="quantity">1.0</field>
+            <field name="amount_percentage">23.60</field>
+            <field name="register_id" ref="contrib_register_ta_company"/>
+        </record>
+        <record id="hr_rule_CAHEXFM" model="hr.salary.rule">
+            <field name="name">Cotización adicional horas extras fuerza mayor</field>
+            <field name="active">True</field>
+            <field name="appears_on_payslip">True</field>
+            <field name="sequence" eval="957"/>
+            <field name="code">CAHEXFM</field>
+            <field name="category_id" ref="hr_payroll.INFEMPR"/>
+            <field name="condition_select">none</field>
+            <field name="amount_select">percentage</field>
+            <field name="amount_percentage_base">categories.DEVHEXTRAFM</field>
+            <field name="quantity">1.0</field>
+            <field name="amount_percentage">12.00</field>
+            <field name="register_id" ref="contrib_register_ta_company"/>
+        </record>
+        <record id="hr_rule_INFEMPLEADOSS" model="hr.salary.rule">
+            <field name="name">Informativas - Seguridad social empleado</field>
+            <field name="active">True</field>
+            <field name="appears_on_payslip">False</field>
+            <field name="sequence" eval="1001"/>
+            <field name="code">INFEMPLEADOSS</field>
+            <field name="category_id" ref="hr_payroll.PARAM"/>
+            <field name="condition_select">none</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">result = FPTRAB + DESEMTINDEF + CCT</field>
+        </record>
+        <record id="hr_rule_INFEMPRESASS" model="hr.salary.rule">
+            <field name="name">Informativas - Seguridad social empresa</field>
+            <field name="active">True</field>
+            <field name="appears_on_payslip">False</field>
+            <field name="sequence" eval="1002"/>
+            <field name="code">INFEMPRESASS</field>
+            <field name="category_id" ref="hr_payroll.PARAM"/>
+            <field name="condition_select">none</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">result = ITIMSE + DESEMP + FPEMP + FOGASA</field>
+        </record>
+        <!--
+        <record id="hr_rule_taxable" model="hr.salary.rule">
+            <field name="name">Gross</field>
+            <field name="sequence" eval="100"/>
+            <field name="code">GROSS</field>
+            <field name="category_id" ref="hr_payroll.GROSS"/>
+            <field name="condition_select">none</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">result = categories.BASIC + categories.ALW</field>
+        </record>
+        <record id="hr_rule_net" model="hr.salary.rule">
+            <field name="name">Net Salary</field>
+            <field name="sequence" eval="200"/>
+            <field name="code">NET</field>
+            <field name="category_id" ref="hr_payroll.NET"/>
+            <field name="condition_select">none</field>
+            <field name="amount_select">code</field>
+            <field name="amount_python_compute">result = categories.BASIC + categories.ALW + categories.DED</field>
+            <field name="register_id" ref="contrib_register_employees"/>
+        </record>
+-->
+         <record id="structure_base" model="hr.payroll.structure">
+            <field name="code">CITC</field>
+            <field name="name">Contrato indefinido a Tiempo Completo</field>
+            <field eval="[(6, 0, [
+                ref('hr_rule_DIASNOWORK'),
+                ref('hr_rule_BCCCBAJA'),
+                ref('hr_rule_HEXTLABDAY'),
+                ref('hr_rule_HEXTLABNIGHT'),
+                ref('hr_rule_HEXTFESTDAY'),
+                ref('hr_rule_HEXTFESTNIGHT'),
+                ref('hr_rule_HEXTLABDAYFM'),
+                ref('hr_rule_HEXTLABNIGHTFM'),
+                ref('hr_rule_HEXTFESTDAYFM'),
+                ref('hr_rule_HEXTFESTNIGHTFM'),
+                ref('hr_rule_DDISPLABDAY'),
+                ref('hr_rule_DDISPFESTDAY'),
+                ref('hr_rule_BAJACCT1'),
+                ref('hr_rule_BAJACCT2'),
+                ref('hr_rule_BAJACCT3'),
+                ref('hr_rule_BAJACCT4'),
+                ref('hr_rule_BAJACPT1'),
+                ref('hr_rule_BAJACPT2'),
+                ref('hr_rule_BAJACCIMP'),
+                ref('hr_rule_BAJACPIMP'),
+                ref('hr_rule_TCOMIDA'),
+                ref('hr_rule_SVIDA'),
+                ref('hr_rule_SMEDICO'),
+                ref('hr_rule_BASIC'),
+                ref('hr_rule_PCONV'),
+                ref('hr_rule_ANT'),
+                ref('hr_rule_COMPSAL'),
+                ref('hr_rule_CPLUSEMP'),
+                ref('hr_rule_PPEXT'),
+                ref('hr_rule_DPEPRO'),
+                ref('hr_rule_TOTDEVENG'),
+                ref('hr_rule_BCCC'),
+                ref('hr_rule_BCCP'),
+                ref('hr_rule_BIRPF'),
+                ref('hr_rule_BTEOR'),
+                ref('hr_rule_CCT'),
+                ref('hr_rule_DESEMTINDEF'),
+                ref('hr_rule_FPTRAB'),
+                ref('hr_rule_CCTHEXT'),
+                ref('hr_rule_CCTHEXTFM'),
+                ref('hr_rule_IRPF'),
+                ref('hr_rule_TOTDEDUC'),
+                ref('hr_rule_TOTPERC'),
+                ref('hr_rule_CCE'),
+                ref('hr_rule_ITIMSE'),
+                ref('hr_rule_DESEMP'),
+                ref('hr_rule_FPEMP'),
+                ref('hr_rule_FOGASA'),
+                ref('hr_rule_CAHEX'),
+                ref('hr_rule_CAHEXFM'),
+                ref('hr_rule_INFEMPLEADOSS'),
+                ref('hr_rule_INFEMPRESASS')
+            ])]" name="rule_ids"/>
+            <field name="company_id" ref="base.main_company"/>
+        </record>
+
+
+
+        <record forcecreate="True" id="decimal_payroll" model="decimal.precision">
+            <field name="name">Payroll</field>
+            <field name="digits">2</field>
+        </record>
+        <record forcecreate="True" id="decimal_payroll_rate" model="decimal.precision">
+            <field name="name">Payroll Rate</field>
+            <field name="digits">2</field>
+        </record>
+    </data>
+</odoo>

@@ -1,0 +1,433 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+<template id="report_payslip">
+  <t t-set="data_report_margin_top" t-value="18"/>
+  <t t-set="data_report_header_spacing" t-value="12"/>
+  <t t-set="data_report_dpi" t-value="100"/>
+    <t t-call="web.html_container">
+        <t t-foreach="docs" t-as="o">
+            <t t-call="web.basic_layout">
+                <div class="header">
+                  <div class="row">
+                    <div class="col-2">
+                        <img t-if="o.company_id.logo" t-att-src="image_data_uri(o.company_id.logo)" style="max-height: 45px;" alt="Logo"/>
+                    </div>
+                    <div class="col-8 text-center">
+                        <span>Recibo de salario confidencial</span>
+                    </div>
+                    <div class="col-2 text-right">
+                        <ul class="list-inline">
+                            <li class="list-inline-item"><span class="page"/></li>
+                            <li class="list-inline-item">/</li>
+                            <li class="list-inline-item"><span class="topage"/></li>
+                        </ul>
+                    </div>
+                  </div>
+                </div>
+                <div class="page">
+          <table width="100%">
+            <td width="27%"><strong>Nº RECIBO: </strong><span t-field="o.number"/></td>
+            <td width="26%"><strong>  Nº EMPLEADO: </strong><span t-field="o.employee_id.identification_id"/></td>
+            <td width="27%"><strong>  NºCONTRATO: </strong><span t-field="o.contract_id"/></td>
+            <td width="20%" align="right"><strong>  F.ALTA: </strong><span align="right" t-field="o.contract_id.date_start"/></td>
+          </table>
+                    <table class="table table-sm table-bordered">
+                      <tr>
+                        <td style="background-color:rgb(223,223,223)"><strong><span>Empresa</span></strong></td>
+                        <td><strong style="text-transform: uppercase;"><span t-field="o.company_id.name"/></strong></td>
+                        <td style="background-color:rgb(223,223,223)"><strong><span>Trabajador</span></strong></td>
+                        <td><span t-field="o.employee_id"/></td>
+                      </tr>
+                      <tr>
+                        <td style="background-color:rgb(223,223,223)"><strong><span>Domicilio</span></strong></td>
+                        <td><span t-field="o.company_id.street"/><![CDATA[&nbsp;]]><br/><span t-field="o.company_id.zip"/></td>
+                        <td style="background-color:rgb(223,223,223)"><strong><span>G.Cotización</span></strong></td>
+                        <td><span t-field="o.contract_id.type_id"/></td>    
+                      </tr>
+                      <tr>
+                        <td style="background-color:rgb(223,223,223)"><strong><span>CIF</span></strong></td>
+                        <td><span t-field="o.company_id.vat"/></td>
+                        <td style="background-color:rgb(223,223,223)"><strong><span>G.Profesional</span></strong></td>
+                        <td><span t-field="o.contract_id.professional_group"/></td>
+                      </tr>
+                      <tr>
+                        <td style="background-color:rgb(223,223,223)"><strong><span>CCC</span></strong></td>
+                        <td><span t-field="o.company_id.ssnid"/></td>
+                        <td style="background-color:rgb(223,223,223)"><strong><span>NIF</span></strong></td>
+                        <td><span t-field="o.employee_id.user_id.vat"/></td>
+                      </tr>
+                      <tr>
+                        <td style="background-color:rgb(223,223,223)"><strong><span>CNAE</span></strong></td>
+                        <td><span t-field="o.company_id.cnae_code"/></td>
+                        <td style="background-color:rgb(223,223,223)"><strong><span>NºS.Social</span></strong></td>
+                        <td><span t-field="o.employee_id.ssnid"/></td>
+                      </tr>
+                    </table>
+                    <table class="table table-sm table-bordered">
+                      <tr>
+                        <td>
+                          <span>Periodo de liquidación: del </span><strong><span t-field="o.date_from"/></strong>
+                          <span> al </span><strong><span t-field="o.date_to"/></strong>
+                        </td>
+                        <td align="right">
+                          <strong><span>%Jornada</span></strong>
+                        </td>
+                        <td><span t-field="o.contract_id.jornada_laboral"/></td>
+                        <td align="right"><strong><span>Total dias</span></strong></td>
+                        <td><span t-field="o.contract_id.dias_contrato"/></td>
+                      </tr>
+                    </table>
+                    <table class="table table-sm">
+                        <thead>
+                            <tr>
+                                <!--<th>Code</th>-->
+                                <th style="background-color:rgb(180,180,180)">CONCEPTO</th>
+                                <th style="background-color:rgb(180,180,180)">CANTIDAD</th>
+                                <th style="background-color:rgb(180,180,180)">PRECIO/UND</th>
+                                <th style="background-color:rgb(180,180,180)">TOTAL</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td style="background-color:rgb(223,223,223)"><strong>DEVENGOS</strong></td><td style="background-color:rgb(223,223,223)"></td><td style="background-color:rgb(223,223,223)"></td><td style="background-color:rgb(223,223,223)"></td>
+                          </tr>
+                                <tr t-foreach="o.line_ids.filtered(lambda line: line.category_id.name == 'Devengos nominales' and line.appears_on_payslip)" t-as="line">
+                                <!--<td><span t-field="line.code"/></td>-->
+                                <td><span t-field="line.name"/></td>
+                                <t t-if="line.quantity =='1,00'">
+                                  <td><span t-field="line.quantity"/></td>
+                                </t>
+                                <t t-if="line.quantity !='1,00'">
+                                  <td></td>
+                                </t>
+                                <t t-if="line.amount == line.total">
+                                  <td></td>
+                                </t>
+                                <t t-if="line.amount != line.total">
+                                  <td><span t-esc="line.amount" t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: o.company_id.currency_id}"/></td>
+                                </t>
+                                <td align="right"><span t-esc="line.total" t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: o.company_id.currency_id}"/></td>
+                            </tr>
+                          <tr t-foreach="o.line_ids.filtered(lambda line: line.category_id.code == 'DEVESP' and line.total > 0 and line.appears_on_payslip)" t-as="line">
+                              <t t-if="not varcount==1">
+                                <td style="background-color:rgb(223,223,223)"><strong>DEVENGOS ESPECIALES</strong></td><td style="background-color:rgb(223,223,223)"></td><td style="background-color:rgb(223,223,223)"></td><td style="background-color:rgb(223,223,223)"></td>
+                                <t t-set="varcount" t-value="1" />
+                              </t>
+                          </tr>
+                          <tr t-foreach="o.line_ids.filtered(lambda line: line.category_id.code == 'DEVESP' and line.total > 0 and line.appears_on_payslip)" t-as="line">
+                                <td><span t-field="line.name"/></td>
+                                <t t-if="line.code =='DDISPLABDAY' or line.code =='DDISPFESTDAY'">
+                                  <span t-foreach="o.input_line_ids.filtered(lambda lineinput: lineinput.code == line.salary_rule_id.input_ids.code)" t-as="lineinput">
+                                    <td><span t-field="lineinput.amount"/></td>
+                                    <t t-if="lineinput.code =='guardiadiafestivo'">
+                                      <td><span t-field="lineinput.contract_id.guardia_dia_festivo"/></td>
+                                    </t>
+                                    <t t-if="lineinput.code =='guardialaboral'">
+                                      <td><span t-field="lineinput.contract_id.guardia_dia_laboral"/></td>
+                                    </t>
+                                  </span>
+                                </t>
+                                <t t-if="line.code !='DDISPLABDAY' and line.code !='DDISPFESTDAY'">
+                                  <t t-if="line.quantity =='1,00'">
+                                    <td><span t-field="line.quantity"/></td>
+                                  </t>
+                                  <t t-if="line.quantity !='1,00'">
+                                    <td></td>
+                                  </t>
+                                  <t t-if="line.amount == line.total">
+                                    <td></td>
+                                  </t>
+                                  <t t-if="line.amount != line.total">
+                                    <td><span t-esc="line.amount" t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: o.company_id.currency_id}"/></td>
+                                  </t>
+                                </t>
+                                <td align="right"><span t-esc="line.total" t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: o.company_id.currency_id}"/></td>
+                          </tr>
+                          <tr t-foreach="o.line_ids.filtered(lambda line: (line.category_id.code == 'DEVHEXTRAFM' or line.category_id.code == 'DEVHEXTRA') and line.total > 0 and line.appears_on_payslip)" t-as="line">
+                              <t t-if="not varcount==1">
+                                <td style="background-color:rgb(223,223,223)"><strong>DEVENGOS - HORAS EXTRAORDINARIAS</strong></td><td style="background-color:rgb(223,223,223)"></td><td style="background-color:rgb(223,223,223)"></td><td style="background-color:rgb(223,223,223)"></td>
+                                <t t-set="varcount" t-value="1" />
+                              </t>
+                          </tr>
+                          <tr t-foreach="o.line_ids.filtered(lambda line: (line.category_id.code == 'DEVHEXTRAFM' or line.category_id.code == 'DEVHEXTRA') and line.total > 0 and line.appears_on_payslip)" t-as="line">
+                                <td><span t-field="line.name"/></td>
+                                <!--<td><span t-field="line.salary_rule_id.input_ids.code"/></td>-->
+                                <span t-foreach="o.input_line_ids.filtered(lambda lineinput: lineinput.code == line.salary_rule_id.input_ids.code)" t-as="lineinput">
+                                  <td><span t-field="lineinput.amount"/></td>
+                                  <t t-if="lineinput.code =='horalabdia' or lineinput.code =='horalabdiafm'">
+                                    <td><span t-field="lineinput.contract_id.h_extra_dia_laboral"/></td>
+                                  </t>
+                                  <t t-if="lineinput.code =='horalabnoche' or lineinput.code =='horalabnochefm'">
+                                    <td><span t-field="lineinput.contract_id.h_extra_noche_laboral"/></td>
+                                  </t>
+                                  <t t-if="lineinput.code =='horafestdia' or lineinput.code =='horafestdiafm'">
+                                    <td><span t-field="lineinput.contract_id.h_extra_dia_festivo"/></td>
+                                  </t>
+                                  <t t-if="lineinput.code =='horafestnoche' or lineinput.code =='horafestnochefm'">
+                                    <td><span t-field="lineinput.contract_id.h_extra_noche_festivo"/></td>
+                                  </t>
+                                </span>
+                                <td align="right"><span t-esc="line.total" t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: o.company_id.currency_id}"/></td>
+                          </tr>
+                          <tr>
+                            <td style="background-color:rgb(223,223,223)"><strong>DEDUCCIONES</strong></td><td style="background-color:rgb(223,223,223)"></td><td style="background-color:rgb(223,223,223)"></td><td style="background-color:rgb(223,223,223)"></td>
+                          </tr>
+                                <tr t-foreach="o.line_ids.filtered(lambda line: line.category_id.name == 'Deducciones' and line.appears_on_payslip and line.total > 0)" t-as="line">
+                                <td><span t-field="line.name"/></td>
+                                <t t-if="line.code !='IRPF'">
+                                  <t t-if="line.rate !='0,0000'">
+                                    <td><span t-field="line.rate"/> %</td>
+                                  </t>
+                                  <t t-if="line.rate =='0,0000' and line.quantity !='1,00'">
+                                    <td><span t-field="line.quantity"/></td>
+                                  </t>
+                                  <t t-if="line.rate =='0,0000' and line.quantity =='1,00'">
+                                    <td></td>
+                                  </t>
+                                  <td><span t-esc="line.amount" t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: o.company_id.currency_id}"/></td>
+                                </t>
+                                <t t-if="line.code =='IRPF'">
+                                  <td><span t-field="o.contract_id.irpf"/> %</td>
+                                  <td t-foreach="o.line_ids.filtered(lambda line: line.code == 'BIRPF')" t-as="line2">
+                                        <!--<t t-set="birpf" t-value="line.total"/>-->
+                                        <span t-field="line2.total"/> €
+                                  </td>
+                                </t>
+                                <td align="right"><span t-esc="line.total" t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: o.company_id.currency_id}"/></td>
+                            </tr>
+                            <tr>
+                            <td style="background-color:rgb(223,223,223)"><strong>RETRIBUCIÓN EN ESPECIE</strong></td><td style="background-color:rgb(223,223,223)"></td><td style="background-color:rgb(223,223,223)"></td><td style="background-color:rgb(223,223,223)"></td>
+                          </tr>
+                                <tr t-foreach="o.line_ids.filtered(lambda line: line.category_id.name == 'Retribución en especie' and line.appears_on_payslip)" t-as="line">
+                              <td><span t-field="line.name"/></td>
+                                <t t-if="line.quantity =='1,00'">
+                                  <td><span t-field="line.quantity"/></td>
+                                </t>
+                                <t t-if="line.quantity !='1,00'">
+                                  <td></td>
+                                </t>
+                                <t t-if="line.amount == line.total">
+                                  <td></td>
+                                </t>
+                                <t t-if="line.amount != line.total">
+                                  <td><span t-esc="line.amount" t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: o.company_id.currency_id}"/></td>
+                                </t>
+                                <td align="right"><span t-esc="line.total" t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: o.company_id.currency_id}"/></td>
+
+                          </tr>
+                            <tr>
+                            <td style="background-color:rgb(223,223,223)"><strong>INFORMATIVAS - EMPRESA</strong></td><td style="background-color:rgb(223,223,223)"></td><td style="background-color:rgb(223,223,223)"></td><td style="background-color:rgb(223,223,223)"></td>
+                          </tr>
+                                <tr t-foreach="o.line_ids.filtered(lambda line: line.category_id.name == 'Informativas - Empresa' and line.appears_on_payslip and line.total > 0)" t-as="line">
+                                <td><span t-field="line.name"/></td>
+                                <t t-if="line.rate !='0,0000'">
+                                  <td><span t-field="line.rate"/></td>
+                                </t>
+                                <t t-if="line.rate =='0,0000' and line.quantity !='1,00'">
+                                  <td><span t-field="line.quantity"/></td>
+                                </t>
+                                <t t-if="line.rate =='0,0000' and line.quantity =='1,00'">
+                                  <td></td>
+                                </t>
+                                <t t-if="line.amount == line.total">
+                                  <td></td>
+                                </t>
+                                <t t-if="line.amount != line.total">
+                                  <td><span t-esc="line.amount" t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: o.company_id.currency_id}"/></td>
+                                </t>
+                                <td align="right"><span t-esc="line.total" t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: o.company_id.currency_id}"/></td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+
+                    <table class="table table-sm table-bordered">
+                      <tr>
+                          <td>
+                            <table class="table table-sm table-bordered">
+                              <tr t-foreach="o.line_ids.filtered(lambda line: line.category_id.name == 'Bases' and line.code == 'BCCC' and line.appears_on_payslip)" t-as="line">
+                                <strong style="text-transform: uppercase;"><span t-field="line.name"/></strong>
+                                <br>
+                                  <span t-field="line.total"/>
+                                </br>
+                              </tr>
+                            </table>
+                          </td>
+                          <td>
+                            <table class="table table-sm table-bordered">
+                              <tr t-foreach="o.line_ids.filtered(lambda line: line.category_id.name == 'Bases' and line.code == 'BCCP' and line.appears_on_payslip)" t-as="line">
+                                <strong style="text-transform: uppercase;"><span t-field="line.name"/></strong>
+                                <br>
+                                  <span t-field="line.total"/>
+                                </br>
+                              </tr>
+                            </table>
+                          </td>
+                          <td>
+                            <table class="table table-sm table-bordered">
+                              <tr t-foreach="o.line_ids.filtered(lambda line: line.category_id.name == 'Bases' and line.code == 'BTEOR' and line.appears_on_payslip)" t-as="line">
+                                <strong style="text-transform: uppercase;"><span t-field="line.name"/></strong>
+                                <br>
+                                  <span t-field="line.total"/>
+                                </br>
+                              </tr>
+                            </table>
+                          </td>
+                          <td>
+                            <table class="table table-sm table-bordered">
+                              <tr t-foreach="o.line_ids.filtered(lambda line: line.category_id.name == 'Bases' and line.code == 'BIRPF' and line.appears_on_payslip)" t-as="line">
+                                <strong style="text-transform: uppercase;"><span t-field="line.name"/></strong>
+                                <br>
+                                  <span t-field="line.total"/>
+                                </br>
+                              </tr>
+                            </table>
+                          </td>
+                      </tr>
+                      <tr>
+                          <td>
+                            <table class="table table-sm table-bordered">
+                              <tr t-foreach="o.line_ids.filtered(lambda line: line.category_id.name == 'Totales' and line.code == 'TOTDEVENG' and line.appears_on_payslip)" t-as="line">
+                                <strong style="text-transform: uppercase;"><span t-field="line.name"/></strong>
+                                <br>
+                                  <span t-field="line.total"/>
+                                </br>
+                              </tr>
+                            </table>
+                          </td>
+                          <td>
+                            <table class="table table-sm table-bordered">
+                              <tr t-foreach="o.line_ids.filtered(lambda line: line.category_id.name == 'Totales' and line.code == 'TOTDEDUC' and line.appears_on_payslip)" t-as="line">
+                                <strong style="text-transform: uppercase;"><span t-field="line.name"/></strong>
+                                <br>
+                                  <span t-field="line.total"/>
+                                </br>
+                              </tr>
+                            </table>
+                          </td>
+                          <td>
+                            <table class="table table-sm table-bordered">
+                              <tr t-foreach="o.line_ids.filtered(lambda line: line.category_id.name == 'Totales' and line.code == 'PPEXT' and line.appears_on_payslip)" t-as="line">
+                                <strong style="text-transform: uppercase;"><span t-field="line.name"/></strong>
+                                <t t-if="line.total > 0">
+                                  <br><span t-field="line.total"/></br>
+                                </t>
+                              </tr>
+                            </table>
+                          </td>
+                          <td>
+                            <table class="table table-sm table-bordered">
+                              <tr t-foreach="o.line_ids.filtered(lambda line: line.category_id.name == 'Totales' and line.code == 'TOTPERC' and line.appears_on_payslip)" t-as="line">
+                                <strong style="text-transform: uppercase;"><span t-field="line.name"/></strong>
+                                <br>
+                                  <span t-field="line.total"/>
+                                </br>
+                              </tr>
+                            </table>
+                          </td>
+                      </tr>
+                    </table>
+
+                    
+                    <p class="text-center"><strong>DATOS BANCARIOS</strong></p>
+                    <table class="table table-sm table-bordered">
+                        <tr>
+                            <td>
+                              <strong><span>Nº CTA BANCARIA</span></strong>
+                              <br><span t-field="o.employee_id.bank_account_id"/></br>
+                            </td>
+                            <td>
+                              <strong><span>FECHA</span></strong>
+                              <br><span t-esc="context_timestamp(datetime.datetime.now()).strftime('%d-%m-%Y')"/> </br>
+                            </td>
+                            <td style="background-color:rgb(223,223,223)">
+                              <table class="table table-sm table-bordered">
+                                <tr t-foreach="o.line_ids.filtered(lambda line: line.category_id.name == 'Totales' and line.code == 'TOTPERC' and line.appears_on_payslip)" t-as="line">
+                                  <strong><span>IMPORTE</span></strong>
+                                  <br>
+                                    <td align="right" style="background-color:rgb(223,223,223)">
+                                    <span t-field="line.total"/> €
+                                    </td>
+                                  </br>
+                                </tr>
+                              </table>
+                            </td>
+                        </tr>
+                    </table>
+                    <p class="text-right"><strong>Authorized signature</strong></p>
+                </div>
+            </t>
+        </t>
+    </t>
+
+<!--
+    <t t-call="web.html_container">
+        <t t-foreach="docs" t-as="o">
+            <t t-call="web.external_layout">
+                <div class="page">
+                    <h2>Pay Slip</h2>
+                    <p t-field="o.name"/>
+                    <table class="table table-sm table-bordered">
+                        <tr>
+                            <td><strong>Name</strong></td>
+                            <td><span t-field="o.employee_id"/></td>
+                            <td><strong>Designation</strong></td>
+                            <td><span t-field="o.employee_id.job_id"/></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Address</strong></td>
+                            <td colspan="3">
+                                <div t-field="o.employee_id.address_home_id"
+                                    t-options='{"widget": "contact", "fields": ["address", "name", "phone"], "no_marker": True, "phone_icons": True}'/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><strong>Email</strong></td>
+                            <td><span t-field="o.employee_id.work_email"/></td>
+                            <td><strong>Identification No</strong></td>
+                            <td><span t-field="o.employee_id.identification_id"/></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Reference</strong></td>
+                            <td><span t-field="o.number"/></td>
+                            <td><strong>Bank Account</strong></td>
+                            <td><span t-field="o.employee_id.bank_account_id"/></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Date From</strong></td>
+                            <td><span t-field="o.date_from"/></td>
+                            <td><strong>Date To</strong></td>
+                            <td><span t-field="o.date_to"/></td>
+                        </tr>
+                    </table>
+                    <table class="table table-sm">
+                        <thead>
+                            <tr>
+                                <th>Code</th>
+                                <th>Name</th>
+                                <th>Quantity/rate</th>
+                                <th>Amount</th>
+                                <th>Total</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                                <tr t-foreach="o.line_ids.filtered(lambda line: line.appears_on_payslip)" t-as="line">
+                                <td><span t-field="line.code"/></td>
+                                <td><span t-field="line.name"/></td>
+                                <td><span t-field="line.quantity"/></td>
+                                <td><span t-esc="line.amount"
+                                          t-options='{"widget": "monetary", "display_currency": o.company_id.currency_id}'/></td>
+                                <td><span t-esc="line.total"
+                                          t-options='{"widget": "monetary", "display_currency": o.company_id.currency_id}'/></td>
+
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p class="text-right"><strong>Authorized signature</strong></p>
+                </div>
+            </t>
+        </t>
+    </t>
+-->
+</template>
+</odoo>
