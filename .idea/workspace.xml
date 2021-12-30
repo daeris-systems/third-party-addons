@@ -2,8 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="72db3533-f97c-4392-b571-0e449c7caed9" name="Changes" comment="Initialize 15.0 branch">
+      <change afterPath="$PROJECT_DIR$/hr_payroll/i18n/hr_payroll.pot" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_19_11_2021_13_56_[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_19_11_2021_13_56__Changes_.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app_odoo_customize/__manifest__.py" beforeDir="false" afterPath="$PROJECT_DIR$/app_odoo_customize/__manifest__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hr_payroll/i18n/es.po" beforeDir="false" afterPath="$PROJECT_DIR$/hr_payroll/i18n/es.po" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hr_payroll/models/hr_payslip.py" beforeDir="false" afterPath="$PROJECT_DIR$/hr_payroll/models/hr_payslip.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hr_payroll/security/ir.model.access.csv" beforeDir="false" afterPath="$PROJECT_DIR$/hr_payroll/security/ir.model.access.csv" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

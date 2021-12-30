@@ -143,7 +143,7 @@ class HrPayslip(models.Model):
     def action_my_payslip_sent(self):
         """ Action to send Payroll through Email."""
         self.ensure_one()
-        template = self.env.ref('payroll_email.email_template_for_my_payroll')
+        template = self.env.ref('hr_payroll.email_template_for_my_payroll')
         if template:
             self.env['mail.template'].browse(template.id).send_mail(self.id,force_send=True)
             self.flag = True

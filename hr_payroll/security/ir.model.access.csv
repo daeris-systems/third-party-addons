@@ -14,3 +14,5 @@ access_hr_contract_advantage_template,hr.contract.advantage.template.user,model_
 access_hr_contract_advantage_template_hr_user,hr.contract.advantage.template.hr.user,model_hr_contract_advantage_template,hr.group_hr_user,1,0,0,0
 access_hr_payslip_monthly_report_manager,hr.payroll.report.view,model_hr_payroll_report_view,hr.group_hr_manager,1,1,1,1
 access_hr_contract_type_manager,hr.contract.type.manager,model_hr_contract_type,hr_contract.group_hr_contract_manager,1,1,1,1
+access_hr_payslip_employees,hr.payslip.employees,model_hr_payslip_employees,hr_payroll.group_hr_payroll_user,1,1,1,1
+access_hr_payroll_mass_mail,payroll.mass.mail,model_payroll_mass_mail,hr_payroll.group_hr_payroll_user,1,1,1,1
