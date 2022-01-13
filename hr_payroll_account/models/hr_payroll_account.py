@@ -127,8 +127,11 @@ class HrPayslip(models.Model):
             move_dict['line_ids'] = line_ids
             move = self.env['account.move'].create(move_dict)
             slip.write({'move_id': move.id, 'date': date})
-            #move.post()
-            move.action_post()
+            if not move.line_ids:
+                raise UserError(_("As you installed the payroll accounting module you have to choose Debit and Credit"
+                                  " account for at least one salary rule in the choosen Salary Structure."))
+            move.post()
+            #move.action_post()
         return res
 
 class HrSalaryRule(models.Model):

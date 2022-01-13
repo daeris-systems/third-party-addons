@@ -6,19 +6,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 15.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-12-29 08:55+0000\n"
-"PO-Revision-Date: 2021-12-29 08:55+0000\n"
+"POT-Creation-Date: 2021-12-31 09:21+0000\n"
+"PO-Revision-Date: 2021-12-31 09:21+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: \n"
-
-#. module: hr_payroll
-#: model:mail.template,subject:hr_payroll.email_template_for_my_payroll
-msgid "${object.company_id.name}:  ${object.name})"
-msgstr ""
 
 #. module: hr_payroll
 #: model:ir.model.fields,field_description:hr_payroll.field_hr_contract__jornada_laboral
@@ -64,16 +59,14 @@ msgstr ""
 msgid ""
 "<div style=\"margin: 0px; padding: 0px;\">\n"
 "                    <p style=\"margin: 0px; padding: 0px; font-size: 13px;\">\n"
-"                        Dear ${object.employee_id.name}\n"
-"                        <!-- % if object.employee_id.parent_id:\n"
-"                            (${object.employee_id.parent_id.name})\n"
-"                        % endif -->\n"
+"                        Hi <t t-out=\"object.employee_id.name or ''\" contenteditable=\"false\" data-oe-t-inline=\"true\">Antonio López</t>\n"
 "                        <br/><br/>\n"
-"                        Please find  ${object.name} attached with this mail.\n"
+"                        Please find <strong t-out=\"object.name or ''\" contenteditable=\"false\"/> attached with this mail.\n"
 "                        <br/><br/>\n"
-"                        Thank You \n"
+"                        Thank You\n"
 "                        <br/><br/>\n"
-"                        ${object.user_id.company_id.name}\n"
+"                        from <t t-out=\"object.user_id.company_id.name or ''\" contenteditable=\"false\" data-oe-t-inline=\"true\">TuEmpresa</t>.\n"
+"                        <br/><br/>\n"
 "                    </p>\n"
 "                </div>\n"
 "            "
@@ -346,10 +339,6 @@ msgstr ""
 
 #. module: hr_payroll
 #: model:ir.model.fields,field_description:hr_payroll.field_res_config_settings__module_account_accountant
-msgid "Account Accountant"
-msgstr ""
-
-#. module: hr_payroll
 #: model_terms:ir.ui.view,arch_db:hr_payroll.view_hr_payslip_form
 msgid "Accounting"
 msgstr ""
@@ -1708,6 +1697,11 @@ msgid "Nº extraordinary payments"
 msgstr ""
 
 #. module: hr_payroll
+#: model:mail.template,report_name:hr_payroll.email_template_for_my_payroll
+msgid "Nómina_{{ (object.name or '') }}"
+msgstr ""
+
+#. module: hr_payroll
 #: model:res.groups,name:hr_payroll.group_hr_payroll_user
 msgid "Officer"
 msgstr ""
@@ -1917,11 +1911,6 @@ msgstr ""
 #. module: hr_payroll
 #: model:mail.template,name:hr_payroll.email_template_for_my_payroll
 msgid "Payslip: Send by email"
-msgstr ""
-
-#. module: hr_payroll
-#: model:mail.template,report_name:hr_payroll.email_template_for_my_payroll
-msgid "Payslip_${(object.name or '')}"
 msgstr ""
 
 #. module: hr_payroll
@@ -2620,6 +2609,11 @@ msgstr ""
 #: model:ir.model.fields,help:hr_payroll.field_hr_payslip_line__amount_percentage_base
 #: model:ir.model.fields,help:hr_payroll.field_hr_salary_rule__amount_percentage_base
 msgid "result will be affected to a variable"
+msgstr ""
+
+#. module: hr_payroll
+#: model:mail.template,subject:hr_payroll.email_template_for_my_payroll
+msgid "{{ object.company_id.name }} : {{ object.name }}"
 msgstr ""
 
 #. module: hr_payroll

@@ -47,23 +47,23 @@ class HrContract(models.Model):
             return []
         return list(set(structures._get_parent_structure().ids))
 
-    def get_attribute(self, code, attribute):
-        return self.env['hr.contract.advantage.template'].search([('code', '=', code)], limit=1)[attribute]
+    # def get_attribute(self, code, attribute):
+    #     return self.env['hr.contract.advantage.template'].search([('code', '=', code)], limit=1)[attribute]
 
-    def set_attribute_value(self, code, active):
-        for contract in self:
-            if active:
-                value = self.env['hr.contract.advantage.template'].search([('code', '=', code)], limit=1).default_value
-                contract[code] = value
-            else:
-                contract[code] = 0.0
+    # def set_attribute_value(self, code, active):
+    #     for contract in self:
+    #         if active:
+    #             value = self.env['hr.contract.advantage.template'].search([('code', '=', code)], limit=1).default_value
+    #             contract[code] = value
+    #         else:
+    #             contract[code] = 0.0
 
-class HrContractAdvandageTemplate(models.Model):
-    _name = 'hr.contract.advantage.template'
-    _description = "Employee's Advantage on Contract"
+# class HrContractAdvandageTemplate(models.Model):
+#     _name = 'hr.contract.advantage.template'
+#     _description = "Employee's Advantage on Contract"
 
-    name = fields.Char('Name', required=True)
-    code = fields.Char('Code', required=True)
-    lower_bound = fields.Float('Lower Bound', help="Lower bound authorized by the employer for this advantage")
-    upper_bound = fields.Float('Upper Bound', help="Upper bound authorized by the employer for this advantage")
-    default_value = fields.Float('Default value for this advantage')
+#     name = fields.Char('Name', required=True)
+#     code = fields.Char('Code', required=True)
+#     lower_bound = fields.Float('Lower Bound', help="Lower bound authorized by the employer for this advantage")
+#     upper_bound = fields.Float('Upper Bound', help="Upper bound authorized by the employer for this advantage")
+#     default_value = fields.Float('Default value for this advantage')

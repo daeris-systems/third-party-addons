@@ -51,7 +51,7 @@ min(psl.id),ps.id,ps.number,emp.id as name,dp.id as department_id,jb.department_
             left join hr_department dp on emp.department_id=dp.id
             left join hr_job jb on emp.job_id=jb.id
             join res_company cmp on cmp.id=ps.company_id
-        where psl.code='NET'
+        where psl.code='TOTDEVENG'
          """
         print(from_str, "from_str")
         return from_str

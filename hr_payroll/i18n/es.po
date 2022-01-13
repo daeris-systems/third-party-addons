@@ -6,21 +6,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 15.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-12-29 08:55+0000\n"
-"PO-Revision-Date: 2021-12-30 11:23+0100\n"
+"POT-Creation-Date: 2021-12-31 09:21+0000\n"
+"PO-Revision-Date: 2021-12-31 10:22+0100\n"
+"Last-Translator: \n"
 "Language-Team: \n"
+"Language: es_ES\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Poedit 3.0\n"
-"Last-Translator: \n"
-"Language: es_ES\n"
-
-#. module: hr_payroll
-#: model:mail.template,subject:hr_payroll.email_template_for_my_payroll
-msgid "${object.company_id.name}:  ${object.name})"
-msgstr "${object.company_id.name}:  ${object.name})"
 
 #. module: hr_payroll
 #: model:ir.model.fields,field_description:hr_payroll.field_hr_contract__jornada_laboral
@@ -74,17 +69,17 @@ msgid ""
 "<div style=\"margin: 0px; padding: 0px;\">\n"
 "                    <p style=\"margin: 0px; padding: 0px; font-size: 13px;"
 "\">\n"
-"                        Dear ${object.employee_id.name}\n"
-"                        <!-- % if object.employee_id.parent_id:\n"
-"                            (${object.employee_id.parent_id.name})\n"
-"                        % endif -->\n"
+"                        Hi <t t-out=\"object.employee_id.name or ''\" "
+"contenteditable=\"false\" data-oe-t-inline=\"true\">Antonio López</t>\n"
 "                        <br/><br/>\n"
-"                        Please find  ${object.name} attached with this "
-"mail.\n"
+"                        Please find <strong t-out=\"object.name or ''\" "
+"contenteditable=\"false\"/> attached with this mail.\n"
 "                        <br/><br/>\n"
-"                        Thank You \n"
+"                        Thank You\n"
 "                        <br/><br/>\n"
-"                        ${object.user_id.company_id.name}\n"
+"                        from <t t-out=\"object.user_id.company_id.name or "
+"''\" contenteditable=\"false\" data-oe-t-inline=\"true\">TuEmpresa</t>.\n"
+"                        <br/><br/>\n"
 "                    </p>\n"
 "                </div>\n"
 "            "
@@ -92,16 +87,17 @@ msgstr ""
 "<div style=\"margin: 0px; padding: 0px;\">\n"
 "                    <p style=\"margin: 0px; padding: 0px; font-size: 13px;"
 "\">\n"
-"                        Hola ${object.employee_id.name}\n"
-"                        <!-- % if object.employee_id.parent_id:\n"
-"                            (${object.employee_id.parent_id.name})\n"
-"                        % endif -->\n"
+"                        Hola <t t-out=\"object.employee_id.name or ''\" "
+"contenteditable=\"false\" data-oe-t-inline=\"true\">Antonio López</t>\n"
 "                        <br/><br/>\n"
-"                        Adjuntamos tu  ${object.name} en este correo.\n"
+"                        Encontrarás tu <strong t-out=\"object.name or ''\" "
+"contenteditable=\"false\"/> adjunta en este correo.\n"
 "                        <br/><br/>\n"
-"                        Gracias \n"
+"                        Gracias\n"
 "                        <br/><br/>\n"
-"                        ${object.user_id.company_id.name}\n"
+"                        de <t t-out=\"object.user_id.company_id.name or ''\" "
+"contenteditable=\"false\" data-oe-t-inline=\"true\">TuEmpresa</t>.\n"
+"                        <br/><br/>\n"
 "                    </p>\n"
 "                </div>\n"
 "            "
@@ -380,10 +376,6 @@ msgstr ""
 
 #. module: hr_payroll
 #: model:ir.model.fields,field_description:hr_payroll.field_res_config_settings__module_account_accountant
-msgid "Account Accountant"
-msgstr "Contabilidad completa"
-
-#. module: hr_payroll
 #: model_terms:ir.ui.view,arch_db:hr_payroll.view_hr_payslip_form
 msgid "Accounting"
 msgstr "Contabilidad"
@@ -1775,6 +1767,11 @@ msgid "Nº extraordinary payments"
 msgstr "Nº pagas extraordinarias"
 
 #. module: hr_payroll
+#: model:mail.template,report_name:hr_payroll.email_template_for_my_payroll
+msgid "Nómina_{{ (object.name or '') }}"
+msgstr "Nómina_{{ (object.name or '') }}"
+
+#. module: hr_payroll
 #: model:res.groups,name:hr_payroll.group_hr_payroll_user
 msgid "Officer"
 msgstr "Oficial"
@@ -1985,11 +1982,6 @@ msgstr "Días trabajados de la nómina"
 #: model:mail.template,name:hr_payroll.email_template_for_my_payroll
 msgid "Payslip: Send by email"
 msgstr "Nómina: Enviar por email"
-
-#. module: hr_payroll
-#: model:mail.template,report_name:hr_payroll.email_template_for_my_payroll
-msgid "Payslip_${(object.name or '')}"
-msgstr "Nomina_${(object.name or '')}"
 
 #. module: hr_payroll
 #: model:ir.actions.act_window,name:hr_payroll.act_hr_employee_payslip_list
@@ -2702,6 +2694,14 @@ msgid "result will be affected to a variable"
 msgstr "el resultado afectará a una variable"
 
 #. module: hr_payroll
+#: model:mail.template,subject:hr_payroll.email_template_for_my_payroll
+msgid "{{ object.company_id.name }} : {{ object.name }}"
+msgstr "{{ object.company_id.name }} : {{ object.name }}"
+
+#. module: hr_payroll
 #: model:ir.model.fields,field_description:hr_payroll.field_hr_contract__proratear_pagas
 msgid "¿Prorated payments?"
 msgstr "¿Pagas prorrateados?"
+
+#~ msgid "Account Accountant"
+#~ msgstr "Contabilidad completa"
