@@ -31,5 +31,17 @@
             </div>
         </field>
     </record>
-
+    <record id="mass_mailing_resend.mailing_mailing_view_form_resend" model="ir.ui.view">
+        <field name="name">mass.mailing.resend.view.form.resend</field>
+        <field name="model">mailing.mailing</field>
+        <field name="inherit_id" ref="mass_mailing.mailing_mailing_view_form_full_width"/>
+        <field eval="70" name="priority"/>
+        <field name="arch" type="xml">
+            <xpath expr="//button[@name='action_view_traces_sent']" position="replace">
+                <button name="action_view_traces_sent" attrs="{'invisible': [('state', 'in', ('test'))]}" type="object" class="oe_stat_button" icon="fa-paper-plane">
+                    <field name="sent" widget="statinfo" string="Sent"/>
+                </button>
+            </xpath>
+        </field>
+    </record>
 </odoo>

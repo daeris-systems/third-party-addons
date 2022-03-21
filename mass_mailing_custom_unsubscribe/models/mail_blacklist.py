@@ -1,8 +1,12 @@
 # Copyright 2019 Tecnativa - Ernesto Tejeda
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
+
 from odoo import models
+
+
 class MailBlackList(models.Model):
     _inherit = "mail.blacklist"
+
     def _add(self, email):
         mailing_id = self.env.context.get("mailing_id")
         res_id = self.env.context.get("unsubscription_res_id")

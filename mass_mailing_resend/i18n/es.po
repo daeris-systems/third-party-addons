@@ -6,16 +6,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 15.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-11-17 13:08+0000\n"
-"PO-Revision-Date: 2021-11-17 14:15+0100\n"
+"POT-Creation-Date: 2022-03-15 14:13+0000\n"
+"PO-Revision-Date: 2022-03-15 15:15+0100\n"
+"Last-Translator: \n"
 "Language-Team: \n"
+"Language: es_ES\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.0\n"
-"Last-Translator: \n"
-"Language: es_ES\n"
+"X-Generator: Poedit 3.0.1\n"
 
 #. module: mass_mailing_resend
 #: model_terms:ir.ui.view,arch_db:mass_mailing_resend.view_mail_mass_mailing_form
@@ -25,10 +25,10 @@ msgid ""
 "recipients, click on <b>Emails Sent</b> smart-button for removing the "
 "existing record(s)."
 msgstr ""
-"<i class=\"fa fa-info-circle\"/> El nuevo envío se realizará solo a los "
-"destinatarios no enviados / nuevos. Si deseas reenviar nuevamente el correo "
-"masivo a destinatarios ya enviados, haz clic en el botón Más <b>N.º "
-"enviados</b> y elimina del listado los registros existentes.</i>"
+"<i class=\"fa fa-info-circle\"/> Solo se realizará solo el nuevo envío a los "
+"destinatarios nuevos/no enviados. Si deseas reenviar nuevamente el correo "
+"masivo a destinatarios ya enviados, haz clic en el botón <b>N.º enviados</b> "
+"y elimina del listado los registros que quieras que lo reciban de nuevo.</i>"
 
 #. module: mass_mailing_resend
 #: model:ir.model,name:mass_mailing_resend.model_mailing_mailing
@@ -39,6 +39,11 @@ msgstr "Envío masivo"
 #: model_terms:ir.ui.view,arch_db:mass_mailing_resend.view_mail_mass_mailing_form
 msgid "Resend"
 msgstr "Reenviar"
+
+#. module: mass_mailing_resend
+#: model_terms:ir.ui.view,arch_db:mass_mailing_resend.mailing_mailing_view_form_resend
+msgid "Sent"
+msgstr "Enviado"
 
 #. module: mass_mailing_resend
 #: code:addons/mass_mailing_resend/models/mailing_mailing.py:0

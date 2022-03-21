@@ -35,5 +35,18 @@
             </form>
         </xpath>
     </template>
-
+    <template id="mass_mailing_replace_daeris_link" inherit_id="mass_mailing.layout" name="Replace daeris link">
+         <xpath expr="//title" position="replace">
+            <title>Daeris</title>
+        </xpath>
+        <xpath expr="(//div)[1]" position="after">
+            <div style="padding-bottom:20px"></div>
+        </xpath>
+        <xpath expr="//div[hasclass('pull-right')]" position="replace">
+            <div class="pull-right" t-ignore="true" t-if="not editable">
+                Create a <a target="_blank" href="https://daeris.com/sitio-web">website</a> with
+                <a target="_blank" class="label label-danger" href="https://daeris.com/sitio-web">Daeris</a>
+            </div>
+        </xpath>
+    </template>
 </odoo>

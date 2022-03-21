@@ -6,21 +6,21 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 15.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-11-17 12:39+0000\n"
-"PO-Revision-Date: 2021-11-17 13:51+0100\n"
+"POT-Creation-Date: 2022-03-17 08:44+0000\n"
+"PO-Revision-Date: 2022-03-20 06:54+0100\n"
+"Last-Translator: \n"
 "Language-Team: \n"
+"Language: es_ES\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.0\n"
-"Last-Translator: \n"
-"Language: es_ES\n"
+"X-Generator: Poedit 3.0.1\n"
 
 #. module: mass_mailing_custom_unsubscribe
 #: model:ir.model.fields,help:mass_mailing_custom_unsubscribe.field_mail_unsubscription__mailing_list_ids
 msgid "(Un)subscribed mass mailing lists, if any."
-msgstr "Listas de correo dadas de baja (si las hubiera)."
+msgstr "(Un)subscribed mass mailing lists, if any."
 
 #. module: mass_mailing_custom_unsubscribe
 #: model:ir.model.fields,field_description:mass_mailing_custom_unsubscribe.field_mail_unsubscription__unsubscriber_id
@@ -33,7 +33,7 @@ msgstr "(Baja) suscriptor"
 #: model_terms:ir.ui.view,arch_db:mass_mailing_custom_unsubscribe.mail_unsubscription_view_graph
 #: model_terms:ir.ui.view,arch_db:mass_mailing_custom_unsubscribe.mail_unsubscription_view_pivot
 msgid "(Un)subscriptions"
-msgstr "Bajas"
+msgstr "Registro"
 
 #. module: mass_mailing_custom_unsubscribe
 #: model:ir.model.fields,field_description:mass_mailing_custom_unsubscribe.field_mail_unsubscription__action
@@ -58,9 +58,17 @@ msgstr ""
 #. openerp-web
 #: code:addons/mass_mailing_custom_unsubscribe/static/src/js/unsubscribe.js:0
 #, python-format
+msgid "An error occurred. Please try again later or contact us."
+msgstr ""
+"Ocurrió un error. Por favor intente nuevamente más tarde o contáctenos."
+
+#. module: mass_mailing_custom_unsubscribe
+#. openerp-web
+#: code:addons/mass_mailing_custom_unsubscribe/static/src/js/unsubscribe.js:0
+#, python-format
 msgid "An error occurred. Your changes have not been saved, try again later."
 msgstr ""
-"Ocurrió un error. Sus cambios no se han guardado, inténtelo nuevamente más "
+"Ocurrió un error. Sus cambios no se han guardado, intente nuevamente más "
 "tarde."
 
 #. module: mass_mailing_custom_unsubscribe
@@ -80,6 +88,11 @@ msgid "Check to ask for more details when this reason is selected."
 msgstr "Marcar para pedir más detalles cuando se selecciona este motivo."
 
 #. module: mass_mailing_custom_unsubscribe
+#: model_terms:ir.ui.view,arch_db:mass_mailing_custom_unsubscribe.mass_mailing_replace_daeris_link
+msgid "Create a"
+msgstr "Crea un"
+
+#. module: mass_mailing_custom_unsubscribe
 #: model:ir.model.fields,field_description:mass_mailing_custom_unsubscribe.field_mail_unsubscription__create_uid
 #: model:ir.model.fields,field_description:mass_mailing_custom_unsubscribe.field_mail_unsubscription_reason__create_uid
 msgid "Created by"
@@ -92,6 +105,11 @@ msgid "Created on"
 msgstr "Creado el"
 
 #. module: mass_mailing_custom_unsubscribe
+#: model_terms:ir.ui.view,arch_db:mass_mailing_custom_unsubscribe.mass_mailing_replace_daeris_link
+msgid "Daeris"
+msgstr "Daeris"
+
+#. module: mass_mailing_custom_unsubscribe
 #: model:ir.model.fields,field_description:mass_mailing_custom_unsubscribe.field_mail_unsubscription__date
 msgid "Date"
 msgstr "Fecha"
@@ -99,7 +117,7 @@ msgstr "Fecha"
 #. module: mass_mailing_custom_unsubscribe
 #: model:ir.model.fields.selection,name:mass_mailing_custom_unsubscribe.selection__mail_unsubscription__action__blacklist_rm
 msgid "De-blacklisting"
-msgstr "Sacar de la lista negra"
+msgstr "Salir de la lista negra"
 
 #. module: mass_mailing_custom_unsubscribe
 #: model:ir.model.fields,field_description:mass_mailing_custom_unsubscribe.field_mail_unsubscription__details
@@ -249,7 +267,7 @@ msgstr "Adjuntos principales"
 #. module: mass_mailing_custom_unsubscribe
 #: model:ir.model,name:mass_mailing_custom_unsubscribe.model_mailing_mailing
 msgid "Mass Mailing"
-msgstr "Envío masivo"
+msgstr "Correo masivo"
 
 #. module: mass_mailing_custom_unsubscribe
 #: model:ir.model.fields,field_description:mass_mailing_custom_unsubscribe.field_mail_unsubscription__mass_mailing_id
@@ -394,7 +412,7 @@ msgstr "Baja"
 #: model:ir.actions.act_window,name:mass_mailing_custom_unsubscribe.mail_unsubscription_reason_action
 #: model:ir.ui.menu,name:mass_mailing_custom_unsubscribe.mail_unsubscription_reason_menu
 msgid "Unsubscription Reasons"
-msgstr "Motivos de la baja"
+msgstr "Motivos de bajas"
 
 #. module: mass_mailing_custom_unsubscribe
 #: model_terms:ir.ui.view,arch_db:mass_mailing_custom_unsubscribe.reason
@@ -454,7 +472,7 @@ msgstr "Te has <strong>dado de baja con éxito de %s</strong>."
 #: code:addons/mass_mailing_custom_unsubscribe/static/src/js/unsubscribe.js:0
 #, python-format
 msgid "You have been <strong>successfully unsubscribed</strong>."
-msgstr "Has ha sido <strong>dado de baja con éxito</strong>."
+msgstr "Has sido <strong>dado de baja con éxito</strong>."
 
 #. module: mass_mailing_custom_unsubscribe
 #. openerp-web
@@ -483,4 +501,14 @@ msgstr ""
 #: code:addons/mass_mailing_custom_unsubscribe/static/src/js/unsubscribe.js:0
 #, python-format
 msgid "Your changes have been saved."
-msgstr "Se han guardado los cambios."
+msgstr "Sus cambios han sido guardados."
+
+#. module: mass_mailing_custom_unsubscribe
+#: model_terms:ir.ui.view,arch_db:mass_mailing_custom_unsubscribe.mass_mailing_replace_daeris_link
+msgid "website"
+msgstr "sitio web"
+
+#. module: mass_mailing_custom_unsubscribe
+#: model_terms:ir.ui.view,arch_db:mass_mailing_custom_unsubscribe.mass_mailing_replace_daeris_link
+msgid "with"
+msgstr "con"
