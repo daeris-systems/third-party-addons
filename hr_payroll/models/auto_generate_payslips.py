@@ -19,6 +19,7 @@ class HrPayslipRunCron(models.Model):
             elif self.env['ir.config_parameter'].sudo().get_param(
                     'option', 'end') == 'end':
                 self.month_end()
+        #comentamos esta linea ya que falla
         #else:
         #    raise UserError(_("Enable configuration settings"))
 
