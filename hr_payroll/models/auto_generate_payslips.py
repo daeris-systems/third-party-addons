@@ -19,8 +19,8 @@ class HrPayslipRunCron(models.Model):
             elif self.env['ir.config_parameter'].sudo().get_param(
                     'option', 'end') == 'end':
                 self.month_end()
-        else:
-            raise UserError(_("Enable configuration settings"))
+        #else:
+        #    raise UserError(_("Enable configuration settings"))
 
     def month_first(self):
         today = fields.Date.today()
