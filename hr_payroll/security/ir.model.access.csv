@@ -15,4 +15,4 @@ access_hr_contract_type_manager,hr.contract.type.manager,model_hr_contract_type,
 access_hr_payslip_employees,hr.payslip.employees,model_hr_payslip_employees,hr_payroll.group_hr_payroll_user,1,1,1,1
 access_hr_payroll_mass_mail,payroll.mass.mail,model_payroll_mass_mail,hr_payroll.group_hr_payroll_user,1,1,1,1
 access_hr_payslip_mass_mail,payroll.mass.mail,model_payroll_mass_mail,hr_payroll.group_hr_payroll_user,1,1,1,1
-access_hr_payslip_line_contribution,hr.payslip.line.contribution.register,model_hr_payslip_line_contribution_register,hr_payroll.group_hr_payroll_user,1,1,1,1
+access_hr_payslip_line_contribution,hr.payslip.line.contribution.register,model_hr_contribution_register,hr_payroll.group_hr_payroll_user,1,1,1,1
