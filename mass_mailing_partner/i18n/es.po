@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: Odoo Server 10.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-02-26 01:46+0000\n"
-"PO-Revision-Date: 2022-03-21 12:34+0100\n"
+"PO-Revision-Date: 2022-03-22 11:56+0100\n"
 "Last-Translator: Tecnativa - Manuel Calero, 2020\n"
 "Language-Team: Spanish (https://www.transifex.com/oca/teams/23907/es/)\n"
 "Language: es\n"
@@ -121,7 +121,7 @@ msgstr "Número de contactos de correo masivo"
 #. module: mass_mailing_partner
 #: model:ir.model.fields,field_description:mass_mailing_partner.field_mailing_list__partner_mandatory
 msgid "Mandatory Partner"
-msgstr "Contacto asociado obligatorio"
+msgstr "Crear contacto asociado"
 
 #. module: mass_mailing_partner
 #: model:ir.model,name:mass_mailing_partner.model_mailing_contact_subscription
