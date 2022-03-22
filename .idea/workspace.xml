@@ -1,7 +1,328 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="72db3533-f97c-4392-b571-0e449c7caed9" name="Changes" comment="[FIX] Default window title" />
+    <list default="true" id="72db3533-f97c-4392-b571-0e449c7caed9" name="Changes" comment="update mas mailing list dinamic">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_custom_unsubscribe/README.rst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_custom_unsubscribe/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_custom_unsubscribe/__manifest__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_custom_unsubscribe/controllers/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_custom_unsubscribe/controllers/main.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_custom_unsubscribe/data/mail_unsubscription_reason.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_custom_unsubscribe/demo/assets.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_custom_unsubscribe/exceptions.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_custom_unsubscribe/i18n/am.po" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_custom_unsubscribe/i18n/ar.po" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_custom_unsubscribe/i18n/bg.po" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_custom_unsubscribe/i18n/bs.po" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_custom_unsubscribe/i18n/ca.po" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_custom_unsubscribe/i18n/cs.po" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_custom_unsubscribe/i18n/da.po" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_custom_unsubscribe/i18n/de.po" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_custom_unsubscribe/i18n/el_GR.po" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_custom_unsubscribe/i18n/en_GB.po" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_custom_unsubscribe/i18n/es.po" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_custom_unsubscribe/i18n/es_AR.po" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_custom_unsubscribe/i18n/es_CL.po" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_custom_unsubscribe/i18n/es_CO.po" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_custom_unsubscribe/i18n/es_CR.po" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_custom_unsubscribe/i18n/es_DO.po" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_custom_unsubscribe/i18n/es_EC.po" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_custom_unsubscribe/i18n/es_ES.po" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_custom_unsubscribe/i18n/es_MX.po" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_custom_unsubscribe/i18n/es_PE.po" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_custom_unsubscribe/i18n/es_PY.po" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_custom_unsubscribe/i18n/es_VE.po" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_custom_unsubscribe/i18n/et.po" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_custom_unsubscribe/i18n/eu.po" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_custom_unsubscribe/i18n/fa.po" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_custom_unsubscribe/i18n/fi.po" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_custom_unsubscribe/i18n/fr.po" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_custom_unsubscribe/i18n/fr_CA.po" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_custom_unsubscribe/i18n/fr_CH.po" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_custom_unsubscribe/i18n/fr_FR.po" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_custom_unsubscribe/i18n/gl.po" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_custom_unsubscribe/i18n/gl_ES.po" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_custom_unsubscribe/i18n/he.po" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_custom_unsubscribe/i18n/hr.po" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_custom_unsubscribe/i18n/hr_HR.po" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_custom_unsubscribe/i18n/hu.po" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_custom_unsubscribe/i18n/id.po" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_custom_unsubscribe/i18n/it.po" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_custom_unsubscribe/i18n/ja.po" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_custom_unsubscribe/i18n/ko.po" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_custom_unsubscribe/i18n/lt.po" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_custom_unsubscribe/i18n/lt_LT.po" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_custom_unsubscribe/i18n/lv.po" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_custom_unsubscribe/i18n/mass_mailing_custom_unsubscribe.pot" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_custom_unsubscribe/i18n/mk.po" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_custom_unsubscribe/i18n/mn.po" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_custom_unsubscribe/i18n/nb.po" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_custom_unsubscribe/i18n/nb_NO.po" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_custom_unsubscribe/i18n/nl.po" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_custom_unsubscribe/i18n/nl_BE.po" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_custom_unsubscribe/i18n/nl_NL.po" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_custom_unsubscribe/i18n/pl.po" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_custom_unsubscribe/i18n/pt.po" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_custom_unsubscribe/i18n/pt_BR.po" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_custom_unsubscribe/i18n/pt_PT.po" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_custom_unsubscribe/i18n/ro.po" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_custom_unsubscribe/i18n/ru.po" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_custom_unsubscribe/i18n/sk.po" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_custom_unsubscribe/i18n/sl.po" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_custom_unsubscribe/i18n/sr.po" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_custom_unsubscribe/i18n/sr@latin.po" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_custom_unsubscribe/i18n/sv.po" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_custom_unsubscribe/i18n/th.po" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_custom_unsubscribe/i18n/tr.po" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_custom_unsubscribe/i18n/tr_TR.po" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_custom_unsubscribe/i18n/uk.po" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_custom_unsubscribe/i18n/vi.po" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_custom_unsubscribe/i18n/vi_VN.po" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_custom_unsubscribe/i18n/zh_CN.po" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_custom_unsubscribe/i18n/zh_TW.po" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_custom_unsubscribe/models/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_custom_unsubscribe/models/mail_blacklist.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_custom_unsubscribe/models/mail_mass_mailing.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_custom_unsubscribe/models/mail_mass_mailing_list.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_custom_unsubscribe/models/mail_unsubscription.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_custom_unsubscribe/readme/CONFIGURE.rst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_custom_unsubscribe/readme/CONTRIBUTORS.rst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_custom_unsubscribe/readme/DESCRIPTION.rst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_custom_unsubscribe/readme/ROADMAP.rst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_custom_unsubscribe/readme/USAGE.rst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_custom_unsubscribe/security/ir.model.access.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_custom_unsubscribe/static/description/icon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_custom_unsubscribe/static/description/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_custom_unsubscribe/static/src/js/contact.tour.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_custom_unsubscribe/static/src/js/partner.tour.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_custom_unsubscribe/static/src/js/unsubscribe.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_custom_unsubscribe/templates/general_reason_form.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_custom_unsubscribe/templates/mass_mailing_contact_reason.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_custom_unsubscribe/tests/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_custom_unsubscribe/tests/test_ui.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_custom_unsubscribe/tests/test_unsubscription.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_custom_unsubscribe/views/assets.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_custom_unsubscribe/views/mail_mass_mailing_list_view.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_custom_unsubscribe/views/mail_unsubscription_reason_view.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_custom_unsubscribe/views/mail_unsubscription_view.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_list_dynamic/README.rst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_list_dynamic/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_list_dynamic/__manifest__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_list_dynamic/i18n/am.po" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_list_dynamic/i18n/ar.po" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_list_dynamic/i18n/bg.po" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_list_dynamic/i18n/bs.po" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_list_dynamic/i18n/ca.po" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_list_dynamic/i18n/cs.po" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_list_dynamic/i18n/da.po" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_list_dynamic/i18n/de.po" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_list_dynamic/i18n/el_GR.po" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_list_dynamic/i18n/en_GB.po" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_list_dynamic/i18n/es.po" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_list_dynamic/i18n/es_AR.po" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_list_dynamic/i18n/es_CL.po" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_list_dynamic/i18n/es_CO.po" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_list_dynamic/i18n/es_CR.po" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_list_dynamic/i18n/es_DO.po" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_list_dynamic/i18n/es_EC.po" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_list_dynamic/i18n/es_ES.po" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_list_dynamic/i18n/es_MX.po" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_list_dynamic/i18n/es_PE.po" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_list_dynamic/i18n/es_PY.po" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_list_dynamic/i18n/es_VE.po" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_list_dynamic/i18n/et.po" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_list_dynamic/i18n/eu.po" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_list_dynamic/i18n/fa.po" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_list_dynamic/i18n/fi.po" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_list_dynamic/i18n/fr.po" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_list_dynamic/i18n/fr_CA.po" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_list_dynamic/i18n/fr_CH.po" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_list_dynamic/i18n/gl.po" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_list_dynamic/i18n/gl_ES.po" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_list_dynamic/i18n/he.po" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_list_dynamic/i18n/hr.po" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_list_dynamic/i18n/hr_HR.po" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_list_dynamic/i18n/hu.po" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_list_dynamic/i18n/id.po" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_list_dynamic/i18n/it.po" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_list_dynamic/i18n/ja.po" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_list_dynamic/i18n/ko.po" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_list_dynamic/i18n/lt.po" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_list_dynamic/i18n/lt_LT.po" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_list_dynamic/i18n/lv.po" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_list_dynamic/i18n/mass_mailing_list_dynamic.pot" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_list_dynamic/i18n/mk.po" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_list_dynamic/i18n/mn.po" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_list_dynamic/i18n/nb.po" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_list_dynamic/i18n/nb_NO.po" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_list_dynamic/i18n/nl.po" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_list_dynamic/i18n/nl_BE.po" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_list_dynamic/i18n/nl_NL.po" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_list_dynamic/i18n/pl.po" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_list_dynamic/i18n/pt.po" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_list_dynamic/i18n/pt_BR.po" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_list_dynamic/i18n/pt_PT.po" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_list_dynamic/i18n/ro.po" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_list_dynamic/i18n/ru.po" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_list_dynamic/i18n/sk.po" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_list_dynamic/i18n/sl.po" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_list_dynamic/i18n/sr.po" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_list_dynamic/i18n/sr@latin.po" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_list_dynamic/i18n/sv.po" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_list_dynamic/i18n/th.po" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_list_dynamic/i18n/tr.po" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_list_dynamic/i18n/tr_TR.po" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_list_dynamic/i18n/uk.po" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_list_dynamic/i18n/vi.po" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_list_dynamic/i18n/vi_VN.po" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_list_dynamic/i18n/zh_CN.po" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_list_dynamic/i18n/zh_TW.po" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_list_dynamic/models/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_list_dynamic/models/mailing.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_list_dynamic/models/mailing_contact.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_list_dynamic/models/mailing_list.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_list_dynamic/models/res_partner.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_list_dynamic/readme/CONFIGURE.rst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_list_dynamic/readme/CONTRIBUTORS.rst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_list_dynamic/readme/DESCRIPTION.rst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_list_dynamic/readme/USAGE.rst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_list_dynamic/security/ir.model.access.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_list_dynamic/static/description/icon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_list_dynamic/static/description/icon.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_list_dynamic/static/description/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_list_dynamic/tests/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_list_dynamic/tests/test_dynamic_lists.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_list_dynamic/views/mailing_list_view.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_list_dynamic/wizards/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_list_dynamic/wizards/mailing_load_filter.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_list_dynamic/wizards/mailing_load_filter_views.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_list_dynamic/wizards/partner_merge.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_partner/README.rst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_partner/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_partner/__manifest__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_partner/hooks.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_partner/i18n/am.po" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_partner/i18n/ar.po" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_partner/i18n/bg.po" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_partner/i18n/bs.po" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_partner/i18n/ca.po" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_partner/i18n/ca_ES.po" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_partner/i18n/cs.po" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_partner/i18n/da.po" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_partner/i18n/de.po" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_partner/i18n/el_GR.po" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_partner/i18n/en_AU.po" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_partner/i18n/en_GB.po" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_partner/i18n/es.po" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_partner/i18n/es_AR.po" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_partner/i18n/es_CL.po" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_partner/i18n/es_CO.po" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_partner/i18n/es_CR.po" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_partner/i18n/es_DO.po" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_partner/i18n/es_EC.po" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_partner/i18n/es_ES.po" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_partner/i18n/es_MX.po" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_partner/i18n/es_PE.po" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_partner/i18n/es_PY.po" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_partner/i18n/es_VE.po" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_partner/i18n/et.po" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_partner/i18n/eu.po" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_partner/i18n/fa.po" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_partner/i18n/fi.po" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_partner/i18n/fr.po" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_partner/i18n/fr_CA.po" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_partner/i18n/fr_CH.po" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_partner/i18n/fr_FR.po" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_partner/i18n/gl.po" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_partner/i18n/gl_ES.po" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_partner/i18n/he.po" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_partner/i18n/hi.po" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_partner/i18n/hr.po" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_partner/i18n/hr_HR.po" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_partner/i18n/hu.po" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_partner/i18n/id.po" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_partner/i18n/it.po" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_partner/i18n/ja.po" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_partner/i18n/ko.po" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_partner/i18n/lo.po" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_partner/i18n/lt.po" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_partner/i18n/lt_LT.po" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_partner/i18n/lv.po" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_partner/i18n/mass_mailing_partner.pot" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_partner/i18n/mk.po" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_partner/i18n/mn.po" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_partner/i18n/nb.po" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_partner/i18n/nb_NO.po" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_partner/i18n/nl.po" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_partner/i18n/nl_BE.po" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_partner/i18n/nl_NL.po" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_partner/i18n/pl.po" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_partner/i18n/pt.po" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_partner/i18n/pt_BR.po" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_partner/i18n/pt_PT.po" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_partner/i18n/ro.po" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_partner/i18n/ru.po" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_partner/i18n/sk.po" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_partner/i18n/sl.po" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_partner/i18n/sr.po" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_partner/i18n/sr@latin.po" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_partner/i18n/sv.po" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_partner/i18n/th.po" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_partner/i18n/tr.po" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_partner/i18n/tr_TR.po" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_partner/i18n/uk.po" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_partner/i18n/vi.po" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_partner/i18n/vi_VN.po" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_partner/i18n/zh_CN.po" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_partner/i18n/zh_TW.po" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_partner/models/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_partner/models/mailing_contact.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_partner/models/mailing_contact_subscription.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_partner/models/mailing_list.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_partner/models/mailing_trace.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_partner/models/res_partner.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_partner/readme/CONFIGURE.rst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_partner/readme/CONTRIBUTORS.rst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_partner/readme/DESCRIPTION.rst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_partner/readme/USAGE.rst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_partner/security/ir.model.access.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_partner/static/description/icon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_partner/static/description/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_partner/tests/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_partner/tests/base.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_partner/tests/test_mail_mail_statistics.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_partner/tests/test_mail_mass_mailing_contact.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_partner/tests/test_mail_mass_mailing_list.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_partner/tests/test_mail_mass_mailing_list_contact_rel.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_partner/tests/test_partner_mail_list_wizard.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_partner/tests/test_res_partner.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_partner/views/mailing_contact_view.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_partner/views/mailing_trace_view.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_partner/views/mailing_view.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_partner/views/res_partner_view.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_partner/wizard/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_partner/wizard/partner_mail_list_wizard.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_partner/wizard/partner_mail_list_wizard.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_partner/wizard/partner_merge.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_resend/README.rst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_resend/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_resend/__manifest__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_resend/i18n/es.po" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_resend/i18n/mass_mailing_resend.pot" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_resend/models/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_resend/models/mailing_mailing.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_resend/readme/CONTRIBUTORS.rst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_resend/readme/DESCRIPTION.rst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_resend/readme/ROADMAP.rst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_resend/readme/USAGE.rst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_resend/static/description/icon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_resend/static/description/icon.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_resend/static/description/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_resend/tests/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_resend/tests/test_mass_mailing_resend.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mass_mailing_resend/views/mailing_mailing_views.xml" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -22,7 +343,7 @@
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../odoo15" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../social" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RunManager">
@@ -190,7 +511,42 @@
       <option name="project" value="LOCAL" />
       <updated>1637577590941</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="update payroll module">
+      <created>1647871835022</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1647871835022</updated>
+    </task>
+    <task id="LOCAL-00021" summary="update payroll module">
+      <created>1647871937704</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1647871937704</updated>
+    </task>
+    <task id="LOCAL-00022" summary="update mas mailing list dinamic">
+      <created>1647944819434</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1647944819434</updated>
+    </task>
+    <task id="LOCAL-00023" summary="update mas mailing list dinamic">
+      <created>1647945383660</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1647945383660</updated>
+    </task>
+    <task id="LOCAL-00024" summary="update mas mailing list dinamic">
+      <created>1647946635007</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1647946635007</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -214,6 +570,16 @@
     <MESSAGE value="[FIX] Menus" />
     <MESSAGE value="[FIX] Default data" />
     <MESSAGE value="Initialize 15.0 branch" />
-    <option name="LAST_COMMIT_MESSAGE" value="Initialize 15.0 branch" />
+    <MESSAGE value="update payroll module" />
+    <MESSAGE value="update mas mailing list dinamic" />
+    <option name="LAST_COMMIT_MESSAGE" value="update mas mailing list dinamic" />
+  </component>
+  <component name="XDebuggerManager">
+    <watches-manager>
+      <configuration name="PythonConfigurationType">
+        <watch expression="self.env.registry.test_cr" />
+        <watch expression="record" />
+      </configuration>
+    </watches-manager>
   </component>
 </project>
