@@ -60,7 +60,7 @@
         'views/webclient_templates.xml',
         # data
         'data/ir_config_parameter_data.xml',
-        'data/ir_module_module_data.xml',
+        #'data/ir_module_module_data.xml',
         # 'data/digest_template_data.xml',
         'data/res_company_data.xml',
     ],
