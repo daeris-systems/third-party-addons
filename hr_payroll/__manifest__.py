@@ -14,6 +14,7 @@
     'data': [
         'security/hr_payroll_security.xml',
         'security/ir.model.access.csv',
+        'data/hr_contract_type_data.xml',
         'wizard/hr_payroll_payslips_by_employees_views.xml',
         'views/hr_contract_views.xml',
         'views/hr_salary_rule_views.xml',
@@ -21,7 +22,6 @@
         'views/hr_employee_views.xml',
         'data/hr_payroll_sequence.xml',
         'views/hr_payroll_report.xml',
-        'data/hr_contract_type_data.xml',
         'data/hr_payroll_data.xml',
         'data/mail_template.xml',
         'wizard/hr_payroll_contribution_register_report_views.xml',
