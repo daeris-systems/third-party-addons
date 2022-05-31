@@ -87,7 +87,7 @@ msgstr "Entrada de registro UE-GDPR #%s"
 #. module: dp_eu_gdpr
 #: model:res.groups,name:dp_eu_gdpr.dp_eu_gdpr_user
 msgid "EU-GDPR User"
-msgstr "Usuario EU-GDPR"
+msgstr "Usuario"
 
 #. module: dp_eu_gdpr
 #: model:ir.actions.act_window,name:dp_eu_gdpr.action_dp_eu_gdpr_execute_operation
