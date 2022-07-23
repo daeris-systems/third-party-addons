@@ -2685,7 +2685,7 @@ msgstr "nómina generada un día del mes"
 #. module: hr_payroll
 #: model:ir.model.fields,field_description:hr_payroll.field_hr_contract__professional_group
 msgid "profesional group"
-msgstr "grupo profesional"
+msgstr "Grupo profesional"
 
 #. module: hr_payroll
 #: model:ir.model.fields,help:hr_payroll.field_hr_payslip_line__amount_percentage_base
