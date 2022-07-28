@@ -55,7 +55,7 @@ class HrPayslipRunCron(models.Model):
 
     def generate_payslips(self):
         batch_id = self.create([{
-            'name': 'Payslip Batch For ' + date.today().strftime('%B')
+            'name': 'Lote de Nóminas ' + date.today().strftime('%B')
                     + ' ' + str(date.today().year),
             'date_start': fields.Date.to_string(date.today().replace(day=1)),
             'date_end': fields.Date.to_string(
@@ -68,17 +68,21 @@ class HrPayslipRunCron(models.Model):
         employee_ids = []
         for line in contract_ids:
             employee_ids.append(line.employee_id)
-            lst.append({
-                'name': line.employee_id.id,
-                'work_phone': line.employee_id.work_phone or None,
-                'work_email': line.employee_id.work_email or None,
-                'department_id': line.employee_id.department_id or None,
-                'job_id': line.employee_id.job_id or None,
-                'parent_id': line.employee_id.parent_id or None,
+            generate_payslip.create({
+                'employee_ids': [(4, line.employee_id.id)]
             })
-        generate_payslip.create([{
-            'employee_ids': lst
-        }])
+
+#            lst.append({
+#                'name': line.employee_id.id,
+#                'work_phone': line.employee_id.work_phone or None,
+#                'work_email': line.employee_id.work_email or None,
+#                'department_id': line.employee_id.department_id or None,
+#                'job_id': line.employee_id.job_id or None,
+#                'parent_id': line.employee_id.parent_id or None,
+#            })
+#        generate_payslip.create([{
+#            'employee_ids': lst
+#        }])
 
         payslips = self.env['hr.payslip']
         [run_data] = batch_id.read(

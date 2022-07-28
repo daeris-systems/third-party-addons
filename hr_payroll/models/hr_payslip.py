@@ -145,8 +145,9 @@ class HrPayslip(models.Model):
         self.ensure_one()
         template = self.env.ref('hr_payroll.email_template_for_my_payroll')
         if template:
-            self.env['mail.template'].browse(template.id).send_mail(self.id,force_send=True)
-            self.flag = True
+            if self.flag == False:
+                self.env['mail.template'].browse(template.id).send_mail(self.id,force_send=True)
+                self.flag = True
 
     #@api.multi
     def confirm_multi_payslips(self):
