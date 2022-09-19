@@ -20,5 +20,7 @@
         <function model="ir.config_parameter" name="set_param" eval="('app_ribbon_name', 'Sunpop.cn({db_name})')"/>
         <function model="ir.config_parameter" name="set_param" eval="('app_ribbon_color', '#f0f0f0')"/>
         <function model="ir.config_parameter" name="set_param" eval="('app_ribbon_background_color', 'rgba(255,0,0,.4)')"/>
+        <!--Necesario para impresoras ePos del TPV-->
+        <function model="ir.config_parameter" name="set_param" eval="('point_of_sale.enforce_https', 'True')"/>
     </data>
 </openerp>
