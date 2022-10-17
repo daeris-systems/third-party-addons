@@ -12,8 +12,8 @@
         <function model="ir.config_parameter" name="set_param" eval="('app_show_enterprise', 'False')"/>
         <function model="ir.config_parameter" name="set_param" eval="('app_show_share', 'False')"/>
         <function model="ir.config_parameter" name="set_param" eval="('app_show_poweredby', 'False')"/>
-        <function model="ir.config_parameter" name="set_param" eval="('app_documentation_url', 'https://daeris.com/support/help')"/>
-        <function model="ir.config_parameter" name="set_param" eval="('app_documentation_dev_url', 'https://daeris.com/support/help')"/>
+        <function model="ir.config_parameter" name="set_param" eval="('app_documentation_url', 'https://docs.daeris.com/')"/>
+        <function model="ir.config_parameter" name="set_param" eval="('app_documentation_dev_url', 'https://docs.daeris.com/')"/>
         <function model="ir.config_parameter" name="set_param" eval="('app_support_url', 'https://daeris.com/forum/ayuda-1')"/>
         <function model="ir.config_parameter" name="set_param" eval="('app_account_title', 'Mi Cuenta Daeris')"/>
         <function model="ir.config_parameter" name="set_param" eval="('app_account_url', 'https://daeris.com/web/login')"/>
