@@ -6,71 +6,69 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 13.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-01-05 13:18+0000\n"
-"PO-Revision-Date: 2022-08-02 06:31+0200\n"
+"POT-Creation-Date: 2022-01-05 13:16+0000\n"
+"PO-Revision-Date: 2022-01-05 13:16+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
-"Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
+"Content-Transfer-Encoding: \n"
 "Plural-Forms: \n"
-"X-Generator: Poedit 3.0.1\n"
 
 #. module: pos_bag_charges
 #: model:ir.model.fields,field_description:pos_bag_charges.field_pos_config__allow_bag_charges
 msgid "Allow Bag Charges"
-msgstr "Permitir cobrar bolsas"
+msgstr "السماح بشحن الحقائب"
 
 #. module: pos_bag_charges
 #. openerp-web
 #: code:addons/pos_bag_charges/static/src/xml/pos_bag_charges.xml:0
 #, python-format
 msgid "Bag"
-msgstr "Bolsa"
+msgstr "حقيبة"
 
 #. module: pos_bag_charges
 #: model:ir.model.fields,field_description:pos_bag_charges.field_pos_config__pos_bag_category_id
 msgid "Bag Charges Category"
-msgstr "Categoría de cobro de bolsas"
+msgstr "فئة رسوم الحقائب"
 
 #. module: pos_bag_charges
 #. openerp-web
 #: code:addons/pos_bag_charges/static/src/xml/pos_bag_charges.xml:0
 #, python-format
 msgid "Cancel"
-msgstr "Cancelar"
+msgstr "يلغي"
 
 #. module: pos_bag_charges
 #. openerp-web
 #: code:addons/pos_bag_charges/static/src/xml/pos_bag_charges.xml:0
 #, python-format
 msgid "List of Bag Charges"
-msgstr "Lista de cobros de bolsas"
+msgstr "قائمة رسوم الحقائب"
 
 #. module: pos_bag_charges
 #: model:pos.category,name:pos_bag_charges.pos_bag_category_1
 msgid "POS Bag"
-msgstr "Bolsas de TPV"
+msgstr "حقيبة POS"
 
 #. module: pos_bag_charges
 #: model_terms:ir.ui.view,arch_db:pos_bag_charges.inherit_view_pos_bag_charges_form
 msgid "POS Bag Charges"
-msgstr "Configuración del TPV"
+msgstr "رسوم حقيبة نقاط البيع"
 
 #. module: pos_bag_charges
 #: model:ir.model,name:pos_bag_charges.model_pos_config
 msgid "Point of Sale Configuration"
-msgstr "Configuración del TPV"
+msgstr "تكوين نقطة البيع"
 
 #. module: pos_bag_charges
 #. openerp-web
 #: code:addons/pos_bag_charges/static/src/xml/pos_bag_charges.xml:0
 #, python-format
 msgid "Product image"
-msgstr "Imagen del producto"
+msgstr "صورة المنتج"
 
 #. module: pos_bag_charges
 #: model_terms:ir.ui.view,arch_db:pos_bag_charges.inherit_view_pos_bag_charges_form
 msgid "Select Bag Category"
-msgstr "Seleccionar categoría de bolsas"
+msgstr "حدد فئة الحقيبة"

@@ -1,37 +1,46 @@
-odoo.define('pos_bag_charges.PosBagWidget', function(require) {
+odoo.define('pos_bag_charges.PosBagButton', function(require) {
     "use strict";
 
-    const ProductScreen = require('point_of_sale.ProductScreen');
     const PosComponent = require('point_of_sale.PosComponent');
+    const ProductScreen = require('point_of_sale.ProductScreen');
+    const { useListener } = require('web.custom_hooks');
     const Registries = require('point_of_sale.Registries');
 
-    // Start PosBagWidget
-    class PosBagWidget extends PosComponent {
+    class PosBagButton extends PosComponent {
         constructor() {
             super(...arguments);
+            useListener('click', this.onClick);
         }
-
-        renderElement (){
-            var self = this;
-            var selectedOrder = self.env.pos.get_order();
-            var category = self.env.pos.config.pos_bag_category_id;
-            var categ = self.env.pos.db.get_product_by_category(category[0])
-            var products = self.env.pos.db.get_product_by_category(category[0])[0];
-            var orderlines = self.env.pos.db.get_product_by_category(category[0]);
-
-            if (self.env.pos.db.get_product_by_category(self.env.pos.config.pos_bag_category_id[0]).length == 1) {
-                selectedOrder.add_product(products);
-                self.env.pos.set_order(selectedOrder);
-                self.showScreen('ProductScreen');
-            }else{
-                self.showPopup('PosBagPopupWidget', {'orderlines': orderlines});
+        async onClick() {
+            let self = this;
+            let selectedOrder = self.env.pos.get_order();
+            let category = self.env.pos.config.pos_bag_category_id;
+            if(category){
+                let products = self.env.pos.db.get_product_by_category(category[0]);
+                if (products.length == 1) { 
+                    selectedOrder.add_product(products[0]);
+                    self.env.pos.set_order(selectedOrder);
+                    self.showScreen('ProductScreen');
+                }else{
+                    products.forEach(function(prd) {
+                        prd['image_url'] = window.location.origin + '/web/binary/image?model=product.product&field=image_medium&id=' + prd.id;
+                    });
+                    self.showPopup('PosBagPopup', {'products': products});
+                }   
             }
         }
-    };
-    PosBagWidget.template = 'PosBagWidget';
-
-    Registries.Component.add(PosBagWidget);
-
-    return PosBagWidget;
+    }
+    PosBagButton.template = 'PosBagButton';
+    ProductScreen.addControlButton({
+        component: PosBagButton,
+        condition: function() {
+            return this.env.pos.config.allow_bag_charges;
+        },
+    });
+    Registries.Component.add(PosBagButton);
+    return PosBagButton;
 
 });
+
+
+    

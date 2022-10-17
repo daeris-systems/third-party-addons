@@ -3,7 +3,7 @@
 
 {
     "name": "POS Bag Charges in Odoo",
-    "version": "15.0.0.0",
+    "version": "15.0.1.1",
     "category": "Point of Sale",
     "depends": ['base', 'sale', 'point_of_sale'],
     "author": "BrowseInfo",

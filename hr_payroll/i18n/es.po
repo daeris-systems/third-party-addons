@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: Odoo Server 15.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-12-31 09:21+0000\n"
-"PO-Revision-Date: 2021-12-31 10:22+0100\n"
+"PO-Revision-Date: 2022-07-24 09:16+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: es_ES\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.0\n"
+"X-Generator: Poedit 3.0.1\n"
 
 #. module: hr_payroll
 #: model:ir.model.fields,field_description:hr_payroll.field_hr_contract__jornada_laboral
@@ -783,7 +783,7 @@ msgstr "Tipos de Contrato"
 #: model:ir.model.fields,field_description:hr_payroll.field_hr_contract_type__name
 #: model:ir.model.fields,help:hr_payroll.field_hr_contract_type__name
 msgid "Contract contribution group"
-msgstr "Grupo de contribución del contrato"
+msgstr "Grupo de cotización del contrato"
 
 #. module: hr_payroll
 #: model:ir.model.fields,field_description:hr_payroll.field_hr_contract__dias_contrato
@@ -819,7 +819,7 @@ msgstr "Registros de contribución"
 #. module: hr_payroll
 #: model:ir.model.fields,field_description:hr_payroll.field_hr_contract__type_id
 msgid "Contribution group"
-msgstr "Grupo de contribución"
+msgstr "Grupo de cotización"
 
 #. module: hr_payroll
 #: model:ir.model.fields,help:hr_payroll.field_hr_contract__seguro_medico
@@ -1125,7 +1125,7 @@ msgstr "Contrato"
 #. module: hr_payroll
 #: model:ir.model.fields,help:hr_payroll.field_hr_contract__type_id
 msgid "Employee Contribution group"
-msgstr "Grupo de contribución de empleados"
+msgstr "Grupo de cotización de empleados"
 
 #. module: hr_payroll
 #: model_terms:ir.ui.view,arch_db:hr_payroll.view_hr_employee_grade_form
@@ -1301,7 +1301,7 @@ msgstr "Generar las nóminas para todos los empleados seleccionados"
 msgid ""
 "Gives the sequence when displaying a list of Contract contribution group."
 msgstr ""
-"Proporciona la secuencia al mostrar una lista del grupo de contribución del "
+"Proporciona la secuencia al mostrar una lista del grupo de cotización del "
 "contrato."
 
 #. module: hr_payroll
